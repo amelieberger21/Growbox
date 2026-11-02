@@ -1,207 +1,287 @@
-# MycoBox – Natürlich wachsen.
+# 🍄 MycoBox
 
-Deutschsprachiger, klickbarer Hochschulprototyp mit einer virtuellen Growbox und genau 15 Pilzeinträgen. **Messwerte, Geräteaktionen, Wachstum, Zeiten und Profile sind vollständig simuliert.** Kein Backend, Login oder API-Schlüssel nötig. Nach der Installation funktioniert die Demo ohne externe Dienste.
+**Natürlich wachsen. Gemeinsam verstehen. Einfach bedienen.**
 
-## Auf diesem Mac starten
+MycoBox ist ein interaktiver Hochschulprototyp für die verständliche und möglichst barrierearme Bedienung einer Pilz-Growbox. Wähle eine Pilzkultur, beobachte ihren virtuellen Verlauf und entdecke, wie Temperatur, Luftfeuchtigkeit, Licht und Belüftung im Demo-Modell zusammenwirken.
 
-Im Finder **`MycoBox starten.command` doppelklicken**. Die Datei nutzt eine vorhandene Node-Installation oder die lokale Codex-Laufzeit, startet Vite und öffnet den Browser. Das Terminal geöffnet lassen; zum Beenden `Ctrl+C` drücken.
+Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, kontextbezogener Hilfe und dem Sprachassistenten **Champ**.
 
-Alternativ mit Node.js ab 22.12 (empfohlen 24 LTS) und npm:
+> **Prototyp statt echter Gerätesteuerung:** Messwerte, Geräteverbindungen, Wachstum und Geräteaktionen sind simuliert. Die Anwendung liefert keine Gesundheitsdiagnose, Bestimmungshilfe oder Freigabe zum Verzehr. Die Basisdemo funktioniert ohne Anmeldung und ohne API-Schlüssel; freie KI-Gespräche sind optional.
+
+## Inhalt
+
+- [Was MycoBox bietet](#was-mycobox-bietet)
+- [Lokal starten](#lokal-starten)
+- [Den Prototyp ausprobieren](#den-prototyp-ausprobieren)
+- [Sprachen und barrierearme Bedienung](#sprachen-und-barrierearme-bedienung)
+- [Mit Champ sprechen](#mit-champ-sprechen)
+- [Growboxen und lokale Daten](#growboxen-und-lokale-daten)
+- [Entwicklung und Projektstruktur](#entwicklung-und-projektstruktur)
+- [Prüfstand und bekannte Grenzen](#prüfstand-und-bekannte-grenzen)
+
+## Was MycoBox bietet
+
+| Bereich | Funktionen |
+| --- | --- |
+| **Dashboard** | Aktive Kultur, Klimawerte, Hinweise und Gerätestatus der ausgewählten Growbox auf einen Blick. |
+| **Pilzbibliothek** | 15 Einträge mit Fotos, Suche, Filtern, Detailseiten und passenden Beispielprofilen. |
+| **Mehrere Growboxen** | Auswahl nach Name, ID und Standort; eigene Kulturen, Einstellungen und Verläufe; erkennbare Online-/Offline-Simulation. |
+| **Klima und Technik** | Temperatur, Luftfeuchtigkeit, Umluft, Frischluft und sichtbares Licht mit Automatik- und manuellem Modus. |
+| **Wachstumsverlauf** | Fünf vereinfachte Phasen, schematische Entwicklungsbilder sowie Klimadiagramm und Datentabelle. |
+| **Wasser und Hinweise** | Tankfüllstand, getrenntes Nachfüllen und Wechseln, Wartungserinnerungen und Benachrichtigungscenter. |
+| **Champ** | Geführtes Tutorial, Vorlesefunktion und Sprachassistent mit optionaler Mistral-Anbindung. |
+| **Bedienhilfen** | Fragezeichen-Hilfe, drei Schriftgrößen, Kontrastmodus, einfache Sprache und große Plus-/Minus-Tasten. |
+| **Rezeptideen** | 26 lokale Rezeptkompositionen mit Zutaten, Zubereitungsschritten und passenden Pilzzuordnungen. |
+
+### Einstellungen bewusst übernehmen
+
+Klima- und Gerätefelder bearbeiten zunächst einen **Entwurf**. Erst **„Einstellungen übernehmen“** wendet ihn an. Ungültige Werte verhindern die Übernahme. Beim Verlassen der Steuerung oder beim Wechsel zu einer anderen Growbox schützt ein Dialog vor dem unbeabsichtigten Verlust nicht übernommener Änderungen.
+
+Aktuelle Messwerte, gespeicherte Sollwerte und ausgeführte Geräteaktionen bleiben getrennt erkennbar.
+
+## Lokal starten
+
+### Voraussetzungen
+
+- Node.js ab **22.12**
+- npm
+- Ein aktueller Browser; Sprachfunktionen hängen zusätzlich von Browser, Berechtigungen und verfügbaren Gerätestimmen ab.
+
+### Installation
 
 ```sh
-npm install
+git clone https://github.com/amelieberger21/Growbox.git
+cd Growbox
+npm ci
 npm run dev
 ```
 
-Die im Terminal ausgegebene Adresse öffnen, normalerweise **http://127.0.0.1:5173**. Bei belegtem Port wählt Vite einen freien Port. Die verwendeten Versionen sind in Lockfiles festgehalten. Reproduzierbare Neuinstallation: `npm ci`. Alternativ funktioniert `pnpm install`.
+Öffne die im Terminal angezeigte Adresse, normalerweise **[http://127.0.0.1:5173](http://127.0.0.1:5173)**. Ist der Port belegt, verwendet Vite einen freien Port. Zum Beenden im Terminal `Ctrl+C` drücken.
 
-## Prüfen und bauen
+**Auf dem Mac:** Alternativ lässt sich die Datei [`MycoBox starten.command`](<MycoBox starten.command>) im Finder doppelklicken. Sie verwendet eine vorhandene Node-Installation oder die lokale Codex-Laufzeit, startet die Vorschau und öffnet den Browser. Das Terminal während der Nutzung geöffnet lassen.
 
-```sh
-npm run typecheck
-npm run lint
-npm test
-npm run build
-npm run preview
+Die Basisdemo benötigt nach der Installation keine externe KI-Anbindung. Ihre Bilder, Schriften und Rezeptdaten liegen lokal im Projekt. Die optionale Browser-Spracherkennung kann trotzdem einen externen Dienst des Browseranbieters verwenden.
+
+## Den Prototyp ausprobieren
+
+1. **Überblick gewinnen:** Öffne das Dashboard und beachte die ausgewählte Growbox sowie den dauerhaften Demo-Hinweis.
+2. **Pilz entdecken:** Suche in der Bibliothek beispielsweise nach „Igelstachelbart“ und öffne die Details. Suche, Filter und Sortierung bleiben in der URL erhalten.
+3. **Kultur vorbereiten:** Wähle bei einer verbundenen Demo-Box „In meiner Growbox anbauen“. Eine vorhandene Kultur wird erst nach deiner Bestätigung ersetzt.
+4. **Simulation starten:** Starte die vorbereitete Kultur unter „Meine Growbox“.
+5. **Bedienung testen:** Ändere Sollwerte per Slider, Zahlenfeld oder Plus-/Minus-Tasten. Übernimm den Entwurf ausdrücklich.
+6. **Zusammenhänge beobachten:** Öffne „Demo-Szenarien“ und simuliere beispielsweise erhöhtes CO₂. Vergleiche Hinweise, Gerätestatus und Ereignisprotokoll.
+7. **Verlauf erkunden:** Öffne Wachstumsphasen oder den Klimaverlauf mit seiner Datentabelle. Das reine Lesen einer Phase verändert keine Kultur.
+8. **Box wechseln:** Wähle eine andere Growbox. Name, Standort, Kultur und Verlauf beziehen sich anschließend auf diese Box. Offline-Boxen zeigen letzte bekannte Daten und sperren Geräteaktionen.
+9. **Hilfe nutzen:** Öffne ein Fragezeichen oder starte Champ. Ein bestätigter Demo-Reset setzt den Betriebszustand der ausgewählten steuerbaren Box zurück; Sprache und Darstellung bleiben erhalten.
+
+## Sprachen und barrierearme Bedienung
+
+### Website-Sprachen
+
+Die Sprachauswahl bietet **20 Sprachen**. In den Einstellungen kannst du nach Sprachname oder Sprachcode suchen.
+
+Deutsch · English · Français · Español · Italiano · Nederlands · Polski · Čeština · Türkçe · Português · Українська · Русский · العربية · فارسی · Română · Ελληνικά · Svenska · Dansk · Norsk bokmål · Suomi
+
+Arabisch und Persisch verwenden eine Leserichtung von rechts nach links. Zahlen und Datumsangaben werden entsprechend der ausgewählten Locale formatiert.
+
+> **Übersetzungsstand:** Die Auswahl von 20 Sprachen bedeutet noch keine vollständige Übersetzung aller Inhalte. Französisch, Spanisch, Italienisch, Niederländisch, Polnisch und Tschechisch enthalten bislang Kernbegriffe. Auch Rumänisch und neue Hilfetexte benötigen Ergänzungen. Fehlende Texte erscheinen auf Deutsch; ein Hinweis in der gewählten Sprache macht dies sichtbar. Die zusätzliche Übersetzung über Mistral konnte zuletzt wegen HTTP 429 nicht abgeschlossen werden.
+
+### Lesen, verstehen und präzise bedienen
+
+- **Drei Schriftgrößen:** Standard, Groß und Sehr groß; relative Schrifteinheiten berücksichtigen zusätzlich die Browser-Textgröße.
+- **Kontrast und Symbole:** Deutlichere Konturen, beschriftete Zustände und erkennbare Symbole ergänzen die Farbgebung. Informationen werden nicht allein durch Farben vermittelt.
+- **Große Bedienelemente:** Mindestens 48 Pixel hohe Schaltflächen; Plus-/Minus-Tasten mit mindestens 52 × 52 Pixel Trefferfläche und 16 Pixel Abstand.
+- **Präzise Schritte:** Temperatur in 0,5 °C, Luftfeuchtigkeit und Helligkeit in einem Prozentpunkt, Demo-CO₂ in 50 ppm. Slider und Schritttasten verwenden denselben Wert und beachten dieselben Grenzen.
+- **Kontextbezogene Hilfe:** Fragezeichen erklären Bedeutung, Bedienung und Grenzen der wichtigsten Funktionsgruppen, ohne Einstellungen zu verändern.
+- **Tastatur und Screenreader:** Sichtbarer Fokus, beschriftete Eingaben, native Dialoge mit Escape und Rückkehr zum auslösenden Bedienelement.
+- **Vorlesen und einfache Sprache:** Kürzere Kerntexte sowie Start, Pause, Fortsetzen, Stopp, Wiederholen und einstellbare Vorlesegeschwindigkeit.
+
+Das Projekt orientiert sich an den Zielen von WCAG 2.2 AA. Eine vollständige Konformitätsprüfung oder Zertifizierung liegt nicht vor.
+
+## Mit Champ sprechen
+
+### Start und Bedienung
+
+Drücke **zweimal F innerhalb von 650 ms** oder wähle **„Mit Champ sprechen“**. Gedrückthalten zählt nicht; in Textfeldern wird das Kürzel nicht ausgelöst. Falls ein Screenreader das Tastenkürzel abfängt, steht der beschriftete Startknopf zur Verfügung.
+
+| Aktion | Bedienung |
+| --- | --- |
+| Gespräch öffnen | Zweimal **F** oder Startknopf |
+| Sprache wählen | Sprachauswahl im Champ-Fenster |
+| Aufnahme starten oder fortsetzen | **Zuhören** |
+| Aufnahme manuell abschicken | **Aufnahme beenden** |
+| Gespräch unterbrechen | **Pause** |
+| Gespräch und Mikrofon beenden | **Escape** oder Schließen |
+| Ohne Mikrofon fragen | Texteingabe im Champ-Fenster |
+
+Der Assistent unterstützt **neun Gesprächssprachen**: Deutsch, Englisch, Französisch, Spanisch, Italienisch, Niederländisch, Polnisch, Tschechisch und Türkisch. Die Auswahl gilt für Spracherkennung, Antworten, Gerätestimme und Rückmeldungen. Sie lässt sich unabhängig von der Website-Sprache wählen oder bei unterstützten Sprachen an diese koppeln. Nicht verfügbare Stimmen und Erkennungsfunktionen werden angezeigt.
+
+Beispielbefehle:
+
+- „Öffne die Growbox und nenne mir die Daten.“
+- „Wie hoch ist die Luftfeuchtigkeit?“
+- „Erkläre mir die aktuelle Wachstumsphase.“
+- „Liste meine Growboxen auf.“
+- „Öffne GB-002.“
+- „Zeige die Growbox in Raum 3.“
+
+Bei mehreren passenden Boxen fragt Champ nach einer eindeutigen ID. Er verwendet den aktuellen Boxkontext und kennzeichnet Offline-Daten. **Geräteparameter werden nicht per Sprachbefehl verändert und Kulturen nicht automatisch ersetzt.**
+
+### Optionale Mistral-Anbindung
+
+Ohne API-Schlüssel stehen lokale Befehle und Demo-Datenabfragen zur Verfügung. Für freie KI-Gespräche und die serverseitige Transkription benötigst du einen eigenen Mistral-API-Schlüssel.
+
+**Einrichtung über das lokale Eingabefeld:**
+
+1. Starte die Anwendung mit `npm run dev`.
+2. Öffne auf derselben lokalen Adresse den Pfad **`/api/assistant/setup`**, normalerweise [Mistral verbinden](http://127.0.0.1:5173/api/assistant/setup).
+3. Füge den Schlüssel in das Passwortfeld ein und speichere ihn. Die Einrichtung ist nur auf diesem Computer verfügbar.
+
+**Alternativ über eine Umgebungsdatei:**
+
+Kopiere `.env.example` nach `.env.local`, trage den Schlüssel dort ein und starte den Entwicklungsserver neu:
+
+```dotenv
+MISTRAL_API_KEY=DEIN_SCHLUESSEL
+MISTRAL_ASSISTANT_MODEL=mistral-small-latest
+MISTRAL_TRANSCRIPTION_MODEL=voxtral-mini-transcribe-3
 ```
 
-Build-Ausgabe: `dist/`. Routen: `/`, `/pilze`, `/pilze/:slug`, `/growbox`, `/wachstum`, `/projekt`. Unbekannte Routen haben eine 404-Ansicht mit Rückweg. Vite unterstützt Direktlinks. Für späteres statisches Hosting **alle nicht vorhandenen Dateipfade mit HTTP 200 auf `/index.html` umschreiben**, damit Neuladen und Detail-Direktlinks funktionieren.
+`.env.local` ist von Git ausgeschlossen. Der Schlüssel bleibt serverseitig und gehört weder in den Quellcode noch in einen Chat oder eine Variable mit `VITE_`-Präfix. Die Modelle lassen sich über die gezeigten Variablen konfigurieren. Eine gespeicherte Konfiguration bestätigt noch nicht die Gültigkeit des Schlüssels oder verfügbares Kontingent beim Anbieter.
 
-## Vorführablauf
+### Audio und Datenübertragung
 
-1. Dashboard öffnen: initial Austernseitling, Tag 20 von 28, rund 68 %, 21,2 °C, 88 %, 850 ppm. Dauerhaften Demo-Hinweis erklären.
-2. Bibliothek → nach „Igelstachelbart“ suchen → Details. „Kraeuterseitling“ funktioniert ebenfalls. Suche, Filter und Sortierung bleiben in URL-Parametern erhalten.
-3. „In meiner Growbox anbauen“ → Vorschau → „Kultur vorbereiten“. Eine bestehende Kultur wird erst bei Bestätigung ersetzt. Abbrechen verändert nichts.
-4. „Demo starten“: neue Kultur bei 0 % in der Vorbereitung.
-5. „Manuell“ auswählen, Belüftung ausschalten, „Einstellungen übernehmen“. Entwürfe wirken vorher nicht. Ungültige Eingaben blockieren die Übernahme; beim Verlassen mit Entwurf erscheint ein Dialog.
-6. „Demo-Szenarien“ aufklappen → „CO₂ erhöht“. Simulierten Hinweis und Ereignisprotokoll zeigen. „Normalbetrieb“ setzt Istwerte auf Sollwerte und CO₂ auf 850 ppm. Bei weiterhin ausgeschalteter Belüftung steigt CO₂ anschließend erneut – die beabsichtigte Modellrückmeldung.
-7. Wachstumsverlauf → andere Phase zum Lesen anklicken (keine Zustandsänderung). Einen Demo-Tag vorspulen oder zur nächsten Phasengrenze springen.
-8. Demo pausieren und neu laden: Zustand bleibt erhalten, Zeit und Messwerte stehen still.
-9. Projektseite → „Demo vollständig zurücksetzen“ → bestätigen. Die komplette Ausgangsdemo wird wiederhergestellt.
+Mit aktiver KI-Anbindung werden Audioaufnahmen an die Mistral-Transkription gesendet. Fragen, Gesprächsverlauf und relevante simulierte Growbox-Daten gehen an die Mistral Chat API. Die Oberfläche erklärt die Übertragung vor der Aufnahme.
 
-## Modell, Architektur und Speicherung
+Eine Aufnahme endet nach ungefähr 1,5 Sekunden Sprechpause, spätestens nach 25 Sekunden, oder durch manuelles Beenden. Nach einer Antwort kann Champ erneut zuhören; ohne hörbare Sprache pausiert die Aufnahme. Escape beendet Aufnahme und laufende Anfragen.
 
-React + TypeScript (strict), Vite, Tailwind CSS, React Router, Lucide, Recharts. `src/data` enthält getrennte Bibliothekseinträge, Artenprofile und Demo-Profile; `src/simulation` die zentrale Regelung, Grenzwerte und den Reducer; `src/state` Context und validierte Persistenz. `src/pages` enthält die sechs Hauptseiten sowie Details und 404. Alle Illustrationen und Schriften sind lokal.
+Der lokale Server speichert weder Audio noch Gespräch; der Gesprächsverlauf liegt im Arbeitsspeicher des geöffneten Gesprächs. Daraus folgt keine Zusage zur Aufbewahrung beim Anbieter. Mikrofonberechtigung, verfügbare Stimmen und Anbieterlimits beeinflussen die tatsächliche Nutzung.
 
-- Eine Context-/Reducer-Instanz für alle Seiten. Ein Tick alle fünf realen Sekunden entspricht einer simulierten Stunde. Simulation nur bei geöffneter Anwendung und Status „Läuft“. Keine Nachberechnung von Abwesenheit.
-- Reproduzierbare Schwankungen per gesetztem LCG-Zufallsstartwert. Automatik nähert Temperatur (0,3 °C plus begrenztes Rauschen) und Feuchtigkeit (2 Prozentpunkte plus Rauschen) an. Manuell langsamere Annäherung. Belüftung aus erhöht CO₂, ein senkt es Richtung 850 ppm.
-- Synthetische Grenzen zentral in `src/simulation/engine.ts`: Temperatur ± 2 °C, Luftfeuchtigkeit ± 5 Prozentpunkte (0–100 %), CO₂-Hinweis über 1.500 ppm. Bediengrenzen: 10–30 °C in 0,5-Schritten, 60–95 % in ganzen Schritten.
-- Phasengrenzen: 0 / 10 / 45 / 65 / 90 / 100 %. Bei 100 % Status „Abgeschlossen“ und Stopp. Ein Profil pro Pilz für alle Phasen: keine biologische Prognose und keine garantierte Erntereife.
-- Bis zu 168 stündliche Messwerte mit den damals gültigen Sollwerten sowie 200 Ereignisse. Neue Einstellungen verändern die Vergangenheit nicht. Abweichungen und Behebungen werden einmal pro zusammenhängender Abweichung protokolliert. Szenarien verändern den Messpunkt der aktuellen Demo-Stunde; Zeitraffer verarbeitet jede Stunde einzeln.
-- Versionierter Schlüssel `mycobox.demo.v1` in `localStorage`. Daten werden geprüft. Bei beschädigten Daten erscheint die Ausgangsdemo mit Meldung; bei blockiertem Speicher funktioniert die Anwendung im Arbeitsspeicher. Entwürfe und Dialoge werden nicht gespeichert.
-- Die sichtbare Simulationsuhr nutzt eine feste Zeitbasis als Modellzeit (UTC-Anzeige, keine echte Ortszeit). Deutsche Zahlen- und Datumsformatierung.
-- Nameko/Goldkäppchen teilen ein Arten- und Demo-Profil. Beide Champignons teilen die Artzuordnung, bleiben als Kulturformen eigenständig.
+## Growboxen und lokale Daten
 
-## Prüfungen
+### Eigene Daten für jede Box
 
-Die ursprünglichen 37 Vitest-/Testing-Library-Prüfungen decken alle 15 Detail-Direktlinks, Katalog, Profilreferenzen, Umlautsuche, kombinierte Filter, Zustandsübergänge, Grenzen, historische Sollwerte, Reproduzierbarkeit, Szenarien, Ereignisbegrenzung, Phasensprünge, Abschluss, Persistenz, Reset und den kompletten Auswahl-/Steuerungsablauf inklusive Abbruch und Entwurfsschutz ab. jsdom nutzt einen Dialog-Shim; native Dialogfokussierung und Layout werden zusätzlich im Browser geprüft. Die Diagrammtabelle zeigt dieselben Daten wie das Diagramm. Sparklines sind rein dekorativ.
+Jede Growbox besitzt eine unveränderliche ID, einen editierbaren Namen und einen Standort, zum Beispiel „Küche – Fensterbank“ oder „Raum 3 – Regal links“. Beispielillustrationen helfen bei der Zuordnung; sie sind keine Fotos realer Geräte oder Kameraaufnahmen.
 
-## Fachlicher Prüfstand
+Die Anwendung unterscheidet drei unabhängige Angaben:
 
-- **Synthetisch (`demo`):** alle Sollwerte, Schwierigkeitsgrade, Zeiten, Vergleichsbereiche und Phasengrenzen. Keine Anbauempfehlung, keine Ertragsmenge und kein Ernteversprechen.
-- **Quellengeprüft:** Goldkäppchen als Handelsname für Nameko (BZfE), Verwechslungsgefahr von Stockschwämmchen/Gifthäubling (Universitätsklinikum Freiburg), allgemeine Einordnung kontrollierter Indoor-Kultur (Cornell).
-- **Noch zu prüfen (`unverified`):** weitere artspezifische Beschreibungen, Zuordnungen, Substrat-/Pflege-/Licht-/Frischlufteinordnungen aus dem Projektkonzept und reale Growbox-Eignung. Die ursprünglich verlinkte DGfM-Artenliste leitet inzwischen auf eine allgemeine Seite weiter und wird nicht als geprüftes Artenprofil ausgegeben.
-- Kein Bestimmungswerkzeug. Stockschwämmchen hat einen dauerhaften Warnhinweis. Keine Heilwirkungen. Keine erfundenen Hochschul- oder Teamnamen.
+| Angabe | Bedeutung |
+| --- | --- |
+| **Ausgewählt** | Diese Box wird gerade angezeigt und bedient. |
+| **Verbunden / Offline** | Simulierter Verbindungszustand der Box. |
+| **Kulturstatus** | Zustand ihrer Kultur, etwa Bereit, Läuft, Pausiert oder Abgeschlossen. |
 
-Quellen und ihre Geltungsbereiche stehen auf der Projektseite und im Katalog. Bild-/Schriftlizenzen: [ASSETS.md](ASSETS.md). Diese Umsetzung liegt lokal im Growbox-Repository und überträgt keine Demo-Daten.
+Kultur, Klimaeinstellungen, Tank, Wartung, Messhistorie, Ereignisse, Warnschwellen und Benachrichtigungen bleiben pro Box getrennt. Sprache und Darstellung gelten für die gesamte Anwendung. Neue Boxen starten offline und ohne Messdaten; „Verbindung simulieren“ stellt ausdrücklich simulierte Daten bereit.
 
-## Erweiterung 2.0: Champ, Sprachen und HCI
+### Speicherung und Migration
 
-Die vorhandenen Seiten, Routen und Kulturabläufe bleiben erhalten. Neu sind `/einstellungen` und `/hilfe`.
+Die Daten bleiben im `localStorage` des verwendeten Browsers:
 
-### Vollständig implementierte Bedienfunktionen
+| Speicherschlüssel | Inhalt |
+| --- | --- |
+| `mycobox.fleet.v1` | Growbox-Liste, Auswahl und Betriebszustände |
+| `mycobox.demo.v1` | Kompatibilitätsstand der ausgewählten Growbox für das frühere Einzelbox-Modell |
+| `mycobox.experience.v1` | Bedienpräferenzen und kompatibler Experience-Stand |
+| `mycobox.experience.boxes.v1` | Boxbezogene Bewertungen, Präferenzen und Benachrichtigungen |
+| `mycobox.assistant.language` | Gewählte Gesprächssprache |
+| `mycobox.assistant.followWebsite` | Kopplung an die Website-Sprache |
 
-- **Champ:** eigener freundlicher SVG-Pilz, erstmalige Begrüßung mit zwei aufeinanderfolgenden Fragen in einem Dialog (Tutorial und Vorlesen). Die Antwort wird lokal gespeichert. Neun Tutorialstationen mit echten Routenwechseln, Elementhervorhebung, Schrittanzeige, Zurück/Weiter/Überspringen/Fertig. Keine Kultur wird im Tutorial automatisch ersetzt. Ablehnen erzeugt eine separat schließbare Erinnerung. Dauerhafter Neustart unter Hilfe und Einstellungen.
-- **Gerätezeit im Header:** echtes Datum und Uhrzeit aus der lokalen Systemzeit, jede Sekunde aktualisiert, mit sprachabhängiger Formatierung. Die separate Simulationsuhr bleibt klar als Demo-Zeit gekennzeichnet.
-- **Deutsch / Englisch / Persisch:** react-i18next, lokale Übersetzungsschlüssel in `src/i18n`, einschließlich Pilznamen, Beschreibungen, Hilfen, Tutorial, Meldungen und Fehlern. Persisch setzt `lang=fa` und `dir=rtl`, spiegelt Navigation und Richtungsicons und nutzt lokal gebündelte Vazirmatn-Schriften. Wissenschaftliche Namen und Urheberangaben bleiben unverändert. Suche berücksichtigt auch übersetzte Pilznamen.
-- **Barrierefreiheit:** drei Schriftgrößen, hoher Kontrast, einfache Sprache mit kürzeren Kerntexten und größeren Buttons, sichtbarer Fokus, native Dialogfokusführung, Tastaturbedienung und beschriftete Eingaben. Das Design orientiert sich an WCAG 2.2 AA; es liegt keine formale Konformitätszertifizierung vor.
-- **Vorlesen:** Start, Pause, Fortsetzen, Stopp, Wiederholen, Geschwindigkeit und Deaktivieren über Web Speech API. Nur eine aktive Nutzerhandlung startet Audio. Die Stimme muss auf dem Gerät verfügbar sein. Echte `word`-Boundary-Ereignisse markieren das laufende Wort in der Leseleiste; zusätzlich wird der aktuelle Textabschnitt auf der Seite markiert. Ohne zuverlässige Wortgrenzen wird ehrlich auf Abschnittsmarkierung zurückgefallen. Kein simulierter Wort-Timer. Ein Sprach- oder Seitenwechsel stoppt die Ausgabe.
-- **Benachrichtigungscenter:** Glocke mit ungelesenem Zähler; einzelne/alle Meldungen als gelesen markieren; Sammeln neuer Meldungen deaktivierbar. Temperatur/Feuchte hoch oder niedrig, CO₂, Wassermangel, fälliger Wasserwechsel, Phasenwechsel und Demo-Abschluss. Eine Demo-Erntephase wird niemals als echte Erntereife ausgegeben. Es werden keine Browser-Berechtigungen angefordert; die internen Meldungen funktionieren ohne Betriebssystem-Push.
-- **Wasserwartung:** simulierter Tankfüllstand, letzter Wechsel, nächste Erinnerung, getrennte Aktionen für Nachfüllen und Wechseln, konfigurierbares Intervall von 1–30 Demo-Tagen. Nachfüllen setzt den Wasserwechseltermin ausdrücklich nicht zurück. Tankverbrauch und Erinnerung laufen nach Demo-Zeit, ohne Abwesenheitsnachberechnung.
-- **Pilzfotos:** 15 eigene lokale Bildpfade mit korrekter Quellen-/Lizenzdokumentation, siehe ASSETS.md. Echte Fotos mit Hintergrund statt vorgetäuschter Freisteller. Enoki wird als natürliche braune Form gezeigt und beschriftet.
-- **Präsentationswerkzeuge:** Istwerte direkt simulieren, gelben/roten Zustand zeigen, Fruchtungsphase demonstrieren, Wassermangel/Wechsel fällig machen, einen Tag vorspulen, Champ starten und Betriebszustand bestätigt zurücksetzen. Diese Werkzeuge befinden sich im aufklappbaren Bereich „Demo-Szenarien“ der Steuerung bzw. des Wachstumsverlaufs.
+Vorhandene Einzelbox-Daten werden in **GB-001** übernommen. Ältere gültige Betriebsstände werden additiv migriert; vorhandene Kultur, Historie und Ereignisse bleiben erhalten. Beschädigte Daten werden geprüft und mit einer Meldung durch einen nutzbaren Ausgangs- oder Kompatibilitätsstand ersetzt. Bei blockiertem Speicher bleibt die Sitzung im Arbeitsspeicher bedienbar. Nicht übernommene Klimaentwürfe und geöffnete Dialoge werden nicht dauerhaft gespeichert.
 
-### Artspezifische Bewertung und Vorschläge
+Es gibt keine Konten, Cloud-Synchronisierung oder dauerhafte Hintergrundüberwachung. Ein anderer Browser oder eine andere lokale Portnummer verwendet einen eigenen Speicherbereich.
 
-`src/experience/model.ts` hält Kulturbedingungen und eine wiederverwendbare Bewertungsfunktion (`optimal`, `warning`, `critical`, `unknown`). Sie berücksichtigt Art, Phase, Messgröße, Wert, Quelle, Demo-Berechtigung, Warnschwellen und vorherigen Zustand. Eine kleine Hysterese stabilisiert Grenzfälle.
+### So läuft die Simulation
 
-Die Fruchtungsbereiche aus dem Auftrag sind überwiegend **vorläufige Projektdaten**. Die Option „Vorläufige Bereiche als Demo vergleichen“ macht sie ausdrücklich zu Demo-Vergleichsbereichen; wird sie abgeschaltet, bleiben ungeprüfte Bereiche grau. Ohne vorhandene Phasendaten gibt es auch bei aktivem Demo-Vergleich keine grüne Bewertung. Grün bedeutet „Optimal“ **im gekennzeichneten Modell**, Gelb/Rot bedeuten Abweichungen von Kulturbedingungen, keine Aussage über Giftigkeit, Genießbarkeit oder Lebensmittelsicherheit. Die CO₂-Bewertung ist ein konfigurierbarer generischer Demo-Vergleich und kein behaupteter Artgrenzwert.
+- **5 reale Sekunden = 1 Demo-Stunde.** Weitergerechnet wird nur in der geöffneten Anwendung, bei verbundener Box und laufender Kultur; Abwesenheit wird nicht nachberechnet.
+- **Fünf Wachstumsphasen** verwenden feste Modellgrenzen bei 0 / 10 / 45 / 65 / 90 / 100 Prozent. Bei 100 Prozent stoppt die Kultur als „Abgeschlossen“.
+- **Bis zu 168 stündliche Messwerte und 200 Ereignisse** bleiben pro Box erhalten. Historische Sollwerte werden durch neue Einstellungen nicht rückwirkend verändert.
+- **Automatik und manuelle Steuerung** bilden vereinfachte Zusammenhänge ab: Frischluft beeinflusst CO₂, Umluft die Temperaturannäherung. Licht besitzt Helligkeit und ein tägliches Zeitfenster, auch über Mitternacht.
+- **Tankzustände** unterscheiden ausreichend, niedrig, leer und unbekannt. Unbekannt wird als „–“ dargestellt, nicht als null Prozent. Leerer oder unbekannter Tank sperrt die simulierte Wasserförderung.
+- **Systemzeit und Demo-Zeit** sind getrennt: Der Header zeigt die echte lokale Gerätezeit; der Kulturverlauf verwendet eine feste Modellzeit.
 
-- **Shimeji:** Temperatur/Feuchte für Besiedlung und Fruchtung sind mit einem konkreten _Hypsizygus marmoreus_-Studienprotokoll belegt; keine universellen Hardware-Grenzen.
-- **Nameko/Goldkäppchen:** Beide bleiben _Pholiota nameko_ und teilen ihr Profil. Die im neuen Auftrag abweichenden Goldkäppchen-Zahlen werden als Widerspruch dokumentiert und nicht als zweite verifizierte Art ausgegeben. Der ausgewählte gemeinsame Bereich ist vorläufig; die Primärstudie unterscheidet Induktion und Wachstum.
-- **Stockschwämmchen:** keine erfundenen Temperatur-/Feuchtebereiche, daher `unknown`. Der Warnhinweis zur Verwechslung bleibt erhalten.
-- **Weitere Phasen, CO₂/Licht und Hardware-Eignung:** fehlende belastbare Zahlen bleiben „Nicht verifiziert“. Vorhandene konkrete Studienangaben werden als solche abgegrenzt. Prüfbericht und genaue Quellen: `docs/Kulturdaten-Pruefstand.md`.
+## Entwicklung und Projektstruktur
 
-Die Steuerung zeigt einen zur aktuellen Art/Phase berechneten Vorschlag. Eine Vorschau und „Vorschlag in Entwurf laden“ verändern zunächst nur den Entwurf; erst „Einstellungen übernehmen“ wendet ihn an. Fehlende Phasendaten werden nicht ergänzt: dann ist der Vorschlag ausdrücklich das bisherige synthetische Beispielprofil.
+**Technik:** React 19 · TypeScript · Vite · React Router · Tailwind CSS · Lucide · Recharts · react-i18next · Vitest · React Testing Library
 
-### Speicherung und technische Grenzen
+```text
+src/
+├── components/     Gemeinsame UI, Growbox-Verwaltung und Hilfedialoge
+├── data/           Pilze, Rezepte, Bildnachweise und Hilfetexte
+├── experience/     Champ, Sprache, Vorlesen, Bewertungen und Hinweise
+├── i18n/           Sprachkataloge, Locales und Übersetzungshinweise
+├── pages/          Seiten und zugehörige Bedienabläufe
+├── simulation/     Zentrale Zustandsübergänge und Gerätemodell
+├── state/          Growbox-Kontext, Mehrbox-Modell und Persistenz
+├── styles/         Bestehendes Design und Bedienhilfen
+└── types/          Gemeinsame TypeScript-Typen
+server/             Lokale Mistral-Endpunkte und Schlüsseleinrichtung
+public/             Lokale Bilder und Growbox-Illustrationen
+docs/               Fachlicher Prüfstand und Quellen
+```
 
-Zusätzlich zum unveränderten, validierten Kernschlüssel `mycobox.demo.v1` speichert `mycobox.experience.v1` Sprache, Bedienpräferenzen, Begrüßungsantwort, Wasserzustand und maximal 100 Benachrichtigungen. Tutorial-Schritt und aktuelle Sprachausgabe werden nicht gespeichert. Ein Betriebsreset setzt Kultur, Wasser und Meldungen zurück, erhält aber Sprache und Barrierefreiheit. Die aktuelle Uhrzeit wird niemals als festes Datum hinterlegt.
+### Befehle
 
-Die Simulation überwacht nur die offene Anwendung. Kein Backend, keine Hardware, keine permanente Hintergrundüberwachung. Web Speech API und passende lokale Stimmen sind browser-/geräteabhängig; eine tatsächlich hörbare Ausgabe lässt sich nicht für jedes Gerät garantieren. Die vorhandene Text- und Tastaturbedienung bleibt vollständig nutzbar. Für einen Neubeginn der Begrüßung nur den Experience-Speichereintrag in den Browserwerkzeugen löschen oder eine neue Browserumgebung öffnen; das Tutorial kann jederzeit ohne Löschen unter Hilfe gestartet werden.
+| Befehl | Zweck |
+| --- | --- |
+| `npm run dev` | Lokale Entwicklungsvorschau starten |
+| `npm run typecheck` | TypeScript prüfen |
+| `npm run lint` | ESLint ausführen |
+| `npm test` | Automatisierte Tests ausführen |
+| `npm run build` | TypeScript prüfen und Produktionsdateien in `dist/` erzeugen |
+| `npm run preview` | Gebauten Stand lokal ansehen |
 
-### Zusätzliche Prüfungen
+Die Lockfiles halten die verwendeten Abhängigkeiten fest. Für eine reproduzierbare npm-Installation verwende `npm ci`.
 
-Vitest und React Testing Library prüfen neben den bisherigen Kulturabläufen: vier Bewertungsstufen, phasenbezogene Shimeji-Daten, gemeinsame Nameko-Identität, Hysterese, konfigurierbare CO₂-Grenzen, unbekannte Daten, Vorschlag ohne Übernahme, Meldungsentprellung und Behebung, getrennte Wasserereignisse, Ausschalten der Meldungen, Pause/Wasserverbrauch, Phasen-/Demo-Erntehinweise, Speicherprüfung, erstmalige Champ-Abfragen, separates Schließen der Erinnerung, alle neun Tutorialstationen, Sprachwechsel/RTL, Darstellungseinstellungen, Benachrichtigungscenter sowie Vorlesestart/Pause/Fortsetzen/Stopp und Boundary-/Fallback-Markierung mit einer kontrollierten Speech-API-Testimplementierung.
+### Seiten und Direktlinks
 
-Die native Browserprüfung ergänzt: echten Tutorialdurchlauf, Englisch/Persisch, RTL und alle acht Hauptansichten bei 360/768/1440 px – auch mit 130-%-Texten, hoher Kontrastdarstellung und einfacher Sprache. Audio wurde automatisiert gegen eine kontrollierte API geprüft; Gerätestimmen bleiben eine Laufzeitvoraussetzung. Der Quellcode enthält sämtliche Funktionen, die Fotos mit ihren Einzelbelegen und die lokale Startdatei.
+| Pfad | Seite |
+| --- | --- |
+| `/` | Dashboard |
+| `/pilze` | Pilzbibliothek |
+| `/pilze/:slug` | Pilzdetails |
+| `/pilze/:slug/rezepte` | Rezeptübersicht |
+| `/pilze/:slug/rezepte/:recipeId` | Rezeptdetails |
+| `/growbox` | Growbox-Verwaltung und Steuerung |
+| `/wachstum` | Visueller Wachstumsverlauf |
+| `/wachstum/klima` | Historischer Klimaverlauf |
+| `/einstellungen` | Sprache, Darstellung und Hinweise |
+| `/hilfe` | Hilfe und Champ |
+| `/projekt` | Projektinformationen und Demo-Erklärung |
 
-## Rezeptideen im Pilzbereich
+Unbekannte Routen zeigen eine 404-Ansicht mit Rückweg. Bei statischem Hosting müssen Anwendungsrouten auf `index.html` zurückfallen, damit Neuladen und Direktlinks funktionieren.
 
-Optionaler Einstieg **„Rezeptideen“** auf jeder Pilzdetailseite und ein kleiner Link unter dem Fortschritt der aktiven Dashboard-Kultur. Das Dashboard zeigt keine Rezeptkarten; Klima und Steuerung bleiben im Mittelpunkt.
+**KI beim Hosting:** Die Endpunkte in `server/assistant.ts` werden vom Vite-Plugin bei `npm run dev` und `npm run preview` bereitgestellt. Ein statischer Upload von `dist/` enthält diese Serverfunktionen nicht. Öffentlicher KI-Betrieb benötigt einen entsprechend abgesicherten Server mit Authentifizierung, Zugriffslimits und serverseitiger Secret-Konfiguration. Die lokale Vorschau bindet an `127.0.0.1`.
 
-- Routen: `/pilze/:slug/rezepte` und `/pilze/:slug/rezepte/:recipeId`.
-- Daten: `src/data/recipes.ts`, vollständig lokal und strukturiert. 26 Rezeptkompositionen, jeweils zwei pro allen 15 Bibliothekseinträgen; Kulturformen derselben Art und Nameko/Goldkäppchen teilen ihre passende Zuordnung. Kein Backend, keine Rezept-API, keine Anmeldung.
-- Karten: Name, zugehöriger Pilzeintrag, ungefähre Zubereitungszeit, zwei Portionen und Kennzeichnung Vegan/Vegetarisch. Bewusst ohne Fotos, damit keine unpassenden oder unklar lizenzierten Essensbilder erscheinen.
-- Details: vollständige Zutaten mit Mengen und Einheiten, nummerierte Schritte, gut erkennbare Rückwege. Der Rückweg erhält den Pilzeintrag und bei Einstieg aus der Bibliothek auch deren Suche und Filter. Bei Einstieg über die aktive Dashboard-Kultur führt die Listen-Zurückaktion wieder zur Kulturübersicht.
-- Leerzustand für Profile ohne Daten und Rückweg zum Pilz; artfremde oder unbekannte Rezept-IDs öffnen keine fremden Rezepte.
-- Die Rezeptfunktion ist unabhängig von Klimabewertung, Wachstumsphase und Demo-Abschluss. Sie verändert keine Kultur und gibt keine Essbarkeitsfreigabe. Der angeforderte kurze Verzehrhinweis erscheint auf Listen- und Detailseite. Enoki und Stockschwämmchen behalten zusätzliche passende Hinweise.
-- Alle Texte, Zutaten, Einheiten und Schritte sind in Deutsch, Englisch und Persisch vorhanden. Rezeptseiten unterstützen auch RTL, vergrößerte Schrift, Kontrastmodus, Tastaturbedienung und Vorlesen der Zutaten.
+## Prüfstand und bekannte Grenzen
 
-Die Rezepte sind eigene Zubereitungsideen für den Prototyp. Zeiten sind ungefähr und kein Nachweis ausreichenden Garens. Mengen sind Einkaufsangaben, keine Ertragsprognosen. Die zugehörigen externen Fachquellen unterstützen ausschließlich allgemeine bzw. artspezifische Zubereitungshinweise, nicht die Rezeptkompositionen:
+### Automatisierte Prüfungen
 
-- Bayerisches Landesamt für Gesundheit und Lebensmittelsicherheit: https://www.lgl.bayern.de/lebensmittel/warengruppen/wc_27_pilze/hinweise_verbraucher_pilze.htm
-- Singapore Food Agency, Enoki: https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/risk-at-a-glance/enoki-mushrooms
+Der zuletzt geprüfte Stand umfasst **140 bestandene Tests in 16 Testdateien** sowie einen erfolgreichen Produktionsbuild. Die Tests decken unter anderem folgende Bereiche ab:
 
-Zusätzliche Rezepttests prüfen alle 15 Zuordnungen, gemeinsame Artenprofile, Ablehnung fremder IDs, Zutaten/Schritte, expliziten Leerzustand, aktive Kultur nach Pilzwechsel und den vollständigen Ablauf Bibliothek mit Filter → Pilz → Rezeptliste → Rezeptdetails → zurück bis zur erhaltenen Bibliothekssuche. Abschlussstand: 65 automatisierte Tests für die gesamte Anwendung.
+- Auswahl, Suche, Filter und alle 15 Pilzdetail-Zuordnungen
+- Kulturabläufe, Entwurfsschutz, Grenzwerte und synchronisierte Schrittbedienung
+- Historische Daten, Szenarien, Lichtzeiten und getrennte Wasseraktionen
+- Mehrbox-Migration, Datentrennung, Auswahl, Offline-Sperren und Hilfedialoge
+- Sprachwechsel, RTL, Sprachbefehle sowie kontrollierte Browser- und Mistral-Schnittstellen
+- Rezeptzuordnung und Rücknavigation
 
-## Visueller Verlauf und Technik (Version 2.1)
+Sprachtests verwenden simulierte Schnittstellen. Sie belegen keine reale Erkennungsqualität oder hörbare Ausgabe in jeder Sprache. Echte Mikrofontests, Gerätestimmen und eine umfassende Barrierefreiheitsprüfung bleiben zusätzliche Prüfschritte. Der Build meldet derzeit außerdem einen Hinweis auf große JavaScript-Bundles.
 
-Die bestehende Architektur wurde erweitert. `simulation/engine.ts` hält Kultur, Einstellungen, Messwerte und nun auch den Tank samt Wartungszeitpunkt und manueller Beobachtung. `simulation/hardware.ts` leitet daraus die ausgeführten Geräteaktionen für Dashboard und Growbox ab. Es gibt keine zweite Tankinstanz. Der separate Experience-Speicher bleibt für persönliche Einstellungen, Bewertungen und Benachrichtigungen zuständig.
+### Fachliche Einordnung und Bildnachweise
 
-- Auf Pilzdetailseiten stehen die zwei passenden Rezeptkarten direkt im Abschnitt „Rezeptideen“. Derselbe Kartensatz und dieselben 26 lokalen Rezepte werden auch in der separaten Rezeptübersicht verwendet. Ein Detailaufruf aus dem Pilzprofil kehrt dorthin zurück; ein Aufruf aus der Rezeptliste kehrt zur Liste zurück. Abgeschlossene Kulturen behalten ihre Informations- und Rezeptzugänge.
-- `/wachstum` zeigt die bestehenden fünf Phasen mit unterschiedlichen Icons, Textstatus, aus denselben Schwellen berechneten Tagesbereichen und eigenen schematischen Illustrationen. Ein Informationsdialog verändert weder Kultur noch Einstellungen. Die eigentliche Übernahme eines Phasenprofils erfolgt weiterhin über den bestehenden Entwurf-/Übernehmen-Ablauf.
-- „Blick in die Growbox“ ist dauerhaft als „Kamera-Vorschau · simuliertes Beispielbild“ beschriftet. `exampleFrame` in `components/GrowthVisual.tsx` kapselt die lokale Bildquelle mit Pilz-ID und Phase. Die schematischen Entwicklungsbilder ersetzen unpassende Fotos. Aktuelles Bild und Vergrößerung werden direkt aus derselben aktiven Phase abgeleitet. Es werden keine Kameraberechtigung, Live-Verbindung oder Bilddiagnose verwendet.
-- `/wachstum/klima` erhält den historischen Klimaverlauf samt Datentabelle und Ereignissen. Die gemeinsame Unter-Navigation trennt ihn vom visuellen Wachstumsverlauf. Der Dashboard-Klimabereich ist eindeutig beschriftet.
-- Umluft und Frischluft haben vier manuelle Stufen. Im Automatikmodus werden die Bedienelemente deaktiviert und ihre Profilsteuerung erklärt. Der aktuelle Gerätestatus bleibt vom Entwurf getrennt. Im bewusst vereinfachten Modell beeinflusst Frischluft CO₂, Umluft die Temperaturannäherung. Bei CO₂ über der zentral definierten Demo-Geräteschwelle von 1.500 ppm steigt automatische Frischluft auf Hoch. Persönliche Bewertungsschwellen sind davon getrennt.
-- Sichtbares Licht erhält An/Aus, Helligkeit und tägliche Beginn-/Endzeiten in Demo-Zeit. Zeitfenster über Mitternacht sind unterstützt; Beginn ist einschließlich, Ende ausschließlich. Gleiche, unvollständige oder ungültige Zeiten verhindern Übernehmen mit verständlichem Feedback. Automatische Geräteparameter folgen dem aktuellen Demo-Phasenprofil, ohne ungefragt die bewusst übernommenen Temperatur-/Feuchte-Sollwerte zu überschreiben.
-- Tankzustände: ausreichend (>20 %), niedrig (>0 bis 20 %), leer (0 %) und Sensor nicht verfügbar (`null`). Diese Schwellen sind ausdrücklich Demo-Werte. Ein unbekannter Wert zeigt „–“ und einen grafisch abgesetzten Platzhalter, keine 0 %. Leerer und unbekannter Tank sperren die simulierte Wasserförderung. Nur eine laufende Simulation mit bekanntem Füllstand über 0 % und Feuchtebedarf kann Wasser fördern. Nachfüllen erhöht bei verfügbarem Sensor den Füllstand; ein Wasserwechsel aktualisiert separat die Wartungserinnerung. Ein ausgefallener Sensor bleibt auch nach einer Nachfüllbestätigung unbekannt.
-- „Schimmelvorsorge & Klimahinweise“ verwendet die bereits vorhandenen Feuchte-/CO₂-Bewertungen. Hinweise verlinken zur passenden Einstellung; automatische Geräteaktionen sind nachvollziehbar. Eine manuelle Beobachtung kann dokumentiert und quittiert werden. Beide Aktionen bleiben im Ereignisverlauf; Quittieren verändert weder Messwerte noch aktive Ursachen.
-- UV bleibt ein nicht angebundenes Zusatzmodul in den aufklappbaren Technikdetails. Es gibt weder einen erfundenen UV-Messwert noch einen Strahlungsregler oder ein Wirkungsversprechen. Eine spätere echte UV-Funktion benötigt ein gesondertes Schutzkonzept.
+Sollwerte, Kulturdauern, Schwierigkeitsgrade und viele Vergleichsbereiche sind synthetische oder vorläufige Projektdaten. Konkrete Studienangaben werden im Projekt separat gekennzeichnet und sind keine universellen Sicherheitsgrenzen. Fehlende oder nicht bestätigte Phasendaten bleiben als unbekannt erkennbar. Eine positive Klimabewertung bestätigt weder Gesundheit noch Genießbarkeit oder Schimmelfreiheit.
 
-Ältere gültige Speicherstände unter `mycobox.demo.v1` werden beim Laden additiv ergänzt. Vorhandene Kultur, Zeit, Messhistorie und Ereignisse bleiben erhalten. Falls der alte Tankdatensatz ausschließlich in `mycobox.experience.v1` liegt, wird er einmal in den zentralen Betriebszustand übernommen und anschließend aus dem Experience-Datensatz entfernt. Der alte boolesche Belüftungswert wird zur Frischluftstufe migriert; das Kompatibilitätsfeld ist kein zusätzlicher Regler. Beschädigte Werte werden weiterhin geprüft und verständlich zurückgesetzt.
+Nameko und Goldkäppchen teilen ein Artenprofil; die beiden Champignon-Kulturformen bleiben derselben Art zugeordnet. Stockschwämmchen behält seinen Verwechslungshinweis. Die Kamera-Vorschau besteht aus schematischen Beispielbildern; sie ist kein Livebild und führt keine Bilddiagnose aus. UV ist ein nicht angebundenes Zusatzmodul ohne Wirkungsversprechen.
 
-Prüfungen für diese Erweiterung: 82 automatisierte Tests insgesamt. Neue Tests decken unter anderem Lichtgrenzen und Nachtfenster, ungültige Entwürfe, beide Lüfterfunktionen, Wasserförderung bei leerem/unbekanntem Tank, getrennte Wartungsaktionen, additive Migration, quittierte Beobachtungen, Phasendetails, Bildwechsel, Kulturabschluss und Inline-Rezeptnavigation ab. Zusätzliche Browserprüfungen und deren tatsächlicher Abschlussstand stehen in der mitgelieferten Startanleitung.
+Weiterführende Dokumentation:
 
-## Champ Sprachassistent
+- [Fachlicher Prüfstand und Quellen](docs/Kulturdaten-Pruefstand.md)
+- [Bilder, Schriften und weitere Assets](ASSETS.md)
+- [Einzelne Bildquellen und Lizenzen](public/mushrooms/LICENSES.md)
+- [Growbox-Beispielillustrationen](public/growboxes/README.md)
 
-Zweimal **F** innerhalb von 650 ms öffnet Champ auf jeder Seite. Gedrückthalten zählt nicht; in Textfeldern löst das Kürzel nicht aus. Alternativ „Mit Champ sprechen“ anklicken. Champ begrüßt mit „Hallo“, hört anschließend zu und liest Antworten vor. **Escape** beendet das Gespräch, laufende Anfragen und Mikrofonaufnahme. „Pause“ unterbricht, „Zuhören“ setzt fort. Eingesprochene Stop-Befehle beenden ebenfalls das Gespräch. Eine Texteingabe ist immer verfügbar. Screenreader mit aktiviertem Buchstaben-Navigationsmodus können das Kürzel abfangen; dann den beschrifteten Startknopf verwenden.
+**Offener Bildrechtepunkt:** Für das neue braune Champignon-Produktfoto von Blue Apron ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer öffentlichen Website-Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenzierter Ersatz erforderlich; die Einzelheiten stehen in den Bildnachweisen.
 
-### Freie KI und automatische Sprache aktivieren
+Die Rezepte sind eigene Zubereitungsideen des Prototyps. Zeit- und Mengenangaben sind keine Garantie für ausreichendes Garen oder zu erwartenden Ertrag. Allgemeine Verzehrhinweise orientieren sich unter anderem an den Informationen des [Bayerischen Landesamts für Gesundheit und Lebensmittelsicherheit](https://www.lgl.bayern.de/lebensmittel/warengruppen/wc_27_pilze/hinweise_verbraucher_pilze.htm) und den [Enoki-Hinweisen der Singapore Food Agency](https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/risk-at-a-glance/enoki-mushrooms).
 
-1. `.env.example` als `.env.local` kopieren.
-2. In `.env.local` einen eigenen `MISTRAL_API_KEY` hinterlegen. Niemals einen `VITE_`-Schlüssel verwenden oder den Schlüssel im Browser/Chat eingeben. `.env.local` ist von Git ausgeschlossen.
-3. `npm run dev` neu starten. Das Fenster zeigt anschließend „KI eingerichtet“. `MISTRAL_ASSISTANT_MODEL` ist optional konfigurierbar.
-
-Nach der Begrüßung Mikrofonzugriff erlauben. Champ nimmt jeweils einen Gesprächsbeitrag auf und beendet ihn nach ungefähr 1,5 Sekunden Sprechpause, spätestens nach 25 Sekunden. „Aufnahme beenden“ sendet den Beitrag auch manuell. Im Champ-Fenster lässt sich die Gesprächssprache auswählen: Deutsch, Englisch, Französisch, Spanisch, Italienisch, Niederländisch, Polnisch, Tschechisch und Türkisch. Die Auswahl wird unabhängig von den Growbox-Einstellungen gespeichert. Die ausgewählte Sprache wird an die Mistral-Transkription und das Antwortmodell übergeben. Sie bestimmt auch die Browser-Spracherkennung, die Gerätestimme, lokale Befehle sowie Rückmeldungen und Fehlertexte. Sprachwechsel brechen die alte Aufnahme und laufende Antworten ab; Kultur und Einstellungen bleiben erhalten. Die Sprachausgabe verwendet die Stimmen des Geräts. Bei fehlenden Stimmen bleibt die Textantwort verfügbar. Nach jeder Antwort hört Champ wieder zu; ohne hörbare Sprache pausiert die Aufnahme.
-
-Beispiele: „Öffne die Growbox und nenne mir die Daten und den Zustand der Pflanze“, „Wie hoch ist die Luftfeuchtigkeit?“, „Erkläre mir die aktuelle Wachstumsphase“, „Open the growth overview“, „Warum ist CO₂ wichtig?“. Rückfragen verwenden den bisherigen Gesprächsverlauf und einen neuen Schnappschuss der aktuellen Demo-Daten. Navigation ist auf vorhandene Seiten beschränkt. Der Assistent verändert keine Geräteparameter und ersetzt keine Kultur. Er unterscheidet simulierte Klimabedingungen von einer tatsächlichen Gesundheitsdiagnose.
-
-Die Audioaufnahmen werden zur Mistral-Transkription gesendet, Fragen, Gespräch und die relevanten simulierten Growbox-Daten zur Mistral Chat API. Der Verlauf liegt nur im Arbeitsspeicher des geöffneten Gesprächs. Der lokale Server speichert weder Audio noch Gespräch. Dies ist keine Zusage zur Aufbewahrung beim Anbieter. Die Oberfläche erklärt die Übertragung vor der Aufnahme. Ohne Schlüssel bleiben lokale Befehle und Textabfragen in den neun Assistentensprachen verfügbar; die optionale Browser-Spracherkennung kann einen Dienst des Browseranbieters verwenden. Sie verwendet die ausdrücklich gewählte Sprache; Sprachunterstützung hängt vom Browser ab. Fehlende Gerätestimmen und nicht unterstützte Erkennung werden kenntlich gemacht.
-
-Die serverseitigen Endpunkte werden durch das Vite-Plugin in `server/assistant.ts` ausschließlich bei lokalem `npm run dev` und `npm run preview` bereitgestellt. Ein statischer Upload von `dist/` stellt diese Endpunkte **nicht** bereit. Vor öffentlichem Betrieb sind ein eigener authentifizierter Server, Zugriffslimits und eine geeignete Secret-Konfiguration erforderlich. Die lokale Vorschau bindet weiterhin nur an `127.0.0.1`. Die automatisierten Sprachtests verwenden simulierte Browser- und Mistral-Schnittstellen; echte Audioübertragung und die Erkennungsqualität aller neun Sprachen müssen zusätzlich mit einem Mikrofon geprüft werden.
-
-Implementiert nach der offiziellen Mistral-Dokumentation: https://docs.mistral.ai/studio/audio/speech-to-text/transcribe-files und https://docs.mistral.ai/api/endpoint/chat.
-
-### Präzise Schrittbedienung
-
-Alle sechs vorhandenen Slider haben zusätzliche Plus-/Minus-Tasten mit mindestens 52 × 52 Pixel Trefferfläche und 16 Pixel Abstand. Sie verwenden denselben Zustandswert wie Slider und Zahleneingabe. Grenzen, Automatik, abgeschlossene Kulturen und der bewusste Übernehmen-Ablauf bleiben erhalten. Schrittweiten: Solltemperatur und Demo-Isttemperatur 0,5 °C, Feuchtigkeit und Helligkeit 1 Prozentpunkt, Demo-CO₂ 50 ppm. Auch das Wasserwechselintervall und alle vier numerischen Warnschwellen erhalten diese Schrittbedienung. Ein zugängliches Zahlenfeld meldet den Wert; native Buttons unterstützen Enter, Leertaste und Touch.
-
-## Mehrere Growboxen, Hilfe und Darstellung
-
-Die globale Box-Auswahl und „Meine Growboxen“ unterscheiden ausgewählte Box,
-simulierte Verbindung und Kulturstatus. Name und Standort sind editierbar, IDs
-bleiben unverändert. Drei Beispielillustrationen gehören zum lokalen Projekt;
-sie sind keine Fotos echter Geräte. Neue Boxen starten offline ohne Messdaten.
-Kultur, Klimaeinstellungen, Wasserwartung, Historie, Ereignisse, Warnschwellen
-und Benachrichtigungen werden pro Box gespeichert. Sprache und Darstellung sind
-global. Ein Einzelstand wird in GB-001 übernommen; die Auswahl bleibt gespeichert.
-Offline-Boxen zeigen letzte bekannte Daten samt Zeitstempel, sperren Aktionen
-und erhalten keine neuen Simulationsschritte. Ungespeicherte Klimaentwürfe
-lösen vor einem Boxwechsel einen Bestätigungsdialog aus.
-
-Die Fragezeichen-Hilfe erklärt die wichtigsten Funktionsgruppen und verändert
-keine Werte. Native Dialoge unterstützen Escape, Fokusbegrenzung und Rückkehr
-zum auslösenden Bedienelement. Schriftgrößen verwenden relative Einheiten,
-kleine Texte mindestens 0,875 rem; Bedienelemente erhalten mindestens 48 px,
-Schritttasten weiterhin 52 px. Farbige Zustände werden durch Texte und Symbole
-ergänzt. Dies ist eine Verbesserung, keine zertifizierte WCAG-Konformität.
-
-20 Website-Sprachen sind auswählbar; Arabisch und Persisch verwenden RTL.
-Die Einstellungen bieten eine Suche nach Sprachname oder Sprachcode.
-**Übersetzungen sind teilweise unvollständig:** Französisch, Spanisch,
-Italienisch, Niederländisch, Polnisch und Tschechisch haben bisher Kernbegriffe;
-Rumänisch und die neuen Hilfetexte benötigen ebenfalls Ergänzungen.
-Fehlende Texte fallen sichtbar angekündigt auf Deutsch zurück.
-Die mit Zustimmung angefragte Übersetzung über Mistral wurde mit HTTP 429
-abgewiesen. Es werden deshalb keine vollständigen 20 Übersetzungen behauptet.
-Der Assistent unterstützt weiterhin die neun angebotenen Gesprächssprachen;
-Website-Sprache übernehmen funktioniert nur bei einer unterstützten Sprache,
-sonst erscheint ein Hinweis. Eine passende Gerätestimme und reale Mikrofon-
-unterstützung müssen auf dem Zielgerät geprüft werden.
-
-Champ kann Boxen per Name, ID oder Standort auflisten/auswählen. Ein mehrfach
-passender Standort fordert eine eindeutige ID an; Einstellungen werden nicht
-per Sprachbefehl verändert. KI-Anfragen bekommen ausdrücklich den aktuellen
-Boxkontext und Offline-/Datenverfügbarkeit. Alte Anfragen werden beim Wechsel
-abgebrochen. Alle Geräteverbindungen bleiben simuliert.
+Die Mistral-Anbindung verwendet die dokumentierten Schnittstellen für [Transkription](https://docs.mistral.ai/studio/audio/speech-to-text/transcribe-files) und [Chat](https://docs.mistral.ai/api/endpoint/chat).
