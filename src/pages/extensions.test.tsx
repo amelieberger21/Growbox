@@ -266,3 +266,39 @@ describe("Erweiterte Bedienabläufe", () => {
     ).toBeInTheDocument();
   });
 });
+
+describe('Präzise Werte ohne Ziehen', () => {
+  it('synchronisiert Plus, Minus, Zahleneingabe und Slider und übernimmt erst nach Bestätigung', async () => {
+    const {user}=setup('/growbox');
+    const before=saved().settings;
+    const plus=screen.getByRole('button',{name:'Demo-Solltemperatur: Erhöhen (0.5 °C)'});
+    await user.click(plus);
+    expect(screen.getByRole('spinbutton',{name:/Demo-Solltemperatur/})).toHaveValue(before.temperature+.5);
+    expect(screen.getByRole('slider',{name:'Demo-Solltemperatur per Slider'})).toHaveValue(String(before.temperature+.5));
+    expect(saved().settings.temperature).toBe(before.temperature);
+    const slider=screen.getByRole('slider',{name:'Demo-Solltemperatur per Slider'});
+    const {fireEvent}=await import('@testing-library/react');
+    fireEvent.change(slider,{target:{value:'30'}});
+    expect(plus).toBeDisabled();
+    expect(screen.getByRole('spinbutton',{name:/Demo-Solltemperatur/})).toHaveValue(30);
+    await user.click(screen.getByRole('button',{name:'Demo-Solltemperatur: Verringern (0.5 °C)'}));
+    expect(slider).toHaveValue('29.5');
+    fireEvent.change(screen.getByRole('spinbutton',{name:/Demo-Sollluftfeuchtigkeit/}),{target:{value:'60'}});
+    expect(screen.getByRole('button',{name:'Demo-Sollluftfeuchtigkeit: Verringern (1 %)'})).toBeDisabled();
+    await user.click(screen.getByRole('button',{name:'Demo-Sollluftfeuchtigkeit: Erhöhen (1 %)'}));
+    expect(screen.getByRole('slider',{name:'Demo-Sollluftfeuchtigkeit per Slider'})).toHaveValue('61');
+    await user.click(screen.getByRole('button',{name:'Manuell'}));
+    const light=screen.getByRole('slider',{name:/Helligkeit/});
+    fireEvent.change(light,{target:{value:'100'}});
+    expect(screen.getByRole('button',{name:'Helligkeit: Erhöhen (1 %)'})).toBeDisabled();
+    await user.click(screen.getByRole('button',{name:'Helligkeit: Verringern (1 %)'}));
+    expect(light).toHaveValue('99');
+    await user.click(screen.getByRole('button',{name:'Einstellungen übernehmen'}));
+    expect(saved().settings).toMatchObject({temperature:29.5,humidity:61,brightness:99,mode:'Manuell'});
+  });
+  it('respektiert Automatik und abgeschlossene Kulturen auch für die neuen Schaltflächen', async()=>{
+    setup('/growbox',true);
+    expect(screen.getByRole('button',{name:'Demo-Solltemperatur: Erhöhen (0.5 °C)'})).toBeDisabled();
+    expect(screen.getByRole('button',{name:'Helligkeit: Verringern (1 %)'})).toBeDisabled();
+  });
+});

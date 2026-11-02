@@ -142,3 +142,66 @@ Die bestehende Architektur wurde erweitert. `simulation/engine.ts` hält Kultur,
 Ältere gültige Speicherstände unter `mycobox.demo.v1` werden beim Laden additiv ergänzt. Vorhandene Kultur, Zeit, Messhistorie und Ereignisse bleiben erhalten. Falls der alte Tankdatensatz ausschließlich in `mycobox.experience.v1` liegt, wird er einmal in den zentralen Betriebszustand übernommen und anschließend aus dem Experience-Datensatz entfernt. Der alte boolesche Belüftungswert wird zur Frischluftstufe migriert; das Kompatibilitätsfeld ist kein zusätzlicher Regler. Beschädigte Werte werden weiterhin geprüft und verständlich zurückgesetzt.
 
 Prüfungen für diese Erweiterung: 82 automatisierte Tests insgesamt. Neue Tests decken unter anderem Lichtgrenzen und Nachtfenster, ungültige Entwürfe, beide Lüfterfunktionen, Wasserförderung bei leerem/unbekanntem Tank, getrennte Wartungsaktionen, additive Migration, quittierte Beobachtungen, Phasendetails, Bildwechsel, Kulturabschluss und Inline-Rezeptnavigation ab. Zusätzliche Browserprüfungen und deren tatsächlicher Abschlussstand stehen in der mitgelieferten Startanleitung.
+
+## Champ Sprachassistent
+
+Zweimal **F** innerhalb von 650 ms öffnet Champ auf jeder Seite. Gedrückthalten zählt nicht; in Textfeldern löst das Kürzel nicht aus. Alternativ „Mit Champ sprechen“ anklicken. Champ begrüßt mit „Hallo“, hört anschließend zu und liest Antworten vor. **Escape** beendet das Gespräch, laufende Anfragen und Mikrofonaufnahme. „Pause“ unterbricht, „Zuhören“ setzt fort. Eingesprochene Stop-Befehle beenden ebenfalls das Gespräch. Eine Texteingabe ist immer verfügbar. Screenreader mit aktiviertem Buchstaben-Navigationsmodus können das Kürzel abfangen; dann den beschrifteten Startknopf verwenden.
+
+### Freie KI und automatische Sprache aktivieren
+
+1. `.env.example` als `.env.local` kopieren.
+2. In `.env.local` einen eigenen `MISTRAL_API_KEY` hinterlegen. Niemals einen `VITE_`-Schlüssel verwenden oder den Schlüssel im Browser/Chat eingeben. `.env.local` ist von Git ausgeschlossen.
+3. `npm run dev` neu starten. Das Fenster zeigt anschließend „KI eingerichtet“. `MISTRAL_ASSISTANT_MODEL` ist optional konfigurierbar.
+
+Nach der Begrüßung Mikrofonzugriff erlauben. Champ nimmt jeweils einen Gesprächsbeitrag auf und beendet ihn nach ungefähr 1,5 Sekunden Sprechpause, spätestens nach 25 Sekunden. „Aufnahme beenden“ sendet den Beitrag auch manuell. Im Champ-Fenster lässt sich die Gesprächssprache auswählen: Deutsch, Englisch, Französisch, Spanisch, Italienisch, Niederländisch, Polnisch, Tschechisch und Türkisch. Die Auswahl wird unabhängig von den Growbox-Einstellungen gespeichert. Die ausgewählte Sprache wird an die Mistral-Transkription und das Antwortmodell übergeben. Sie bestimmt auch die Browser-Spracherkennung, die Gerätestimme, lokale Befehle sowie Rückmeldungen und Fehlertexte. Sprachwechsel brechen die alte Aufnahme und laufende Antworten ab; Kultur und Einstellungen bleiben erhalten. Die Sprachausgabe verwendet die Stimmen des Geräts. Bei fehlenden Stimmen bleibt die Textantwort verfügbar. Nach jeder Antwort hört Champ wieder zu; ohne hörbare Sprache pausiert die Aufnahme.
+
+Beispiele: „Öffne die Growbox und nenne mir die Daten und den Zustand der Pflanze“, „Wie hoch ist die Luftfeuchtigkeit?“, „Erkläre mir die aktuelle Wachstumsphase“, „Open the growth overview“, „Warum ist CO₂ wichtig?“. Rückfragen verwenden den bisherigen Gesprächsverlauf und einen neuen Schnappschuss der aktuellen Demo-Daten. Navigation ist auf vorhandene Seiten beschränkt. Der Assistent verändert keine Geräteparameter und ersetzt keine Kultur. Er unterscheidet simulierte Klimabedingungen von einer tatsächlichen Gesundheitsdiagnose.
+
+Die Audioaufnahmen werden zur Mistral-Transkription gesendet, Fragen, Gespräch und die relevanten simulierten Growbox-Daten zur Mistral Chat API. Der Verlauf liegt nur im Arbeitsspeicher des geöffneten Gesprächs. Der lokale Server speichert weder Audio noch Gespräch. Dies ist keine Zusage zur Aufbewahrung beim Anbieter. Die Oberfläche erklärt die Übertragung vor der Aufnahme. Ohne Schlüssel bleiben lokale Befehle und Textabfragen in den neun Assistentensprachen verfügbar; die optionale Browser-Spracherkennung kann einen Dienst des Browseranbieters verwenden. Sie verwendet die ausdrücklich gewählte Sprache; Sprachunterstützung hängt vom Browser ab. Fehlende Gerätestimmen und nicht unterstützte Erkennung werden kenntlich gemacht.
+
+Die serverseitigen Endpunkte werden durch das Vite-Plugin in `server/assistant.ts` ausschließlich bei lokalem `npm run dev` und `npm run preview` bereitgestellt. Ein statischer Upload von `dist/` stellt diese Endpunkte **nicht** bereit. Vor öffentlichem Betrieb sind ein eigener authentifizierter Server, Zugriffslimits und eine geeignete Secret-Konfiguration erforderlich. Die lokale Vorschau bindet weiterhin nur an `127.0.0.1`. Die automatisierten Sprachtests verwenden simulierte Browser- und Mistral-Schnittstellen; echte Audioübertragung und die Erkennungsqualität aller neun Sprachen müssen zusätzlich mit einem Mikrofon geprüft werden.
+
+Implementiert nach der offiziellen Mistral-Dokumentation: https://docs.mistral.ai/studio/audio/speech-to-text/transcribe-files und https://docs.mistral.ai/api/endpoint/chat.
+
+### Präzise Schrittbedienung
+
+Alle sechs vorhandenen Slider haben zusätzliche Plus-/Minus-Tasten mit mindestens 52 × 52 Pixel Trefferfläche und 16 Pixel Abstand. Sie verwenden denselben Zustandswert wie Slider und Zahleneingabe. Grenzen, Automatik, abgeschlossene Kulturen und der bewusste Übernehmen-Ablauf bleiben erhalten. Schrittweiten: Solltemperatur und Demo-Isttemperatur 0,5 °C, Feuchtigkeit und Helligkeit 1 Prozentpunkt, Demo-CO₂ 50 ppm. Auch das Wasserwechselintervall und alle vier numerischen Warnschwellen erhalten diese Schrittbedienung. Ein zugängliches Zahlenfeld meldet den Wert; native Buttons unterstützen Enter, Leertaste und Touch.
+
+## Mehrere Growboxen, Hilfe und Darstellung
+
+Die globale Box-Auswahl und „Meine Growboxen“ unterscheiden ausgewählte Box,
+simulierte Verbindung und Kulturstatus. Name und Standort sind editierbar, IDs
+bleiben unverändert. Drei Beispielillustrationen gehören zum lokalen Projekt;
+sie sind keine Fotos echter Geräte. Neue Boxen starten offline ohne Messdaten.
+Kultur, Klimaeinstellungen, Wasserwartung, Historie, Ereignisse, Warnschwellen
+und Benachrichtigungen werden pro Box gespeichert. Sprache und Darstellung sind
+global. Ein Einzelstand wird in GB-001 übernommen; die Auswahl bleibt gespeichert.
+Offline-Boxen zeigen letzte bekannte Daten samt Zeitstempel, sperren Aktionen
+und erhalten keine neuen Simulationsschritte. Ungespeicherte Klimaentwürfe
+lösen vor einem Boxwechsel einen Bestätigungsdialog aus.
+
+Die Fragezeichen-Hilfe erklärt die wichtigsten Funktionsgruppen und verändert
+keine Werte. Native Dialoge unterstützen Escape, Fokusbegrenzung und Rückkehr
+zum auslösenden Bedienelement. Schriftgrößen verwenden relative Einheiten,
+kleine Texte mindestens 0,875 rem; Bedienelemente erhalten mindestens 48 px,
+Schritttasten weiterhin 52 px. Farbige Zustände werden durch Texte und Symbole
+ergänzt. Dies ist eine Verbesserung, keine zertifizierte WCAG-Konformität.
+
+20 Website-Sprachen sind auswählbar; Arabisch und Persisch verwenden RTL.
+Die Einstellungen bieten eine Suche nach Sprachname oder Sprachcode.
+**Übersetzungen sind teilweise unvollständig:** Französisch, Spanisch,
+Italienisch, Niederländisch, Polnisch und Tschechisch haben bisher Kernbegriffe;
+Rumänisch und die neuen Hilfetexte benötigen ebenfalls Ergänzungen.
+Fehlende Texte fallen sichtbar angekündigt auf Deutsch zurück.
+Die mit Zustimmung angefragte Übersetzung über Mistral wurde mit HTTP 429
+abgewiesen. Es werden deshalb keine vollständigen 20 Übersetzungen behauptet.
+Der Assistent unterstützt weiterhin die neun angebotenen Gesprächssprachen;
+Website-Sprache übernehmen funktioniert nur bei einer unterstützten Sprache,
+sonst erscheint ein Hinweis. Eine passende Gerätestimme und reale Mikrofon-
+unterstützung müssen auf dem Zielgerät geprüft werden.
+
+Champ kann Boxen per Name, ID oder Standort auflisten/auswählen. Ein mehrfach
+passender Standort fordert eine eindeutige ID an; Einstellungen werden nicht
+per Sprachbefehl verändert. KI-Anfragen bekommen ausdrücklich den aktuellen
+Boxkontext und Offline-/Datenverfügbarkeit. Alte Anfragen werden beim Wechsel
+abgebrochen. Alle Geräteverbindungen bleiben simuliert.

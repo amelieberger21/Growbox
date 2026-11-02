@@ -77,19 +77,19 @@ h3 {
   font-family: "Manrope", sans-serif;
 }
 h1 {
-  font-size: calc(30px * var(--user-font-scale, 1));
+  font-size: calc(1.875rem * var(--user-font-scale, 1));
   line-height: 1.3;
   font-weight: 800;
   letter-spacing: -1.1px;
 }
 h2 {
-  font-size: calc(17px * var(--user-font-scale, 1));
+  font-size: calc(1.0625rem * var(--user-font-scale, 1));
   font-weight: 750;
   letter-spacing: -0.45px;
   line-height: 1.4;
 }
 h3 {
-  font-size: calc(16px * var(--user-font-scale, 1));
+  font-size: calc(1rem * var(--user-font-scale, 1));
   font-weight: 750;
   letter-spacing: -0.35px;
 }
@@ -182,13 +182,13 @@ select:focus-visible {
   padding-top: 7px;
 }
 .brand-tagline {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin: 7px 0 50px 41px;
   letter-spacing: 0.2px;
 }
 .nav-label {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1.7px;
   font-weight: 700;
   color: #66735d;
@@ -205,7 +205,7 @@ select:focus-visible {
   align-items: center;
   gap: 12px;
   padding: 13px 13px;
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 500;
   color: #697566;
   border-radius: 7px;
@@ -225,7 +225,7 @@ select:focus-visible {
   stroke-width: 1.7;
 }
 .nav-count {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   border: 1px solid #dbe2d2;
   border-radius: 4px;
   padding: 1px 5px;
@@ -276,7 +276,7 @@ select:focus-visible {
   letter-spacing: -0.2px;
 }
 .sidebar-grow p {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 5px;
 }
@@ -287,7 +287,7 @@ select:focus-visible {
   margin-top: 17px;
   padding: 17px 9px 0;
   color: #66735d;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 0.7px;
 }
 .workspace {
@@ -307,7 +307,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 15px;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .breadcrumb strong {
@@ -320,7 +320,7 @@ select:focus-visible {
   gap: 20px;
 }
 .project-pill {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   background: #f0f2e9;
   border: 1px solid #e4e8da;
   padding: 6px 10px;
@@ -339,7 +339,7 @@ select:focus-visible {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 700;
   color: #6a7c58;
 }
@@ -359,7 +359,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 9px 13px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   gap: 12px;
 }
 .demo-banner > div {
@@ -390,7 +390,7 @@ main {
   white-space: nowrap;
   text-decoration: underline;
   text-underline-offset: 3px;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .page {
   padding-top: 30px;
@@ -404,14 +404,14 @@ main {
   margin-bottom: 25px;
 }
 .eyebrow {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1.7px;
   font-weight: 700;
   color: #66735d;
   margin-bottom: 8px;
 }
 .page-description {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 8px;
 }
@@ -420,7 +420,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 600;
   padding: 11px 15px;
   min-height: 42px;
@@ -469,7 +469,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 600;
   color: #527547;
   min-height: 32px;
@@ -498,10 +498,10 @@ main {
   margin-bottom: 18px;
 }
 .section-title h2 {
-  font-size: calc(15px * var(--user-font-scale, 1));
+  font-size: calc(0.9375rem * var(--user-font-scale, 1));
 }
 .section-description {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 5px;
 }
@@ -521,7 +521,7 @@ main {
   gap: 6px;
   border: 1px solid #d8e4cf;
   background: #edf3e7;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1;
   font-weight: 600;
   padding: 7px 9px;
@@ -582,7 +582,7 @@ main {
   border: 1px solid #e0e6d5;
   color: #667458;
   border-radius: 7px;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1.7;
   margin: 20px 0;
 }
@@ -598,7 +598,7 @@ main {
   text-decoration: underline;
 }
 .muted-tag {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   white-space: nowrap;
 }
@@ -610,7 +610,7 @@ main {
   align-items: center;
   justify-content: space-between;
   color: #66735d;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   gap: 15px;
 }
 .app-footer > span {
@@ -641,7 +641,7 @@ main {
   border: 1px solid #dfe6d4;
   border-radius: 30px;
   box-shadow: 0 3px 15px #30432415;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .simulation-clock strong {
@@ -654,7 +654,7 @@ main {
   margin-left: 2px;
 }
 .simulation-clock b {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   padding-left: 5px;
   border-left: 1px solid #dce4d1;
 }
@@ -670,7 +670,7 @@ main {
   box-shadow: 0 8px 24px #173d2533;
   padding: 15px 22px;
   z-index: 100;
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   opacity: 0;
   pointer-events: none;
   max-width: min(540px, 85vw);
@@ -717,14 +717,14 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1px;
   color: #66735d;
   white-space: nowrap;
 }
 .culture-hero .status-badge {
   padding: 5px 8px;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   background: #ffffff10;
   border-color: #74926766;
   color: #d6e5bb;
@@ -740,7 +740,7 @@ main {
   width: fit-content;
 }
 .hero-culture-name h2 {
-  font-size: calc(28px * var(--user-font-scale, 1));
+  font-size: calc(1.75rem * var(--user-font-scale, 1));
   font-weight: 600;
   letter-spacing: -0.9px;
   color: #f6f7ec;
@@ -750,7 +750,7 @@ main {
   width: 17px;
 }
 .hero-scientific {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-style: italic;
   color: #66735d;
   margin-top: 2px;
@@ -760,7 +760,7 @@ main {
   align-items: center;
   gap: 7px;
   color: #d1ddc4;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   margin-top: 18px;
 }
 .hero-phase > svg {
@@ -778,12 +778,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #e7efdd;
   max-width: 280px;
 }
 .hero-progress-heading strong {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 500;
 }
 .hero-progress-heading .soft-text {
@@ -802,7 +802,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   max-width: 280px;
   margin-top: 9px;
@@ -832,7 +832,7 @@ main {
 }
 .hero-art > span {
   display: block;
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   text-align: center;
   margin-top: -13px;
@@ -861,7 +861,7 @@ main {
   justify-content: space-between;
   padding: 11px 23px;
   border-top: 1px solid #ffffff12;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   gap: 8px;
 }
@@ -873,7 +873,7 @@ main {
 }
 .hero-pause {
   color: #d3e1c4;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 25px;
 }
 .hero-pause:hover {
@@ -894,7 +894,7 @@ main {
   gap: 9px;
 }
 .discovery-top > span:last-child {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1px;
   color: #66735d;
 }
@@ -908,7 +908,7 @@ main {
   border-radius: 8px;
 }
 .discovery-card h2 {
-  font-size: calc(23px * var(--user-font-scale, 1));
+  font-size: calc(1.4375rem * var(--user-font-scale, 1));
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.7px;
@@ -916,7 +916,7 @@ main {
   color: #3c5737;
 }
 .discovery-card > p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1.8;
   color: #66735d;
   max-width: 240px;
@@ -925,7 +925,7 @@ main {
   z-index: 1;
 }
 .discovery-card > a {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -963,13 +963,13 @@ main {
   margin-bottom: 13px;
 }
 .sensor-section-title h2 {
-  font-size: calc(14px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .live-label {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .sensor-grid {
@@ -989,7 +989,7 @@ main {
   align-items: center;
   justify-content: space-between;
   color: #6d7963;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .sensor-icon {
   width: 31px;
@@ -1012,7 +1012,7 @@ main {
 }
 .sensor-value {
   font-family: "Manrope", sans-serif;
-  font-size: calc(32px * var(--user-font-scale, 1));
+  font-size: calc(2rem * var(--user-font-scale, 1));
   font-weight: 600;
   letter-spacing: -1px;
   margin-top: 3px;
@@ -1023,7 +1023,7 @@ main {
 }
 .sensor-value > span:first-child {
   font-family: "DM Sans", sans-serif;
-  font-size: calc(15px * var(--user-font-scale, 1));
+  font-size: calc(0.9375rem * var(--user-font-scale, 1));
   color: #66735d;
   font-weight: 400;
   letter-spacing: 0;
@@ -1048,7 +1048,7 @@ main {
   color: #66735d;
 }
 .sensor-target {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 1px;
   padding-bottom: 13px;
@@ -1060,12 +1060,12 @@ main {
   gap: 5px;
   min-height: 34px;
   color: #66735d;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   white-space: nowrap;
 }
 .sensor-status > span {
   margin-left: auto;
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .sensor-warning {
@@ -1100,7 +1100,7 @@ main {
   appearance: none;
   background: transparent;
   border: none;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   max-width: 150px;
   outline-offset: 4px;
 }
@@ -1115,7 +1115,7 @@ main {
   width: fit-content;
 }
 .segmented button {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 28px;
   padding: 5px 11px;
   border-radius: 4px;
@@ -1134,7 +1134,7 @@ main {
   margin-bottom: 13px;
 }
 .chart-unit {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .chart-area {
@@ -1148,7 +1148,7 @@ main {
   justify-content: center;
   gap: 10px;
   color: #66735d;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 180px;
   text-align: center;
   padding: 20px;
@@ -1166,7 +1166,7 @@ main {
   display: flex;
   align-items: center;
   gap: 13px;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .chart-legend > span {
@@ -1186,7 +1186,7 @@ main {
   border-top: 1px dashed #aeb89c;
 }
 .chart-footer .text-button {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .event-panel {
   padding: 20px 20px 12px;
@@ -1195,10 +1195,10 @@ main {
   gap: 5px;
 }
 .event-panel .section-title h2 {
-  font-size: calc(14px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .event-panel .muted-tag {
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .event-list {
   list-style: none;
@@ -1238,13 +1238,13 @@ main {
   background: #fcf1da;
 }
 .event-list p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #58664c;
   line-height: 1.65;
   padding-top: 2px;
 }
 .event-list li > div > span {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 4px;
   display: block;
@@ -1253,7 +1253,7 @@ main {
   border-top: 1px solid #edf0e6;
   width: 100%;
   justify-content: space-between;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .featured-section {
   margin-top: 29px;
@@ -1263,7 +1263,7 @@ main {
 }
 .featured-section > .section-description {
   margin-bottom: 17px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .featured-grid {
   display: grid;
@@ -1316,7 +1316,7 @@ main {
   position: absolute;
   left: 13px;
   bottom: 9px;
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 0.4px;
   color: #6f765f;
   opacity: 0.75;
@@ -1330,7 +1330,7 @@ main {
   border-radius: 4px;
   padding: 4px 7px;
   color: #6a7e54;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 500;
 }
 .card-art > .difficulty {
@@ -1348,20 +1348,20 @@ main {
   padding: 17px 19px 12px;
 }
 .scientific {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-style: italic;
   color: #66735d;
   margin-top: 3px;
 }
 .card-description {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.8;
   margin-top: 10px;
   min-height: 36px;
 }
 .card-link {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1382,7 +1382,7 @@ main {
   padding-top: 14px;
 }
 .compact .card-description {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .alert-stack {
   display: flex;
@@ -1399,13 +1399,13 @@ main {
   border: 1px solid #e8d2a0;
   color: #957337;
   border-radius: 7px;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .alert-banner svg {
   margin-top: 2px;
 }
 .alert-banner p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   margin-top: 3px;
 }
 .table-scroll {
@@ -1419,12 +1419,12 @@ table {
   border-collapse: collapse;
   width: 100%;
   text-align: left;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   white-space: nowrap;
 }
 caption {
   padding: 12px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   text-align: left;
   background: #f5f7ef;
@@ -1452,7 +1452,7 @@ td {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   background: #eef2e7;
   border: 1px solid #e1e7d5;
@@ -1469,7 +1469,7 @@ td {
   align-items: center;
   gap: 20px;
   color: #66735d;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .library-intro p {
   max-width: 850px;
@@ -1478,7 +1478,7 @@ td {
   color: #527044;
 }
 .intro-leaf {
-  font-size: calc(37px * var(--user-font-scale, 1));
+  font-size: calc(2.3125rem * var(--user-font-scale, 1));
   line-height: 1;
   color: #66735d;
 }
@@ -1505,7 +1505,7 @@ td {
   background: transparent;
   border: none;
   outline: none !important;
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   padding: 14px 0;
 }
 .search-field:focus-within {
@@ -1531,7 +1531,7 @@ td {
 }
 .sort-select select {
   border: none;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   background: none;
 }
 .library-filter-row {
@@ -1553,7 +1553,7 @@ td {
   border: 1px solid #e1e6d8;
   background: #fff;
   color: #66735d;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1567,14 +1567,14 @@ td {
   padding: 1px 5px;
   border-radius: 3px;
   background: #ffffff20;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .result-count {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .filter-help {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin: 12px 0 22px;
 }
@@ -1599,22 +1599,22 @@ td {
   color: #66735d;
 }
 .empty-state h2 {
-  font-size: calc(20px * var(--user-font-scale, 1));
+  font-size: calc(1.25rem * var(--user-font-scale, 1));
   color: #3b5c30;
 }
 .empty-state p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .not-found h1 {
-  font-size: calc(26px * var(--user-font-scale, 1));
+  font-size: calc(1.625rem * var(--user-font-scale, 1));
 }
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #66735d;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 32px;
   margin-bottom: 19px;
 }
@@ -1662,36 +1662,36 @@ td {
   position: absolute;
   top: 18px;
   left: 21px;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1.5px;
   color: #66735d;
 }
 .detail-art > .art-label {
   left: 20px;
   bottom: 15px;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .detail-intro {
   padding: 15px 0 0;
 }
 .detail-intro h1 {
-  font-size: calc(37px * var(--user-font-scale, 1));
+  font-size: calc(2.3125rem * var(--user-font-scale, 1));
   line-height: 1.3;
   margin-top: 6px;
 }
 .detail-latin {
   font-style: italic;
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin: 5px 0 17px;
 }
 .detail-intro > .difficulty {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   background: #edf2e5;
   border-color: #e1e9d6;
 }
 .detail-description {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
   margin: 17px 0 23px;
@@ -1704,7 +1704,7 @@ td {
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.7;
   margin-top: 12px;
@@ -1719,7 +1719,7 @@ td {
   border-radius: 6px;
   background: #eaf0df;
   color: #66735d;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .related-note svg {
   margin-top: 2px;
@@ -1739,7 +1739,7 @@ td {
   padding: 25px;
 }
 .demo-profile-panel > div > p:last-child {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 5px;
 }
@@ -1772,7 +1772,7 @@ td {
   color: #66735d;
 }
 .profile-values span {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   max-width: 120px;
 }
@@ -1799,13 +1799,13 @@ td {
   border-bottom: none;
 }
 .care-list dt {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 600;
   color: #577047;
   margin-bottom: 4px;
 }
 .care-list dd {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1.8;
   color: #66735d;
   margin: 0;
@@ -1821,13 +1821,13 @@ td {
   flex-shrink: 0;
 }
 .verification-note {
-  font-size: calc(9px * var(--user-font-scale, 1)) !important;
+  font-size: calc(0.875rem * var(--user-font-scale, 1)) !important;
   color: #66735d !important;
   line-height: 1.8 !important;
   margin-top: 12px !important;
 }
 .detail-phases > p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.8;
 }
@@ -1854,11 +1854,11 @@ td {
   flex-shrink: 0;
 }
 .detail-phases li strong {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #60794f;
 }
 .detail-phases li p {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.7;
   margin-top: 3px;
@@ -1869,19 +1869,19 @@ td {
   gap: 40px;
 }
 .source-panel p {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
   margin-top: 10px;
 }
 .source-panel h3 {
-  font-size: calc(14px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .source-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   padding: 10px 0;
   border-bottom: 1px solid #e8eedf;
@@ -1912,12 +1912,12 @@ td {
   height: 100%;
 }
 .growbox-culture .eyebrow {
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1.2px;
   margin-bottom: 4px;
 }
 .growbox-culture h2 {
-  font-size: calc(17px * var(--user-font-scale, 1));
+  font-size: calc(1.0625rem * var(--user-font-scale, 1));
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1926,7 +1926,7 @@ td {
   color: #66735d;
 }
 .culture-caption {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .culture-actions {
@@ -1936,12 +1936,12 @@ td {
   flex-wrap: wrap;
 }
 .culture-actions .button {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   padding: 9px 12px;
   min-height: 37px;
 }
 .culture-actions .text-link {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .settings-panel {
   margin: 22px 0;
@@ -1952,10 +1952,10 @@ td {
   margin-bottom: 22px;
 }
 .settings-panel .section-title h2 {
-  font-size: calc(18px * var(--user-font-scale, 1));
+  font-size: calc(1.125rem * var(--user-font-scale, 1));
 }
 .draft-badge {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   border: 1px solid #e3ead8;
   background: #f5f8ef;
   color: #66735d;
@@ -1988,14 +1988,14 @@ td {
   border-radius: 7px;
 }
 .mode-row strong {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   display: flex;
   align-items: center;
   gap: 8px;
   color: #5b7748;
 }
 .mode-row p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 6px;
 }
@@ -2008,7 +2008,7 @@ td {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 32px;
   min-width: 95px;
   justify-content: center;
@@ -2033,12 +2033,12 @@ td {
 }
 .setting-control > label strong {
   display: block;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #5e784b;
 }
 .setting-control > label small {
   display: block;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 3px;
 }
@@ -2059,7 +2059,7 @@ td {
   border: 0;
   background: none;
   padding: 8px 2px 8px 8px;
-  font-size: calc(14px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 600;
   -moz-appearance: textfield;
 }
@@ -2068,7 +2068,7 @@ td {
 }
 .number-field > span {
   color: #66735d;
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .slider {
   width: 100%;
@@ -2087,12 +2087,12 @@ td {
 .range-labels {
   display: flex;
   justify-content: space-between;
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .field-error {
   color: #ae5546;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1.6;
   margin-top: 10px;
 }
@@ -2114,18 +2114,18 @@ td {
   flex: 1;
 }
 .device-control strong {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #617c4b;
   display: block;
 }
 .device-control small {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   display: block;
   margin-top: 3px;
 }
 .device-control > div > span {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   display: block;
   margin-top: 7px;
@@ -2191,11 +2191,11 @@ td {
 }
 .demo-scenarios summary strong {
   display: block;
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #5c7b46;
 }
 .demo-scenarios summary small {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   display: block;
   margin-top: 3px;
@@ -2212,7 +2212,7 @@ td {
   border-top: 1px solid #edf1e5;
 }
 .scenario-content > p {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin: 15px 0;
 }
@@ -2222,7 +2222,7 @@ td {
   flex-wrap: wrap;
 }
 .scenario-buttons .button {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .growbox-page > .event-panel {
   margin-top: 23px;
@@ -2266,7 +2266,7 @@ td {
   margin-bottom: 12px;
 }
 .growth-head h2 {
-  font-size: calc(25px * var(--user-font-scale, 1));
+  font-size: calc(1.5625rem * var(--user-font-scale, 1));
   font-weight: 600;
 }
 .growth-head > strong {
@@ -2289,7 +2289,7 @@ td {
   gap: 13px;
   margin-top: 11px;
   color: #66735d;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   flex-wrap: wrap;
 }
 .growth-meta > span {
@@ -2304,7 +2304,7 @@ td {
   flex-wrap: wrap;
 }
 .growth-actions .button {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   min-height: 38px;
   padding: 9px 13px;
 }
@@ -2345,17 +2345,17 @@ td {
   background: #f6f8ef;
   border: 1px solid #e0e7d7;
   color: #66735d;
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 500;
   box-shadow: 0 0 0 7px #fff;
 }
 .phase-node strong {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   font-weight: 500;
   color: #66735d;
 }
 .phase-node small {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 .phase-node.complete .phase-circle {
@@ -2377,7 +2377,7 @@ td {
   outline-offset: 3px;
 }
 .phase-current-label {
-  font-size: calc(7px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   background: #edf3e3;
   border: 1px solid #e1ebd3;
@@ -2407,28 +2407,28 @@ td {
   flex: 1;
 }
 .phase-explainer .eyebrow {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   letter-spacing: 1.3px;
 }
 .phase-explainer h3 {
-  font-size: calc(19px * var(--user-font-scale, 1));
+  font-size: calc(1.1875rem * var(--user-font-scale, 1));
   color: #55763e;
   margin-bottom: 9px;
 }
 .phase-explainer p:not(.eyebrow) {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
   max-width: 650px;
 }
 .phase-explainer small {
   display: block;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 12px;
 }
 .phase-explainer .text-button {
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   align-self: flex-end;
 }
 .growth-page > .chart-panel {
@@ -2457,21 +2457,21 @@ td {
 }
 .project-hero .logo {
   color: #66735d;
-  font-size: calc(24px * var(--user-font-scale, 1));
+  font-size: calc(1.5rem * var(--user-font-scale, 1));
 }
 .project-hero .logo svg {
   width: 27px;
   height: 27px;
 }
 .project-hero h2 {
-  font-size: calc(32px * var(--user-font-scale, 1));
+  font-size: calc(2rem * var(--user-font-scale, 1));
   font-weight: 500;
   line-height: 1.45;
   letter-spacing: -1px;
   margin-top: 20px;
 }
 .project-hero > p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   line-height: 1.9;
   color: #66735d;
   max-width: 600px;
@@ -2481,7 +2481,7 @@ td {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 23px;
 }
@@ -2493,12 +2493,12 @@ td {
 }
 .project-grid .panel > h2 {
   margin: 14px 0 10px;
-  font-size: calc(16px * var(--user-font-scale, 1));
+  font-size: calc(1rem * var(--user-font-scale, 1));
 }
 .project-grid p,
 .project-model > p,
 .project-page > .panel > p {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
 }
@@ -2518,12 +2518,12 @@ td {
   padding: 14px;
 }
 .project-model dt {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   font-weight: 600;
 }
 .project-model dd {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin: 6px 0 0;
 }
@@ -2543,17 +2543,17 @@ td {
   gap: 10px;
   align-items: center;
   color: #66735d;
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .project-sources p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 4px;
   line-height: 1.8;
 }
 .source-status {
   white-space: nowrap;
-  font-size: calc(8px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   background: #edf3e3;
   border-radius: 4px;
   padding: 5px 7px;
@@ -2574,10 +2574,10 @@ td {
 }
 .assets-panel h2 {
   margin-bottom: 10px;
-  font-size: calc(15px * var(--user-font-scale, 1));
+  font-size: calc(0.9375rem * var(--user-font-scale, 1));
 }
 .assets-panel p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
 }
@@ -2593,11 +2593,11 @@ td {
   margin-top: 23px;
 }
 .reset-panel h2 {
-  font-size: calc(16px * var(--user-font-scale, 1));
+  font-size: calc(1rem * var(--user-font-scale, 1));
   color: #607f48;
 }
 .reset-panel p {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 6px;
 }
@@ -2625,11 +2625,11 @@ td {
   margin-bottom: 18px;
 }
 .modal > h2 {
-  font-size: calc(24px * var(--user-font-scale, 1));
+  font-size: calc(1.5rem * var(--user-font-scale, 1));
   letter-spacing: -0.7px;
 }
 .modal-content {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   line-height: 1.9;
   margin-top: 15px;
@@ -2643,7 +2643,7 @@ td {
   border-top: 1px solid #e7eddd;
 }
 .modal-content .info-note {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .preview-culture {
   display: flex;
@@ -2666,16 +2666,16 @@ td {
   height: 100%;
 }
 .preview-culture h3 {
-  font-size: calc(16px * var(--user-font-scale, 1));
+  font-size: calc(1rem * var(--user-font-scale, 1));
   color: #56783d;
 }
 .preview-culture p {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
   margin-top: 4px;
 }
 .preview-culture small {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
   color: #66735d;
 }
 @keyframes arrive {
@@ -2690,10 +2690,10 @@ td {
 }
 @media (min-width: 1600px) {
   h1 {
-    font-size: calc(34px * var(--user-font-scale, 1));
+    font-size: calc(2.125rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(33px * var(--user-font-scale, 1));
+    font-size: calc(2.0625rem * var(--user-font-scale, 1));
   }
   .culture-hero {
     min-height: 309px;
@@ -2719,25 +2719,25 @@ td {
     padding: 27px 28px;
   }
   .discovery-card h2 {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .discovery-card > p {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .discovery-card > a {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-card {
     padding-top: 22px;
   }
   .sensor-value {
-    font-size: calc(37px * var(--user-font-scale, 1));
+    font-size: calc(2.3125rem * var(--user-font-scale, 1));
   }
   .sensor-top {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-target {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-area {
     height: 195px;
@@ -2755,16 +2755,16 @@ td {
     height: 175px;
   }
   .mushroom-card h3 {
-    font-size: calc(17px * var(--user-font-scale, 1));
+    font-size: calc(1.0625rem * var(--user-font-scale, 1));
   }
   .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status > span {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 1200px) {
@@ -2786,7 +2786,7 @@ td {
     margin-left: 40px;
   }
   .nav-item {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     gap: 10px;
   }
   .dashboard-hero-grid {
@@ -2801,11 +2801,11 @@ td {
     gap: 7px;
   }
   .hero-label {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     letter-spacing: 0.7px;
   }
   .hero-culture-name h2 {
-    font-size: calc(25px * var(--user-font-scale, 1));
+    font-size: calc(1.5625rem * var(--user-font-scale, 1));
   }
   .hero-art {
     width: 44%;
@@ -2821,16 +2821,16 @@ td {
     max-width: 240px;
   }
   .hero-progress-footer {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .discovery-card {
     padding: 20px 18px 0;
   }
   .discovery-card h2 {
-    font-size: calc(22px * var(--user-font-scale, 1));
+    font-size: calc(1.375rem * var(--user-font-scale, 1));
   }
   .discovery-card > a {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-grid {
     gap: 12px;
@@ -2839,14 +2839,14 @@ td {
     padding: 14px 14px 0;
   }
   .sensor-status {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     gap: 3px;
   }
   .sensor-status > span {
-    font-size: calc(6px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-value {
-    font-size: calc(29px * var(--user-font-scale, 1));
+    font-size: calc(1.8125rem * var(--user-font-scale, 1));
   }
   .sensor-spark {
     width: 44px;
@@ -2861,28 +2861,28 @@ td {
   }
   .section-title h2,
   .event-panel .section-title h2 {
-    font-size: calc(13px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .period-select select {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-panel .muted-tag {
     display: none;
   }
   .event-list p {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-hero {
     gap: 26px;
   }
   .detail-intro h1 {
-    font-size: calc(30px * var(--user-font-scale, 1));
+    font-size: calc(1.875rem * var(--user-font-scale, 1));
   }
   .profile-values {
     gap: 18px;
   }
   .profile-values strong {
-    font-size: calc(23px * var(--user-font-scale, 1));
+    font-size: calc(1.4375rem * var(--user-font-scale, 1));
   }
   .demo-profile-panel {
     gap: 20px;
@@ -2892,7 +2892,7 @@ td {
     gap: 3px 6px;
   }
   .profile-values span {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-grid,
   .device-grid {
@@ -2902,7 +2902,7 @@ td {
     padding-right: 63px;
   }
   .setting-control > label strong {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .setting-control .sensor-icon {
     width: 26px;
@@ -2919,7 +2919,7 @@ td {
     gap: 12px;
   }
   .mode-row p {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .device-control {
     gap: 9px;
@@ -2929,11 +2929,11 @@ td {
     gap: 7px;
   }
   .settings-footer .button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 10px 11px;
   }
   .settings-footer .text-button {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .toast {
     left: calc(50% + 102px);
@@ -2949,17 +2949,17 @@ td {
     margin-left: 185px;
   }
   .logo {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .logo svg {
     width: 29px;
   }
   .sidebar .brand-tagline {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     margin-left: 38px;
   }
   .nav-item {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 12px 9px;
     gap: 8px;
   }
@@ -2984,7 +2984,7 @@ td {
     height: 225px;
   }
   .hero-culture-name h2 {
-    font-size: calc(29px * var(--user-font-scale, 1));
+    font-size: calc(1.8125rem * var(--user-font-scale, 1));
   }
   .hero-progress-heading,
   .culture-hero .progress-track,
@@ -2992,13 +2992,13 @@ td {
     max-width: 285px;
   }
   .hero-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status > span {
     display: none;
   }
   .sensor-value {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .sensor-spark {
     width: 36px;
@@ -3022,7 +3022,7 @@ td {
     padding: 13px;
   }
   .mushroom-card h3 {
-    font-size: calc(13px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .card-art {
     height: 165px;
@@ -3031,7 +3031,7 @@ td {
     height: 160px;
   }
   .difficulty {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .card-art > .difficulty {
     top: 8px;
@@ -3044,26 +3044,26 @@ td {
     height: 130px;
   }
   .card-description {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scientific {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .page-header {
     align-items: flex-start;
   }
   h1 {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .page-header > .button {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 10px;
   }
   .page-header > .library-count {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .demo-banner {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .demo-banner a {
     display: none;
@@ -3075,13 +3075,13 @@ td {
     min-height: 325px;
   }
   .detail-intro h1 {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .detail-description {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-intro > .button {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .demo-profile-panel {
     flex-direction: column;
@@ -3091,7 +3091,7 @@ td {
     justify-content: space-between;
   }
   .profile-values span {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-content-grid {
     gap: 15px;
@@ -3117,7 +3117,7 @@ td {
   }
   .number-field input {
     width: 100%;
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .slider {
     margin-top: 19px;
@@ -3141,10 +3141,10 @@ td {
     height: 160px;
   }
   .growth-head h2 {
-    font-size: calc(20px * var(--user-font-scale, 1));
+    font-size: calc(1.25rem * var(--user-font-scale, 1));
   }
   .growth-meta {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-explainer {
     gap: 16px;
@@ -3154,10 +3154,10 @@ td {
     display: none;
   }
   .phase-node strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .project-sources {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .reset-panel {
     align-items: flex-start;
@@ -3211,20 +3211,20 @@ td {
   }
   .breadcrumb {
     gap: 8px;
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .topbar-right {
     gap: 11px;
   }
   .project-pill {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 5px 7px;
     gap: 4px;
   }
   .avatar {
     width: 26px;
     height: 26px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .breadcrumb-root {
     display: none;
@@ -3236,7 +3236,7 @@ td {
     padding: 17px 20px 15px;
   }
   .demo-banner {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 9px 11px;
     min-height: 42px;
     line-height: 1.7;
@@ -3248,7 +3248,7 @@ td {
     flex-wrap: wrap;
   }
   .demo-banner strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .demo-pip {
     align-self: center;
@@ -3261,7 +3261,7 @@ td {
     display: none;
   }
   .demo-banner a {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding-top: 2px;
     gap: 4px;
   }
@@ -3274,7 +3274,7 @@ td {
     align-items: flex-start;
   }
   .page-header h1 {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
     letter-spacing: -1px;
   }
   .page-header > .button {
@@ -3293,13 +3293,13 @@ td {
     display: none;
   }
   .page-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     line-height: 1.8;
     max-width: 480px;
     margin-top: 7px;
   }
   .eyebrow {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     letter-spacing: 1.3px;
   }
   .dashboard-hero-grid {
@@ -3315,7 +3315,7 @@ td {
     padding-top: 20px;
   }
   .hero-culture-name h2 {
-    font-size: calc(25px * var(--user-font-scale, 1));
+    font-size: calc(1.5625rem * var(--user-font-scale, 1));
   }
   .hero-art {
     right: -10px;
@@ -3334,32 +3334,32 @@ td {
     gap: 7px;
   }
   .hero-label {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom {
     padding: 9px 18px;
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-pause {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .discovery-card {
     padding: 20px 17px 0;
   }
   .discovery-card h2 {
-    font-size: calc(21px * var(--user-font-scale, 1));
+    font-size: calc(1.3125rem * var(--user-font-scale, 1));
   }
   .discovery-top > span:last-child {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .discovery-card > p {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .discovery-card > a {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-grid {
     gap: 11px;
@@ -3368,25 +3368,25 @@ td {
     padding: 14px 13px 0;
   }
   .sensor-value {
-    font-size: calc(28px * var(--user-font-scale, 1));
+    font-size: calc(1.75rem * var(--user-font-scale, 1));
   }
   .sensor-spark {
     width: 42px;
   }
   .sensor-value > span:first-child {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status > span {
     display: none;
   }
   .sensor-target {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-top {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-icon {
     width: 28px;
@@ -3404,28 +3404,28 @@ td {
     display: none;
   }
   .period-select select {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     max-width: 135px;
   }
   .chart-subheader .segmented button {
     padding: 4px 7px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-legend {
     gap: 7px;
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-footer .text-button {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list p {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list li {
     gap: 7px;
   }
   .event-list li > div > span {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-dot {
     width: 20px;
@@ -3439,7 +3439,7 @@ td {
     gap: 15px;
   }
   .mushroom-card h3 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .mushroom-card-body {
     padding: 14px 15px 11px;
@@ -3457,15 +3457,15 @@ td {
     height: 135px;
   }
   .compact .card-description {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scientific {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-intro {
     padding: 17px;
     gap: 15px;
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-toolbar {
     margin-top: 22px;
@@ -3475,26 +3475,26 @@ td {
     padding: 0 12px;
   }
   .search-field input {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sort-select {
     padding: 9px 10px;
   }
   .sort-select select {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     max-width: 135px;
   }
   .library-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .filter-help {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-filter-row {
     margin-top: 17px;
   }
   .filter-pills button {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     min-height: 36px;
     padding: 8px 11px;
   }
@@ -3505,19 +3505,19 @@ td {
     min-height: 340px;
   }
   .detail-intro h1 {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .detail-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-intro > .button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding-left: 11px;
     padding-right: 11px;
     gap: 6px;
   }
   .detail-suitability {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-intro {
     padding-top: 0;
@@ -3532,10 +3532,10 @@ td {
     gap: 15px;
   }
   .profile-values strong {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .profile-values span {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-content-grid {
     gap: 17px;
@@ -3550,7 +3550,7 @@ td {
     gap: 12px;
   }
   .culture-actions .button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growbox-culture {
     gap: 15px;
@@ -3559,17 +3559,17 @@ td {
     padding: 22px;
   }
   .settings-panel .section-title h2 {
-    font-size: calc(17px * var(--user-font-scale, 1));
+    font-size: calc(1.0625rem * var(--user-font-scale, 1));
   }
   .settings-panel .section-title {
     flex-wrap: wrap;
   }
   .mode-row p {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .mode-segment button {
     min-width: 86px;
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .mode-row {
     gap: 14px;
@@ -3594,7 +3594,7 @@ td {
     width: 100%;
   }
   .setting-control > label strong {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .slider {
     margin-top: 21px;
@@ -3607,7 +3607,7 @@ td {
     display: none;
   }
   .device-control small {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-footer {
     flex-direction: column;
@@ -3617,7 +3617,7 @@ td {
     justify-content: flex-end;
   }
   .settings-footer .button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-footer > .text-button {
     align-self: flex-start;
@@ -3636,16 +3636,16 @@ td {
     gap: 22px;
   }
   .growth-head h2 {
-    font-size: calc(22px * var(--user-font-scale, 1));
+    font-size: calc(1.375rem * var(--user-font-scale, 1));
   }
   .growth-meta {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growth-actions .button {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-explainer {
     gap: 15px;
@@ -3662,7 +3662,7 @@ td {
     padding: 28px 30px;
   }
   .project-hero h2 {
-    font-size: calc(29px * var(--user-font-scale, 1));
+    font-size: calc(1.8125rem * var(--user-font-scale, 1));
   }
   .project-grid {
     gap: 16px;
@@ -3673,7 +3673,7 @@ td {
   }
   .app-footer {
     padding: 20px 20px 83px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     align-items: flex-start;
     gap: 20px;
   }
@@ -3681,14 +3681,14 @@ td {
     display: none;
   }
   .app-footer > span:nth-child(2) {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock {
     bottom: 13px;
     right: 16px;
     left: auto;
     padding: 10px 13px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .toast {
     left: 50%;
@@ -3698,16 +3698,16 @@ td {
     padding: 22px;
   }
   .modal > h2 {
-    font-size: calc(23px * var(--user-font-scale, 1));
+    font-size: calc(1.4375rem * var(--user-font-scale, 1));
   }
   .info-note {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .modal-actions {
     gap: 9px;
   }
   .modal-actions .button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 620px) {
@@ -3721,10 +3721,10 @@ td {
     min-height: 280px;
   }
   .hero-culture-name h2 {
-    font-size: calc(28px * var(--user-font-scale, 1));
+    font-size: calc(1.75rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .culture-hero-content {
     width: 69%;
@@ -3739,10 +3739,10 @@ td {
     height: 210px;
   }
   .hero-bottom {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-pause {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-heading,
   .culture-hero .progress-track,
@@ -3760,14 +3760,14 @@ td {
     gap: 11px;
   }
   .sensor-top {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-card {
     position: relative;
     padding: 15px 16px 0;
   }
   .sensor-value {
-    font-size: calc(32px * var(--user-font-scale, 1));
+    font-size: calc(2rem * var(--user-font-scale, 1));
     margin-top: 0;
   }
   .sensor-icon {
@@ -3782,17 +3782,17 @@ td {
     height: 30px;
   }
   .sensor-target {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     margin-top: -2px;
     padding-bottom: 12px;
   }
   .sensor-status {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     min-height: 31px;
   }
   .sensor-status > span {
     display: block;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-section-title {
     margin-top: 23px;
@@ -3811,17 +3811,17 @@ td {
     padding: 20px 17px 8px;
   }
   .event-panel .section-title h2 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-panel .muted-tag {
     display: block;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list p {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list li > div > span {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list li {
     gap: 10px;
@@ -3860,48 +3860,48 @@ td {
     padding: 17px 17px 12px;
   }
   .featured-grid .mushroom-card h3 {
-    font-size: calc(15px * var(--user-font-scale, 1));
+    font-size: calc(0.9375rem * var(--user-font-scale, 1));
   }
   .featured-grid .card-description {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     line-height: 1.7;
     margin-top: 8px;
     min-height: 30px;
   }
   .featured-grid .card-link {
     margin-top: 9px;
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-grid .difficulty {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     right: 8px;
     top: 8px;
   }
   .featured-grid .art-label {
-    font-size: calc(6px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     left: 8px;
   }
   .featured-section > .section-description {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     line-height: 1.8;
   }
   .featured-section .section-title .text-link {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     gap: 3px;
   }
   .section-title h2 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .live-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-intro {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     align-items: flex-start;
     gap: 12px;
   }
   .intro-leaf {
-    font-size: calc(28px * var(--user-font-scale, 1));
+    font-size: calc(1.75rem * var(--user-font-scale, 1));
     margin-top: 5px;
   }
   .library-toolbar {
@@ -3910,7 +3910,7 @@ td {
     gap: 11px;
   }
   .search-field input {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sort-select {
     align-self: flex-end;
@@ -3933,25 +3933,25 @@ td {
   .library-grid .difficulty {
     top: 9px;
     right: 8px;
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 3px 5px;
   }
   .library-grid .mushroom-card-body {
     padding: 12px 12px 10px;
   }
   .library-grid h3 {
-    font-size: calc(13px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .scientific {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .card-description {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     margin-top: 7px;
     min-height: 46px;
   }
   .library-grid .card-link {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding-top: 9px;
     margin-top: 10px;
   }
@@ -3959,16 +3959,16 @@ td {
     gap: 6px;
   }
   .filter-pills button {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 7px 9px;
     min-height: 35px;
   }
   .result-count {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     white-space: nowrap;
   }
   .filter-help {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     line-height: 1.8;
     margin-bottom: 17px;
   }
@@ -3985,22 +3985,22 @@ td {
     max-height: 270px;
   }
   .detail-intro h1 {
-    font-size: calc(33px * var(--user-font-scale, 1));
+    font-size: calc(2.0625rem * var(--user-font-scale, 1));
   }
   .detail-intro > .button {
     max-width: none;
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     min-height: 46px;
   }
   .detail-description {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     margin-bottom: 20px;
   }
   .detail-latin {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-suitability {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     max-width: none;
   }
   .detail-content-grid {
@@ -4018,10 +4018,10 @@ td {
     align-self: flex-start;
   }
   .profile-values strong {
-    font-size: calc(28px * var(--user-font-scale, 1));
+    font-size: calc(1.75rem * var(--user-font-scale, 1));
   }
   .profile-values span {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     max-width: 100px;
     line-height: 1.7;
   }
@@ -4029,23 +4029,23 @@ td {
     padding: 22px;
   }
   .demo-profile-panel h2 {
-    font-size: calc(19px * var(--user-font-scale, 1));
+    font-size: calc(1.1875rem * var(--user-font-scale, 1));
   }
   .demo-profile-panel .eyebrow {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .source-panel {
     grid-template-columns: 1fr;
     gap: 25px;
   }
   .care-list dd {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .detail-phases li p {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .source-panel p {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growbox-culture {
     padding: 16px;
@@ -4058,7 +4058,7 @@ td {
   }
   .growbox-culture-info > .status-badge {
     margin-left: auto;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 6px 8px;
   }
   .mini-mushroom {
@@ -4066,14 +4066,14 @@ td {
     height: 56px;
   }
   .growbox-culture h2 {
-    font-size: calc(15px * var(--user-font-scale, 1));
+    font-size: calc(0.9375rem * var(--user-font-scale, 1));
   }
   .growbox-culture .eyebrow {
-    font-size: calc(6px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     letter-spacing: 1px;
   }
   .culture-caption {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .culture-actions {
     gap: 8px;
@@ -4093,13 +4093,13 @@ td {
     padding: 20px 17px;
   }
   .settings-panel .section-title h2 {
-    font-size: calc(18px * var(--user-font-scale, 1));
+    font-size: calc(1.125rem * var(--user-font-scale, 1));
   }
   .section-description {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .draft-badge {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 6px 8px;
   }
   .mode-row {
@@ -4114,7 +4114,7 @@ td {
   .mode-segment button {
     flex: 1;
     min-height: 36px;
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-grid {
     grid-template-columns: 1fr;
@@ -4128,7 +4128,7 @@ td {
     padding: 17px;
   }
   .setting-control > label strong {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .number-field {
     position: absolute;
@@ -4140,7 +4140,7 @@ td {
   }
   .number-field input {
     width: 50px;
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .setting-control .slider {
     margin-top: 29px;
@@ -4158,13 +4158,13 @@ td {
     display: grid;
   }
   .device-control strong {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .device-control small {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .device-control > div > span {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-footer > div {
     flex-direction: column-reverse;
@@ -4172,7 +4172,7 @@ td {
   }
   .settings-footer .button {
     min-height: 43px;
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .settings-footer > .text-button {
     margin-bottom: 4px;
@@ -4182,13 +4182,13 @@ td {
     gap: 10px;
   }
   .demo-scenarios summary small {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scenario-content {
     padding: 0 16px 17px;
   }
   .scenario-content > p {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scenario-buttons {
     display: grid;
@@ -4221,19 +4221,19 @@ td {
     margin-top: 5px;
   }
   .growth-head h2 {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .growth-head strong {
-    font-size: calc(34px * var(--user-font-scale, 1));
+    font-size: calc(2.125rem * var(--user-font-scale, 1));
   }
   .growth-meta {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growth-meta > span > svg {
     width: 12px;
   }
   .growth-summary > .eyebrow {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growth-actions {
     margin-top: 20px;
@@ -4242,7 +4242,7 @@ td {
   }
   .growth-actions .button {
     min-height: 41px;
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .growth-journey {
     padding: 22px 17px;
@@ -4253,7 +4253,7 @@ td {
     margin-bottom: 10px;
   }
   .growth-journey .muted-tag {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-timeline {
     margin-top: 20px;
@@ -4263,7 +4263,7 @@ td {
   .phase-circle {
     width: 34px;
     height: 34px;
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     box-shadow: 0 0 0 5px #fff;
   }
   .phase-timeline:before {
@@ -4272,15 +4272,15 @@ td {
     right: 8%;
   }
   .phase-node strong {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     letter-spacing: -0.1px;
     min-height: 10px;
   }
   .phase-node small {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-current-label {
-    font-size: calc(5px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 3px 4px;
     white-space: nowrap;
   }
@@ -4292,28 +4292,28 @@ td {
     display: none;
   }
   .phase-explainer h3 {
-    font-size: calc(19px * var(--user-font-scale, 1));
+    font-size: calc(1.1875rem * var(--user-font-scale, 1));
   }
   .phase-explainer p:not(.eyebrow) {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-explainer .eyebrow {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-explainer small {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .project-hero {
     padding: 27px 24px;
   }
   .project-hero h2 {
-    font-size: calc(26px * var(--user-font-scale, 1));
+    font-size: calc(1.625rem * var(--user-font-scale, 1));
   }
   .project-hero > p {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .project-hero:after {
-    font-size: calc(300px * var(--user-font-scale, 1));
+    font-size: calc(18.75rem * var(--user-font-scale, 1));
     right: -80px;
     top: 120px;
   }
@@ -4335,17 +4335,17 @@ td {
     padding: 17px 0;
   }
   .project-sources strong {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .project-sources p {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .project-page > .panel .section-title {
     flex-wrap: wrap;
     gap: 7px;
   }
   .project-page > .panel .section-title > .muted-tag {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .assets-panel {
     gap: 12px;
@@ -4357,7 +4357,7 @@ td {
   }
   .reset-panel .button {
     white-space: normal;
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     width: 100%;
   }
   .app-footer {
@@ -4367,7 +4367,7 @@ td {
   }
   .app-footer > span:nth-child(2) {
     padding-left: 24px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock {
     right: 12px;
@@ -4375,27 +4375,27 @@ td {
     justify-content: center;
     gap: 7px;
     bottom: 12px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 11px 9px;
     background: #fffef8f5;
   }
   .simulation-clock strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock .clock-rate {
     padding-left: 7px;
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock > svg {
     width: 12px;
   }
   .simulation-clock b {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .toast {
     width: calc(100% - 32px);
     max-width: 500px;
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 14px 18px;
     text-align: center;
   }
@@ -4407,7 +4407,7 @@ td {
     min-height: 43px;
   }
   .modal-content {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .preview-culture {
     padding: 10px;
@@ -4418,10 +4418,10 @@ td {
     height: 66px;
   }
   .preview-culture h3 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .preview-culture small {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 380px) {
@@ -4434,16 +4434,16 @@ td {
     padding-right: 15px;
   }
   .page-header h1 {
-    font-size: calc(25px * var(--user-font-scale, 1));
+    font-size: calc(1.5625rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(25px * var(--user-font-scale, 1));
+    font-size: calc(1.5625rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .culture-hero .status-badge {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .culture-hero-content {
     width: 72%;
@@ -4455,23 +4455,23 @@ td {
     top: 40px;
   }
   .hero-progress-footer {
-    font-size: calc(6.5px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-heading {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom {
     padding: 10px 14px;
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-pause {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-section .section-title h2 {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-section .text-link {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid {
     grid-template-columns: 1fr;
@@ -4483,24 +4483,24 @@ td {
     height: 200px;
   }
   .library-grid h3 {
-    font-size: calc(17px * var(--user-font-scale, 1));
+    font-size: calc(1.0625rem * var(--user-font-scale, 1));
   }
   .library-grid .scientific {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     min-height: 0;
   }
   .library-grid .mushroom-card-body {
     padding: 16px 18px;
   }
   .library-grid .card-link {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding-top: 13px;
   }
   .library-grid .difficulty {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     top: 12px;
     right: 12px;
     padding: 4px 8px;
@@ -4509,7 +4509,7 @@ td {
     gap: 5px;
   }
   .filter-pills button {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 7px 8px;
   }
   .library-filter-row {
@@ -4520,7 +4520,7 @@ td {
     width: 100%;
   }
   .detail-intro h1 {
-    font-size: calc(30px * var(--user-font-scale, 1));
+    font-size: calc(1.875rem * var(--user-font-scale, 1));
   }
   .demo-banner a {
     display: none;
@@ -4529,23 +4529,23 @@ td {
     gap: 8px;
   }
   .growbox-culture-info > .status-badge {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding: 5px 6px;
   }
   .phase-node strong {
-    font-size: calc(6.5px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock {
     gap: 5px;
     padding-left: 6px;
     padding-right: 6px;
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock strong {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock .clock-rate {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
     padding-left: 6px;
   }
 }
@@ -4566,69 +4566,69 @@ td {
   top: 8px;
 }
 .nav-item {
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .page-description {
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .section-title h2 {
-  font-size: calc(16px * var(--user-font-scale, 1));
+  font-size: calc(1rem * var(--user-font-scale, 1));
 }
 .sensor-top {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .sensor-target {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .sensor-status {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .sensor-status > span {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .card-description,
 .compact .card-description {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .scientific {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .card-link {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .event-list p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .event-list li > div > span {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .eyebrow {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .discovery-card > p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .discovery-card > a {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-label {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-scientific {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-phase {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-progress-heading {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-progress-footer {
-  font-size: calc(9px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-bottom,
 .hero-pause {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .hero-art > span {
   color: #c3d2b1;
@@ -4640,7 +4640,7 @@ td {
   min-height: 300px;
 }
 .hero-culture-name h2 {
-  font-size: calc(31px * var(--user-font-scale, 1));
+  font-size: calc(1.9375rem * var(--user-font-scale, 1));
 }
 .hero-bottom {
   padding-top: 10px;
@@ -4656,11 +4656,11 @@ td {
   margin-top: 28px;
 }
 .verification-note {
-  font-size: calc(11px * var(--user-font-scale, 1)) !important;
+  font-size: calc(0.875rem * var(--user-font-scale, 1)) !important;
 }
 .info-note,
 .modal-content {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .toggle {
   position: relative;
@@ -4672,30 +4672,30 @@ td {
 }
 .care-list dd,
 .detail-phases li p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .detail-phases li strong,
 .care-list dt {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .source-panel p,
 .project-grid p,
 .project-model > p,
 .project-page > .panel > p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .chart-footer .text-button,
 .chart-legend {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .period-select select {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .chart-unit {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .segmented button {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .chart-panel {
   padding-bottom: 12px;
@@ -4708,69 +4708,69 @@ td {
   max-width: 320px;
 }
 .detail-description {
-  font-size: calc(14px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .detail-suitability {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .profile-values span {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .settings-panel .section-description {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .mode-row p {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .setting-control > label strong,
 .device-control strong {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .setting-control > label small,
 .device-control small {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .range-labels {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .phase-node strong {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .phase-node small {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .phase-explainer p:not(.eyebrow) {
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .source-status {
-  font-size: calc(10px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .source-link {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .project-sources p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .project-sources strong {
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .assets-panel p {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .search-field input {
-  font-size: calc(13px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .filter-help {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .library-intro {
-  font-size: calc(12px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .mushroom-card h3 {
-  font-size: calc(17px * var(--user-font-scale, 1));
+  font-size: calc(1.0625rem * var(--user-font-scale, 1));
 }
 .featured-section > .section-description {
-  font-size: calc(11px * var(--user-font-scale, 1));
+  font-size: calc(0.875rem * var(--user-font-scale, 1));
 }
 .phase-current-label {
   color: #4c6838;
@@ -4802,90 +4802,90 @@ td {
 }
 @media (max-width: 1200px) {
   .hero-culture-name h2 {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status > span {
     display: none;
   }
   .card-description,
   .compact .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-target {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .nav-item {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom,
   .hero-pause {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-panel .section-title h2 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .period-select select {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .device-control small {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 1000px) and (min-width: 761px) {
   .nav-item {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(30px * var(--user-font-scale, 1));
+    font-size: calc(1.875rem * var(--user-font-scale, 1));
   }
   .sensor-target {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-top {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-value {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .mushroom-card h3 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scientific {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .card-description,
   .compact .card-description {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list p {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list li > div > span {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 760px) {
@@ -4896,110 +4896,110 @@ td {
     visibility: visible;
   }
   .nav-item {
-    font-size: calc(13px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .page-description {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(27px * var(--user-font-scale, 1));
+    font-size: calc(1.6875rem * var(--user-font-scale, 1));
   }
   .hero-progress-heading {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom,
   .hero-pause {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-art {
     top: 27px;
   }
   .sensor-top {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-target {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-panel .section-title h2 {
-    font-size: calc(14px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-legend,
   .chart-footer .text-button {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .chart-subheader .segmented button {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list p {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .event-list li > div > span {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .card-description,
   .compact .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .scientific {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .mushroom-card h3 {
-    font-size: calc(16px * var(--user-font-scale, 1));
+    font-size: calc(1rem * var(--user-font-scale, 1));
   }
   .filter-help {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node small {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-explainer p:not(.eyebrow) {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-scientific {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 @media (max-width: 620px) {
   .sensor-top {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status > span {
     display: block;
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-status {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .sensor-target {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .card-description,
   .compact .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .scientific {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid h3 {
-    font-size: calc(15px * var(--user-font-scale, 1));
+    font-size: calc(0.9375rem * var(--user-font-scale, 1));
   }
   .library-grid .card-link {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .library-grid .card-art {
     height: 177px;
@@ -5008,20 +5008,20 @@ td {
     height: 170px;
   }
   .filter-help {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom,
   .hero-pause {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(28px * var(--user-font-scale, 1));
+    font-size: calc(1.75rem * var(--user-font-scale, 1));
   }
   .hero-label {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .culture-hero-content {
     width: 70%;
@@ -5030,35 +5030,35 @@ td {
     top: 30px;
   }
   .featured-section > .section-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-section .section-title .text-link {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-grid .card-description {
-    font-size: calc(11px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node small {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-current-label {
-    font-size: calc(6px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .verification-note {
-    font-size: calc(10px * var(--user-font-scale, 1)) !important;
+    font-size: calc(0.875rem * var(--user-font-scale, 1)) !important;
   }
   .care-list dd,
   .detail-phases li p {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .profile-values span {
-    font-size: calc(9px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .simulation-clock {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .filter-pills button {
     min-height: 44px;
@@ -5085,23 +5085,23 @@ td {
 }
 @media (max-width: 380px) {
   .hero-label {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-progress-footer {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-culture-name h2 {
-    font-size: calc(25px * var(--user-font-scale, 1));
+    font-size: calc(1.5625rem * var(--user-font-scale, 1));
   }
   .hero-scientific {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-bottom,
   .hero-pause {
-    font-size: calc(7px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-phase {
-    font-size: calc(10px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .hero-art {
     top: 46px;
@@ -5113,13 +5113,13 @@ td {
     height: 200px;
   }
   .featured-section .section-title .text-link {
-    font-size: calc(8px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .featured-section .section-title h2 {
-    font-size: calc(12px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
   .phase-node strong {
-    font-size: calc(6.5px * var(--user-font-scale, 1));
+    font-size: calc(0.875rem * var(--user-font-scale, 1));
   }
 }
 

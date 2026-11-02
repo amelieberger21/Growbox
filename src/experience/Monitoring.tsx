@@ -1,3 +1,4 @@
+import { HelpButton } from "../components/HelpButton";
 import {
   deviceState,
   TANK_LABELS,
@@ -202,14 +203,14 @@ export function ConditionsPanel({ entry }: { entry: MushroomEntry }) {
 }
 export function WaterMaintenance() {
   const tx = useT();
-  const { state } = useGrowbox();
+  const { state, canControl } = useGrowbox();
   const { experience, waterAction } = useExperience();
   const { preferences } = experience;
   const { water } = state;
   const devices = deviceState(state);
   const due = water.lastChanged + preferences.waterIntervalDays * 86400000;
   return (
-    <section className="panel water-panel" id="water-maintenance">
+    <section className="panel water-panel" id="water-maintenance"><HelpButton topic="water"/>
       <div className="section-title">
         <h2>
           <Droplets size={18} />
@@ -294,13 +295,13 @@ export function WaterMaintenance() {
       <div className="water-actions">
         <button
           className="button button-outline"
-          onClick={() => waterAction("refilled")}
+          disabled={!canControl} onClick={() => waterAction("refilled")}
         >
           {tx("Wasser nachgefüllt")}
         </button>
         <button
           className="button button-primary"
-          onClick={() => waterAction("changed")}
+          disabled={!canControl} onClick={() => waterAction("changed")}
         >
           <Check size={15} />
           {tx("Wasser gewechselt")}

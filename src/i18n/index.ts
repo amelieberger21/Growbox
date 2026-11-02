@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
-import en from "./en.json";
-import fa from "./fa.json";
+import { isLanguage, localeFor } from "./languages";
+const catalogs = import.meta.glob<Record<string,string>>("./*.json", {eager:true, import:"default"});
 import { SIMPLE_COPY } from "./simple";
 let initialLanguage = "de";
 try {
@@ -13,7 +13,7 @@ try {
       p &&
       typeof p === "object" &&
       "language" in p &&
-      ["de", "en", "fa"].includes(String(p.language))
+      isLanguage(p.language)
     )
       initialLanguage = String(p.language);
   }
@@ -25,21 +25,12 @@ void i18n.use(initReactI18next).init({
   fallbackLng: "de",
   keySeparator: false,
   nsSeparator: false,
-  resources: {
-    de: { translation: {} },
-    en: { translation: en },
-    fa: { translation: fa },
-  },
+  resources: Object.fromEntries([['de',{translation:{}}], ...Object.entries(catalogs).map(([path,translation])=>[path.replace('./','').replace('.json',''),{translation}])]),
   interpolation: { escapeValue: false },
   react: { useSuspense: false },
   returnEmptyString: false,
 });
-export const currentLocale = () =>
-  i18n.language.startsWith("fa")
-    ? "fa-IR"
-    : i18n.language.startsWith("en")
-      ? "en-GB"
-      : "de-DE";
+export const currentLocale = () => localeFor(i18n.language);
 function template(key: string, params: Record<string, string>) {
   return String(i18n.t(key, { ...params, defaultValue: key }));
 }

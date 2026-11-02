@@ -1,3 +1,4 @@
+import { HelpButton } from "./HelpButton";
 import { Link } from "react-router-dom";
 import { useExperience } from "../experience/ExperienceProvider";
 import {
@@ -41,7 +42,7 @@ import { SectionTitle } from "./ui";
 import type { SensorReading } from "../types";
 export function SensorCards() {
   const tx = useT();
-  const { state } = useGrowbox();
+  const { state, selectedBox } = useGrowbox();
   const { experience } = useExperience();
   const sensors = [
     {
@@ -78,13 +79,13 @@ export function SensorCards() {
             key={key}
           >
             <div className="sensor-top">
-              <span>{tx(name)}</span>
+              <span>{tx(name)}</span><HelpButton topic={key === "temperature" ? "temperature" : key === "humidity" ? "humidity" : "co2"}/>
               <span className={`sensor-icon ${color}`}>
                 <Icon size={19} />
               </span>
             </div>
             <div className="sensor-value">
-              {formatNumber(state.reading[key], digits)}
+              {selectedBox.hasData ? formatNumber(state.reading[key], digits) : "–"}
               <span>{unit}</span>
               <span
                 className={`sensor-spark spark-${color}`}
@@ -204,7 +205,7 @@ export function TelemetryChart({ full = false }: { full?: boolean }) {
   const targetKey = spec.target;
   return (
     <section className={`panel chart-panel ${full ? "chart-full" : ""}`}>
-      <SectionTitle title={tx("Klimaverlauf")}>
+      <SectionTitle title={tx("Klimaverlauf")}><HelpButton topic="chart"/>
         <label className="period-select">
           <span className="sr-only">{tx("Diagrammzeitraum")}</span>
           <select

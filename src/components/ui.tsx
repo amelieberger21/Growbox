@@ -1,5 +1,5 @@
 import { useT } from "../i18n";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useId, type ReactNode } from "react";
 import { ArrowUpRight, Check, CircleHelp, Leaf, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { MushroomEntry, Status } from "../types";
@@ -126,6 +126,7 @@ export function Modal({
 }) {
   const tx = useT();
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
     const previous = document.activeElement;
     const dialog = ref.current;
@@ -140,7 +141,7 @@ export function Modal({
     <dialog
       ref={ref}
       className="modal"
-      aria-labelledby="dialog-title"
+      aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault();
         onClose();
@@ -161,7 +162,7 @@ export function Modal({
           <X size={20} />
         </button>
       </div>
-      <h2 id="dialog-title">{tx(title)}</h2>
+      <h2 id={titleId}>{tx(title)}</h2>
       <div className="modal-content">{tx(children)}</div>
       <div className="modal-actions">{tx(footer)}</div>
     </dialog>

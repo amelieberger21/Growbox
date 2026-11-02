@@ -29,3 +29,10 @@ Alle 15 Bibliothekseinträge haben eine eigene lokale Bildreferenz. Die Fotograf
 | `mushrooms/mandelpilz.jpg` | *Agaricus subrufescens* | Wynand Uys | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Agaricus_subrufescens_111585496.jpg) |
 | `mushrooms/stockschwaemmchen.jpg` | *Kuehneromyces mutabilis* | Dendrofil | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kuehneromyces_mutabilis.jpg) |
 | `mushrooms/goldkaeppchen.jpg` | *Pholiota nameko* | Kuha455405 | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pholiota_nameko.jpg) |
+
+## Aktualisierung der Champignon-Produktansichten · 02.11.2026
+
+- `weisser-champignon-produkt.jpg`: echtes Foto von [freebie.photography](https://freebie.photography/food/slides/mushroom.htm), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Motivzentriert quadratisch zugeschnitten, auf 600 Pixel verkleinert und weißer Rand auf 900 × 600 Pixel ergänzt.
+- `brauner-champignon-produkt.jpg`: echtes Cremini-Produktfoto von [Blue Apron](https://blog.blueapron.com/guides/9-types-of-mushrooms), © Blue Apron. Original 600 × 600 Pixel, weißer Rand auf 900 × 600 Pixel ergänzt; keine Farbänderung. **Für die lokale Prototypansicht eingebunden; es ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenziertes Ersatzfoto erforderlich.** Der Datensatz ist deshalb nicht als lizenzgeprüft markiert.
+
+Die ursprünglichen Dateien bleiben als nachvollziehbare Quellenhistorie erhalten; nur diese beiden Einträge referenzieren die neuen Produktbilder. Alle anderen Fotografien bleiben unverändert.

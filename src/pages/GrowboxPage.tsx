@@ -1,3 +1,6 @@
+import { GrowboxManager } from "../components/GrowboxManager";
+import { HelpButton } from "../components/HelpButton";
+import { StepButtons } from "../components/StepButtons";
 import { DeviceSettings } from "../components/DeviceSettings";
 import { ClimateHints, UvDetails } from "../components/Technology";
 import { PhaseSuggestion } from "../experience/PhaseSuggestion";
@@ -49,11 +52,12 @@ const asSettings = (draft: Draft): AppliedSettings => ({
 });
 export function GrowboxPage() {
   const tx = useT();
-  const { state, dispatch, notify } = useGrowbox();
+  const { state, dispatch, notify, canControl, selectedBox, setBoxDraftDirty } = useGrowbox();
   const [draft, setDraft] = useState(() => asDraft(state.settings));
   const [ending, setEnding] = useState(false);
   const dirty =
     JSON.stringify(draft) !== JSON.stringify(asDraft(state.settings));
+  useEffect(() => { setBoxDraftDirty(dirty); return () => setBoxDraftDirty(false); }, [dirty, selectedBox.id]);
   const errors = validateSettings(asSettings(draft));
   const blocker = useBlocker(dirty);
   useEffect(() => {
@@ -71,7 +75,7 @@ export function GrowboxPage() {
   }, [dirty]);
   const entry = state.cycle ? getEntry(state.cycle.slug) : undefined;
   const editable =
-    state.cycle && !["Beendet", "Abgeschlossen"].includes(state.cycle.status);
+    canControl && state.cycle && !["Beendet", "Abgeschlossen"].includes(state.cycle.status);
   const setField = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     setDraft((previous) => ({ ...previous, [key]: value }));
   const apply = () => {
@@ -95,6 +99,8 @@ export function GrowboxPage() {
           </span>
         }
       />
+      <GrowboxManager />
+      <HelpButton topic="culture" />
       <Alerts />
       {tx(
         entry ? (
@@ -131,6 +137,7 @@ export function GrowboxPage() {
                   state.cycle?.status === "Bereit" && (
                     <button
                       className="button button-primary"
+                      disabled={!canControl}
                       onClick={() => {
                         dispatch({ type: "STATUS", status: "Läuft" });
                         notify(
@@ -147,6 +154,7 @@ export function GrowboxPage() {
                   state.cycle?.status === "Läuft" && (
                     <button
                       className="button button-primary"
+                      disabled={!canControl}
                       onClick={() =>
                         dispatch({ type: "STATUS", status: "Pausiert" })
                       }
@@ -160,6 +168,7 @@ export function GrowboxPage() {
                   state.cycle?.status === "Pausiert" && (
                     <button
                       className="button button-primary"
+                      disabled={!canControl}
                       onClick={() =>
                         dispatch({ type: "STATUS", status: "Läuft" })
                       }
@@ -213,6 +222,7 @@ export function GrowboxPage() {
                   )}
                 </span>
               </div>
+              <div className="help-row"><HelpButton topic="temperature"/><HelpButton topic="humidity"/><HelpButton topic="settings"/><HelpButton topic="air"/><HelpButton topic="light"/></div>
               <fieldset disabled={!editable} className="settings-fieldset">
                 <legend className="sr-only">{tx("Demo-Einstellungen")}</legend>
                 <div className="mode-row">
@@ -309,6 +319,7 @@ export function GrowboxPage() {
                         setField("temperature", event.target.value)
                       }
                     />
+                    <StepButtons label="Demo-Solltemperatur" value={Number(draft.temperature)} min={10} max={30} step={0.5} unit="°C" onChange={value => setField("temperature", String(value))} />
                     <div className="range-labels">
                       <span>{tx("10 \u00B0C")}</span>
                       <span>{tx("30 \u00B0C")}</span>
@@ -373,6 +384,7 @@ export function GrowboxPage() {
                         setField("humidity", event.target.value)
                       }
                     />
+                    <StepButtons label="Demo-Sollluftfeuchtigkeit" value={Number(draft.humidity)} min={60} max={95} step={1} unit="%" onChange={value => setField("humidity", String(value))} />
                     <div className="range-labels">
                       <span>{tx("60 %")}</span>
                       <span>{tx("95 %")}</span>
@@ -435,7 +447,7 @@ export function GrowboxPage() {
                 </div>
               </fieldset>
               {tx(
-                !editable && (
+                canControl && !editable && (
                   <InfoNote>
                     {tx("Diese Kultur ist ")}
                     {tx(state.cycle?.status?.toLowerCase())}

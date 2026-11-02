@@ -1,3 +1,4 @@
+import { StepButtons } from "./StepButtons";
 import { Fan, Wind, Lightbulb } from "lucide-react";
 import { useGrowbox } from "../state/GrowboxProvider";
 import { useT } from "../i18n";
@@ -31,6 +32,7 @@ export function DeviceSettings({
   const tx = useT();
   const { state } = useGrowbox();
   const actual = deviceState(state);
+  const { canControl } = useGrowbox();
   const auto = draft.mode === "Automatik";
   const shown = auto ? { ...draft, ...demoDeviceProfile(actual.phase) } : draft;
   return (
@@ -64,7 +66,7 @@ export function DeviceSettings({
               <h3>{tx(title)}</h3>
               <p>{tx(description)}</p>
               <span className="device-status-label">
-                {tx("Gerät · aktuell")}:{" "}
+                {tx(canControl ? "Gerät · aktuell" : "Offline: zuletzt bekannter Gerätestatus")}:{" "}
                 <strong>{tx(FAN_LABELS[actual[key]])}</strong>
               </span>
               <label htmlFor={`${key}-setting`}>
@@ -106,7 +108,7 @@ export function DeviceSettings({
           <Lightbulb size={23} />
           <div>
             <strong>
-              {tx("Gerät · aktuell")}: {tx(actual.lightOn ? "An" : "Aus")} ·{" "}
+              {tx(canControl ? "Gerät · aktuell" : "Offline: zuletzt bekannter Gerätestatus")}: {tx(actual.lightOn ? "An" : "Aus")} ·{" "}
               {formatNumber(actual.brightness)} %
             </strong>
             <p>
@@ -138,6 +140,7 @@ export function DeviceSettings({
             value={shown.brightness}
             onChange={(e) => onChange({ brightness: Number(e.target.value) })}
           />
+          <StepButtons label="Helligkeit" value={shown.brightness} min={0} max={100} step={1} unit="%" disabled={auto} onChange={brightness => onChange({ brightness })} />
           <div className="light-time-fields">
             <label htmlFor="light-start">
               {tx("Beginn")}

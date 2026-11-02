@@ -1,3 +1,4 @@
+import { HelpButton } from "./HelpButton";
 import { PresentationTools } from "../experience/Presentation";
 import { useT } from "../i18n";
 import {
@@ -13,8 +14,8 @@ import { useGrowbox } from "../state/GrowboxProvider";
 import type { Scenario } from "../simulation/engine";
 export function DemoScenarios() {
   const tx = useT();
-  const { state, dispatch, notify } = useGrowbox();
-  const enabled = state.cycle?.status === "Läuft";
+  const { state, dispatch, notify, canControl } = useGrowbox();
+  const enabled = canControl && state.cycle?.status === "Läuft";
   const activate = (scenario: Scenario) => {
     dispatch({ type: "SCENARIO", scenario });
     notify(
@@ -37,7 +38,7 @@ export function DemoScenarios() {
         </span>
         <ChevronDown size={18} />
       </summary>
-      <div className="scenario-content">
+      <div className="scenario-content"><HelpButton topic="scenarios"/>
         <p>
           {tx(
             "Erzeuge bewusst eine simulierte Abweichung. Alle \u00C4nderungen betreffen nur die virtuelle Growbox.",

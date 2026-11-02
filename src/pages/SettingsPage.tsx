@@ -1,3 +1,7 @@
+import { LANGUAGE_FILTER_LABEL } from "../i18n/coverage";
+import { LANGUAGES } from "../i18n/languages";
+import { HelpButton } from "../components/HelpButton";
+import { StepButtons } from "../components/StepButtons";
 import { useState } from "react";
 import {
   Accessibility,
@@ -19,7 +23,10 @@ import type { Language, WarningConfig } from "../experience/model";
 export function LanguageSelect({ id = "header-language" }: { id?: string }) {
   const tx = useT();
   const { experience, setPreferences } = useExperience();
+  const [query,setQuery] = useState('');
+  const searchable = id === "settings-language";
   return (
+    <div className="language-picker">{searchable&&<label htmlFor={`${id}-search`}>{LANGUAGE_FILTER_LABEL[experience.preferences.language]}<input type="search" id={`${id}-search`} value={query} onChange={e=>setQuery(e.target.value)} /></label>}
     <label className="language-select" htmlFor={id}>
       <Globe2 size={16} />
       <span className="sr-only">{tx("Sprache")}</span>
@@ -30,11 +37,9 @@ export function LanguageSelect({ id = "header-language" }: { id?: string }) {
           setPreferences({ language: event.target.value as Language })
         }
       >
-        <option value="de">Deutsch</option>
-        <option value="en">English</option>
-        <option value="fa">فارسی</option>
+        {LANGUAGES.filter(item=>item.code===experience.preferences.language || !query || `${item.code} ${item.name}`.toLocaleLowerCase().includes(query.toLocaleLowerCase())).map(item=><option key={item.code} value={item.code}>{item.name}</option>)}
       </select>
-    </label>
+    </label></div>
   );
 }
 export function SettingsPage() {
@@ -90,12 +95,13 @@ export function SettingsPage() {
             <h2>{tx("Sprache & Leserichtung")}</h2>
             <p>
               {tx(
-                "Deutsch, Englisch oder Persisch. Persisch wird von rechts nach links dargestellt.",
+                "20 Sprachen stehen zur Auswahl. Arabisch und Persisch werden von rechts nach links dargestellt.",
               )}
             </p>
           </div>
         </div>
         <LanguageSelect id="settings-language" />
+        <HelpButton topic="accessibility" />
       </section>
       <section className="panel">
         <div className="settings-section-heading">
@@ -242,7 +248,7 @@ export function SettingsPage() {
             <Bell size={22} />
           </span>
           <div>
-            <h2>{tx("Benachrichtigungen & Wasser")}</h2>
+            <h2>{tx("Benachrichtigungen & Wasser")}</h2><HelpButton topic="notifications"/>
             <p>
               {tx(
                 "Interne Meldungen für simulierte Ereignisse. Es werden keine Browser-Berechtigungen angefordert.",
@@ -290,6 +296,7 @@ export function SettingsPage() {
             aria-invalid={!intervalValid}
           />
         </div>
+        <div className="preference-steppers"><StepButtons label="Wasserwechselintervall in Demo-Tagen" value={Number(interval)} min={1} max={30} step={1} onChange={value => setIntervalDraft(String(value))} /></div>
         {!intervalValid && (
           <p className="field-error">
             {tx("Bitte gib eine ganze Zahl von 1 bis 30 Tagen ein.")}
@@ -304,7 +311,7 @@ export function SettingsPage() {
         </button>
       </section>
       <section className="panel warning-settings">
-        <h2>{tx("Warnschwellen im Demo-Modell")}</h2>
+        <h2>{tx("Warnschwellen im Demo-Modell")}</h2><HelpButton topic="warning"/>
         <p>
           {tx(
             "Gelb beginnt außerhalb des vorgesehenen Bereichs. Rot beginnt ab der hier eingestellten zusätzlichen Abweichung. Diese Schwellen sind keine Hardware-Sicherheitsgrenzen.",
@@ -363,8 +370,8 @@ export function SettingsPage() {
               },
             ] as const
           ).map((field) => (
-            <label key={field.key} htmlFor={`warning-${field.key}`}>
-              <span>{tx(field.label)}</span>
+            <div key={field.key} className="warning-field">
+              <label htmlFor={`warning-${field.key}`}>{tx(field.label)}</label>
               <input
                 id={`warning-${field.key}`}
                 type="number"
@@ -383,10 +390,11 @@ export function SettingsPage() {
                   })
                 }
               />
+              <StepButtons label={field.label} value={warning[field.key]} min={field.min} max={field.max} step={field.step} onChange={value => setWarning(previous => ({...previous, [field.key]: value}))} />
               <small>
                 {field.min}–{field.max}
               </small>
-            </label>
+            </div>
           ))}
         </div>
         {!warningValid && (

@@ -16,6 +16,9 @@ import {
   Settings2,
   Volume2,
 } from "lucide-react";
+import { translationNotice } from "../i18n/coverage";
+import { BoxContext, GrowboxManager } from "./GrowboxManager";
+import { HelpButton } from "./HelpButton";
 import { Logo } from "./ui";
 import { useGrowbox } from "../state/GrowboxProvider";
 import { cultureDay, demoTime, formatTime } from "../simulation/engine";
@@ -26,6 +29,7 @@ import { NotificationCenter } from "../experience/Monitoring";
 import { ChampGuide } from "../experience/Champ";
 import { SpeechPanel, useSpeech } from "../experience/Speech";
 import { useExperience } from "../experience/ExperienceProvider";
+import { VoiceAssistant } from "../experience/VoiceAssistant";
 const NAV = [
   { path: "/", name: "Dashboard", icon: LayoutDashboard },
   { path: "/pilze", name: "Pilzbibliothek", icon: BookOpen },
@@ -67,7 +71,7 @@ export function Layout() {
   const tx = useT();
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const { state } = useGrowbox();
+  const { state, selectedBox } = useGrowbox();
   const { experience, setPreferences } = useExperience();
   const speech = useSpeech();
   const activeLocale = currentLocale();
@@ -85,7 +89,7 @@ export function Layout() {
   useEffect(() => {
     setOpen(false);
     window.scrollTo({ top: 0, behavior: "instant" });
-    speech.stop();
+    if (speech.status !== "idle") speech.stop();
   }, [location.pathname]);
   useEffect(() => {
     if (location.hash) {
@@ -247,7 +251,10 @@ export function Layout() {
               <ArrowUpRight size={14} />
             </Link>
           </div>
-          <Outlet />
+          {experience.preferences.language!=="de"&&<p className="translation-notice" role="status" lang={experience.preferences.language}>{translationNotice[experience.preferences.language]}</p>}
+          <BoxContext />
+          <div className="page-help"><HelpButton topic={location.pathname.startsWith("/pilze")?"library":location.pathname.startsWith("/einstellungen")?"accessibility":location.pathname.includes("klima")?"chart":location.pathname.startsWith("/wachstum")?"growth":"settings"}/></div>
+          {!selectedBox.hasData && !["/einstellungen","/hilfe","/projekt"].includes(location.pathname) && !location.pathname.startsWith("/pilze") ? <div className="page"><GrowboxManager/><p role="status">{tx("Keine Messdaten vorhanden")}</p></div> : <Outlet key={selectedBox.id} />}
         </main>
         <footer className="app-footer">
           <span>
@@ -284,6 +291,7 @@ export function Layout() {
       )}
       <ChampGuide />
       <SpeechPanel />
+      <VoiceAssistant />
     </div>
   );
 }

@@ -19,7 +19,7 @@ import { InfoNote, Modal } from "./ui";
 
 export function TechnologySummary() {
   const tx = useT();
-  const { state } = useGrowbox();
+  const { state, canControl } = useGrowbox();
   const { experience } = useExperience();
   const devices = deviceState(state);
   const active =
@@ -64,7 +64,7 @@ export function TechnologySummary() {
     >
       <div className="section-title">
         <h2>{tx("Technik im Überblick")}</h2>
-        <span className="muted-tag">{tx("Simulierte Geräte")}</span>
+        <span className="muted-tag">{tx(canControl?"Simulierte Geräte":"Offline: zuletzt bekannter Gerätestatus")}</span>
       </div>
       <div className="technology-grid">
         {cards.map(({ name, value, icon: Icon, target }) => (
@@ -85,7 +85,7 @@ export function TechnologySummary() {
 }
 export function ClimateHints() {
   const tx = useT();
-  const { state, dispatch, notify } = useGrowbox();
+  const { state, dispatch, notify, canControl } = useGrowbox();
   const { experience } = useExperience();
   const [report, setReport] = useState(false);
   const devices = deviceState(state);
@@ -194,7 +194,7 @@ export function ClimateHints() {
       )}
       {devices.automatic && (
         <div className="auto-action">
-          <strong>{tx("Aktuelle automatische Regelaktion")}</strong>
+          <strong>{tx(canControl ? "Aktuelle automatische Regelaktion" : "Offline: zuletzt bekannter Gerätestatus")}</strong>
           <p>
             {tx("Frischluft")}: {tx(FAN_LABELS[devices.freshAir])} ·{" "}
             {tx("Wasserförderung")}:{" "}
@@ -245,7 +245,7 @@ export function ClimateHints() {
       )}
       <button
         className="button button-outline"
-        onClick={(e) => {
+        disabled={!canControl} onClick={(e) => {
           e.currentTarget.focus();
           setReport(true);
         }}

@@ -146,3 +146,21 @@ describe("Champ und Einstellungen", () => {
     expect(screen.getAllByRole("button", { name: "Gelesen" })).toHaveLength(2);
   });
 });
+
+it('bedient Intervall und alle Warnschwellen schrittweise ohne vorzeitiges Speichern', async()=>{
+  const exp=initialExperience(createInitialState()); exp.preferences.welcomeAnswered=true;
+  localStorage.setItem(EXPERIENCE_KEY,JSON.stringify(exp));
+  const user=setup('/einstellungen');
+  const interval=screen.getByRole('spinbutton',{name:'Wasserwechselintervall in Demo-Tagen'});
+  const initial=Number((interval as HTMLInputElement).value);
+  await user.click(screen.getByRole('button',{name:'Wasserwechselintervall in Demo-Tagen: Erhöhen (1 )'}));
+  expect(interval).toHaveValue(initial+1);
+  expect(JSON.parse(localStorage.getItem(EXPERIENCE_KEY)!).preferences.waterIntervalDays).toBe(initial);
+  await user.click(screen.getByRole('button',{name:'Intervall speichern'}));
+  expect(JSON.parse(localStorage.getItem(EXPERIENCE_KEY)!).preferences.waterIntervalDays).toBe(initial+1);
+  for(const [label,step] of [['Starke Temperaturabweichung ab (°C)',.5],['Starke Feuchteabweichung ab (Prozentpunkte)',1],['CO₂-Hinweisgrenze (ppm)',50],['Starke CO₂-Abweichung über der Grenze (ppm)',50]] as const){
+    const input=screen.getByRole('spinbutton',{name:label}); const value=Number((input as HTMLInputElement).value);
+    await user.click(screen.getByRole('button',{name:`${label}: Erhöhen (${step} )`})); expect(input).toHaveValue(value+step);
+    await user.click(screen.getByRole('button',{name:`${label}: Verringern (${step} )`})); expect(input).toHaveValue(value);
+  }
+});

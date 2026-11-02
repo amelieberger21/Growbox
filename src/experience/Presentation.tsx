@@ -1,3 +1,4 @@
+import { StepButtons } from "../components/StepButtons";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -13,10 +14,10 @@ import { requestChampTour } from "./Champ";
 import { formatNumber } from "../simulation/engine";
 export function PresentationTools() {
   const tx = useT();
-  const { state, dispatch, notify } = useGrowbox();
+  const { state, dispatch, notify, canControl } = useGrowbox();
   const { experience, waterAction, resetDemo } = useExperience();
   const [reset, setReset] = useState(false);
-  const enabled = state.cycle?.status === "Läuft";
+  const enabled = canControl && state.cycle?.status === "Läuft";
   const range = experience.assessments.temperature.range;
   return (
     <div className="presentation-tools">
@@ -59,7 +60,7 @@ export function PresentationTools() {
             },
           ] as const
         ).map((item) => (
-          <label key={item.metric}>
+          <div key={item.metric} className="demo-measurement">
             <span>
               {tx(item.label)}
               <strong>
@@ -71,6 +72,7 @@ export function PresentationTools() {
               </strong>
             </span>
             <input
+              aria-label={tx(item.label)}
               type="range"
               min={item.min}
               max={item.max}
@@ -85,10 +87,11 @@ export function PresentationTools() {
                 })
               }
             />
+            <StepButtons label={item.label} value={state.reading[item.metric]} min={item.min} max={item.max} step={item.step} unit={item.unit} disabled={!enabled} onChange={value => dispatch({ type: "SENSOR", metric: item.metric, value })} />
             <small>
               {item.min}–{item.max} {item.unit}
             </small>
-          </label>
+          </div>
         ))}
       </div>
       <div className="scenario-buttons">
@@ -145,31 +148,31 @@ export function PresentationTools() {
         </button>
         <button
           className="button button-outline"
-          onClick={() => waterAction("low")}
+          disabled={!canControl} onClick={() => waterAction("low")}
         >
           {tx("Wassermangel simulieren")}
         </button>
         <button
           className="button button-outline"
-          onClick={() => waterAction("due")}
+          disabled={!canControl} onClick={() => waterAction("due")}
         >
           {tx("Wasserwechsel fällig")}
         </button>
         <button
           className="button button-outline"
-          onClick={() => waterAction("empty")}
+          disabled={!canControl} onClick={() => waterAction("empty")}
         >
           {tx("Leeren Tank simulieren")}
         </button>
         <button
           className="button button-outline"
-          onClick={() => waterAction("unavailable")}
+          disabled={!canControl} onClick={() => waterAction("unavailable")}
         >
           {tx("Füllstandsensor-Ausfall simulieren")}
         </button>
         <button
           className="button button-outline"
-          onClick={() => waterAction("restored")}
+          disabled={!canControl} onClick={() => waterAction("restored")}
         >
           {tx("Füllstandsensor wiederherstellen")}
         </button>

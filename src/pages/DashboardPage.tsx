@@ -38,7 +38,7 @@ import {
 } from "../components/Telemetry";
 export function DashboardPage() {
   const tx = useT();
-  const { state, dispatch } = useGrowbox();
+  const { state, dispatch, canControl } = useGrowbox();
   const entry = state.cycle ? getEntry(state.cycle.slug) : undefined;
   const progress = percent(state);
   const phase = PHASES[phaseAt(progress)];
@@ -181,7 +181,7 @@ export function DashboardPage() {
                 state.cycle?.status === "Pausiert") && (
                 <button
                   className="hero-pause"
-                  onClick={() =>
+                  disabled={!canControl} onClick={() =>
                     dispatch({
                       type: "STATUS",
                       status:

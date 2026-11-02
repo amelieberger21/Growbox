@@ -60,7 +60,7 @@ export function GrowthPage() {
 }
 function GrowthContent() {
   const tx = useT();
-  const { state, dispatch, notify } = useGrowbox();
+  const { state, dispatch, notify, canControl } = useGrowbox();
   const progress = percent(state),
     active = phaseAt(progress);
   const [selected, setSelected] = useState<number | null>(null);
@@ -265,7 +265,7 @@ function GrowthContent() {
         <div className="growth-actions">
           <button
             className="button button-primary"
-            disabled={state.cycle.status !== "Läuft"}
+            disabled={!canControl || state.cycle.status !== "Läuft"}
             onClick={() => {
               dispatch({ type: "NEXT_PHASE" });
               notify(

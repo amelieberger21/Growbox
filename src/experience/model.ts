@@ -12,7 +12,8 @@ import {
   profileSettings,
 } from "../simulation/engine";
 
-export type Language = "de" | "en" | "fa";
+export type { Language } from "../i18n/languages";
+import type { Language } from "../i18n/languages";
 export type Level = "optimal" | "warning" | "critical" | "unknown";
 export type Metric = "temperature" | "humidity" | "co2";
 export type Range = readonly [number, number];

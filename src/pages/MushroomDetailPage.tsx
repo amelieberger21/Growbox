@@ -33,7 +33,7 @@ export function MushroomDetailPage() {
   const tx = useT();
   const { slug = "" } = useParams();
   const entry = getEntry(slug);
-  const { state, dispatch, notify } = useGrowbox();
+  const { state, dispatch, notify, canControl } = useGrowbox();
   const [preview, setPreview] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -106,7 +106,7 @@ export function MushroomDetailPage() {
             ),
           )}
           <button
-            className="button button-primary button-wide"
+            disabled={!canControl} className="button button-primary button-wide"
             onClick={(event) => {
               event.currentTarget.focus();
               setPreview(true);

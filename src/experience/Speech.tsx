@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { useExperience } from "./ExperienceProvider";
+import { localeFor } from "../i18n/languages";
 import { useT } from "../i18n";
 import { Pause, Play, RotateCcw, Square, Volume2, X } from "lucide-react";
 
@@ -112,11 +113,7 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       const utterance = new SpeechSynthesisUtterance(block.text);
       utteranceRef.current = utterance;
       utterance.lang =
-        preferences.language === "fa"
-          ? "fa-IR"
-          : preferences.language === "en"
-            ? "en-GB"
-            : "de-DE";
+        localeFor(preferences.language);
       utterance.rate = preferences.speechRate;
       const voices = window.speechSynthesis.getVoices();
       const voice =
@@ -124,6 +121,7 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
           (v) => v.lang.startsWith(preferences.language) && v.localService,
         ) ?? voices.find((v) => v.lang.startsWith(preferences.language));
       if (voice) utterance.voice = voice;
+      else if (voices.length) { setError("Für diese Sprache ist keine passende Stimme verfügbar. Der Text bleibt lesbar."); setStatus("idle"); return; }
       utterance.onstart = () => {
         if (generation.current === token) setStatus("speaking");
       };

@@ -15,6 +15,7 @@ import {
   type ExperienceState,
   type Preferences,
 } from "./model";
+import { isLanguage, isRtl } from "../i18n/languages";
 import i18n from "../i18n";
 
 export function validExperience(value: unknown): value is ExperienceState {
@@ -24,7 +25,7 @@ export function validExperience(value: unknown): value is ExperienceState {
   if (
     data.version !== 1 ||
     !p ||
-    !["de", "en", "fa"].includes(p.language) ||
+    !isLanguage(p.language) ||
     ![1, 1.15, 1.3].includes(p.fontScale) ||
     !Number.isFinite(p.speechRate) ||
     p.speechRate < 0.6 ||
@@ -138,8 +139,8 @@ interface ExperienceContext {
 }
 const Context = createContext<ExperienceContext | null>(null);
 export function ExperienceProvider({ children }: { children: ReactNode }) {
-  const { state, dispatch, notify } = useGrowbox();
-  const [experience, setExperience] = useState<ExperienceState>(() => {
+  const { state, dispatch, notify, selectedBox, canControl } = useGrowbox();
+  const [initial] = useState<ExperienceState>(() => {
     try {
       const raw = localStorage.getItem(EXPERIENCE_KEY);
       if (raw) {
@@ -159,10 +160,29 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
     }
     return initialExperience(state);
   });
+  const [globalPreferences, setGlobalPreferences] = useState(initial.preferences);
+  const [scoped, setScoped] = useState<Record<string, ExperienceState>>(() => {
+    try {
+      const raw = JSON.parse(localStorage.getItem('mycobox.experience.boxes.v1') ?? '{}');
+      const valid = Object.fromEntries(Object.entries(raw).filter(([,value])=>validExperience(value))) as Record<string,ExperienceState>;
+      if (!valid[selectedBox.id]) valid[selectedBox.id] = initial;
+      return valid;
+    } catch { return {[selectedBox.id]:initial}; }
+  });
+  const local = scoped[selectedBox.id] ?? initialExperience(state);
+  const experience: ExperienceState = {...local, preferences:{...globalPreferences,
+    warning:local.preferences.warning, waterIntervalDays:local.preferences.waterIntervalDays,
+    notificationsEnabled:local.preferences.notificationsEnabled}};
+  const setExperience = (change: (previous:ExperienceState)=>ExperienceState) => {
+    setScoped(previous=>({...previous,[selectedBox.id]:change({...previous[selectedBox.id] ?? initialExperience(state),preferences:experience.preferences})}));
+  };
   useEffect(() => {
-    setExperience((previous) => updateExperience(previous, state));
+    try { localStorage.setItem('mycobox.experience.boxes.v1',JSON.stringify(scoped)); } catch { /* memory fallback */ }
+  },[scoped]);
+  useEffect(() => {
+    setExperience((previous) => canControl ? updateExperience(previous, state) : {...previous,assessments:Object.fromEntries(['temperature','humidity','co2'].map(metric=>[metric,{level:'unknown',direction:'unknown',basis:'unknown',range:null}])) as ExperienceState['assessments']});
   }, [
-    state,
+    state, selectedBox.id, canControl,
     experience.preferences.warning,
     experience.preferences.waterIntervalDays,
     experience.preferences.notificationsEnabled,
@@ -176,9 +196,9 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
   }, [experience]);
   useEffect(() => {
     const p = experience.preferences;
-    void i18n.changeLanguage(p.language);
+    if (i18n.language !== p.language) void i18n.changeLanguage(p.language);
     document.documentElement.lang = p.language;
-    document.documentElement.dir = p.language === "fa" ? "rtl" : "ltr";
+    document.documentElement.dir = isRtl(p.language) ? "rtl" : "ltr";
     document.documentElement.dataset.contrast = p.highContrast
       ? "high"
       : "normal";
@@ -187,12 +207,12 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
       "--user-font-scale",
       String(p.fontScale),
     );
-  }, [experience.preferences]);
-  const setPreferences = (patch: Partial<Preferences>) =>
-    setExperience((previous) => ({
-      ...previous,
-      preferences: { ...previous.preferences, ...patch },
-    }));
+  }, [experience.preferences.language, experience.preferences.fontScale, experience.preferences.highContrast, experience.preferences.easyLanguage]);
+  const setPreferences = (patch: Partial<Preferences>) => {
+    const {warning, waterIntervalDays, notificationsEnabled, ...global} = patch;
+    setGlobalPreferences(previous=>({...previous,...global}));
+    setExperience(previous=>({...previous, preferences:{...previous.preferences,...patch}}));
+  };
   const markRead = (id?: number) =>
     setExperience((previous) => ({
       ...previous,
@@ -210,6 +230,7 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
       | "restored"
       | "due",
   ) => {
+    if (!canControl) return;
     dispatch({
       type: "WATER",
       action,
