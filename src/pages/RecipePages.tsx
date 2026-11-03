@@ -1,3 +1,4 @@
+import { SafetyNotice } from "../components/MushroomFacts";
 import { Link, useLocation, useParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -87,20 +88,7 @@ function RecipeNotice({ entry }: { entry: MushroomEntry }) {
   return (
     <div className="recipe-notices">
       <InfoNote warning>{tx(RECIPE_NOTICE)}</InfoNote>
-      {entry.speciesId === "stock" && (
-        <InfoNote warning>
-          {tx(
-            "Stockschwämmchen: Verwechslungsgefahr mit dem giftigen Gifthäubling. Verwende für diese Ideen nur sicher zugeordnete Kulturware; diese Website bestimmt keine gesammelten Pilze.",
-          )}
-        </InfoNote>
-      )}
-      {entry.speciesId === "enoki" && (
-        <InfoNote>
-          {tx(
-            "Enoki vollständig durchgaren. Nicht roh essen oder roh als Garnitur auf eine fertige Suppe geben. Beachte die Hinweise auf der Packung.",
-          )}
-        </InfoNote>
-      )}
+      <SafetyNotice entry={entry}/>
     </div>
   );
 }

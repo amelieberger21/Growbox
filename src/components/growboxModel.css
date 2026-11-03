@@ -1,0 +1,72 @@
+.growbox-model { margin-block: 24px; }
+.growbox-model h2 { display: flex; align-items: center; gap: 12px; }
+.growbox-model-stage { position: relative; background: #fff; color: #19352a; border-radius: 14px; overflow: hidden; }
+.growbox-model-canvas { height: clamp(320px, 48vw, 560px); }
+.growbox-model-canvas canvas { display: block; }
+.growbox-model-markers { position: absolute; inset: 0; pointer-events: none; }
+.growbox-model-markers button {
+  position: absolute; transform: translate(-50%, -50%); pointer-events: auto;
+  width: 44px; height: 44px; border: 2px solid white; border-radius: 50%;
+  background: #245740; color: white; font-weight: 700; cursor: pointer;
+}
+.growbox-model-markers button[aria-pressed="true"] { background: #fff; color: #163f2e; border-color: #245740; }
+.growbox-model-status { position: absolute; inset: 24px; pointer-events: none; color: #19352a; }
+.growbox-model-info {
+  position: absolute; inset: auto 12px 12px auto; width: min(360px, calc(100% - 24px));
+  max-height: 55%; overflow: auto; padding: 16px; border-radius: 12px;
+  background: #f8fbf5; color: #19352a; box-shadow: 0 4px 18px #0005;
+}
+.growbox-model-info p { color: inherit; margin-block: 8px; }
+.growbox-model-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+
+/* Both readings belong to the same physical sensor. Offset their buttons. */
+.growbox-model-markers button:nth-child(1) { margin-left: -24px; }
+.growbox-model-markers button:nth-child(4) { margin-left: 24px; }
+
+.growbox-sensor-reference {
+  display: block;
+  width: min(100%, 140px);
+  max-height: 110px;
+  object-fit: contain;
+  margin-block: 8px;
+}
+
+.growbox-model-canvas { position: relative; }
+.growbox-display-layer { position: absolute; inset: 0; pointer-events: none; }
+.growbox-display-frame { display: block; border: 0; background: white; pointer-events: auto; }
+.growbox-model-markers button:nth-child(8) { transform: translate(4px, calc(-100% - 4px)); }
+
+.growbox-color-picker {
+  position: absolute;
+  inset: 12px 12px auto auto;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #87978a;
+  border-radius: 30px;
+}
+.growbox-color-picker button {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #67766c;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.growbox-color-picker button[aria-pressed="true"] {
+  outline: 2px solid #163f2e;
+  outline-offset: 2px;
+}
+.growbox-color-picker button:focus-visible {
+  outline: 3px solid #935900;
+  outline-offset: 3px;
+}
+
+.growbox-cultivation-controls {
+  margin-block: 16px;
+  padding: 16px;
+  border: 1px solid #87978a;
+  border-radius: 12px;
+}
+.growbox-cultivation-controls p { margin-block: 10px; }

@@ -13,6 +13,7 @@ import "@fontsource/manrope/latin-700.css";
 import "@fontsource/manrope/latin-800.css";
 import "./styles/index.css";
 import "./styles/experience.css";
+import "./styles/refinements.css";
 import "@fontsource/vazirmatn/arabic-400.css";
 import "@fontsource/vazirmatn/arabic-600.css";
 import { ExperienceProvider } from "./experience/ExperienceProvider";

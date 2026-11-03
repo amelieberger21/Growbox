@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { fleetCommand, boxContext, offlineSummary } from './fleetCommands';
 import { HelpButton } from '../components/HelpButton';
 import { tr } from '../i18n';
@@ -13,7 +14,7 @@ import { ASSISTANT_LANGUAGES, assistantText, initialAssistantLanguage, isAssista
 type Message = { role: 'user' | 'assistant'; content: string };
 type Recognition = { lang: string; continuous: boolean; interimResults: boolean; onresult: ((e: { results: { [n: number]: { [n: number]: { transcript: string } } } }) => void) | null; onerror: ((e: {error: string}) => void) | null; onend: (() => void) | null; start: () => void; abort: () => void };
 type VoiceWindow = Window & { SpeechRecognition?: new () => Recognition; webkitSpeechRecognition?: new () => Recognition };
-export function VoiceAssistant() {
+export function VoiceAssistant({launchTarget=null}:{launchTarget?:HTMLElement|null}={}) {
   const { state, boxes, selectedBox, requestBoxSelection, pendingBoxId } = useGrowbox(); const reader = useSpeech(); const navigate = useNavigate();
   const [open, setOpen] = useState(false); const [configured, setConfigured] = useState(false);
   const [status, setStatus] = useState<AssistantCopyKey>('ready'); const [error, setError] = useState('');
@@ -183,7 +184,7 @@ export function VoiceAssistant() {
   useEffect(() => { if (open) panel.current?.focus(); }, [open]);
   useEffect(() => { const list = messageList.current; if (list) list.scrollTop = list.scrollHeight; }, [messages]);
   return <>
-    <button ref={trigger} className="voice-launch" onClick={activate} aria-expanded={open} aria-controls="voice-assistant" aria-keyshortcuts="F F"><Mic size={20} /><span>{t('launch')} <small>{t('shortcut')}</small></span></button>
+    {launchTarget ? createPortal(<button ref={trigger} className="voice-launch" onClick={activate} aria-expanded={open} aria-controls="voice-assistant" aria-keyshortcuts="F F"><Mic size={20} /><span>{t('launch')} <small>{t('shortcut')}</small></span></button>,launchTarget) : <button ref={trigger} className="voice-launch" onClick={activate} aria-expanded={open} aria-controls="voice-assistant" aria-keyshortcuts="F F"><Mic size={20} /><span>{t('launch')} <small>{t('shortcut')}</small></span></button>}
     {open && <section ref={panel} id="voice-assistant" className="voice-assistant" role="region" aria-label={language === 'de-DE' ? "Champ Sprachassistent" : t('title')} lang={language} tabIndex={-1}>
       <header><div><strong>{t('title')}</strong><small>{t(configured ? 'connected' : 'local')}</small></div><button className="icon-button" onClick={close} aria-label={t('close')}><X /></button></header>
       <HelpButton topic="assistant"/>

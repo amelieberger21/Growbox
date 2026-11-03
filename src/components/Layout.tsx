@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { FontSizeControl } from "./FontSizeControl";
+import { useEffect, useState, useRef } from "react";
 import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
 import {
   ArrowUpRight,
@@ -70,6 +71,12 @@ function SystemClock() {
 export function Layout() {
   const tx = useT();
   const [open, setOpen] = useState(false);
+  const [assistantHost,setAssistantHost]=useState<HTMLDivElement|null>(null);
+  const [focusMode,setFocusMode]=useState(false);
+  const menuRef=useRef<HTMLButtonElement>(null);
+  const navRef=useRef<HTMLAnchorElement>(null);
+  const hideNavigation=()=>{setOpen(false);setFocusMode(true);queueMicrotask(()=>menuRef.current?.focus());};
+  const showNavigation=()=>{setFocusMode(false);setOpen(true);queueMicrotask(()=>navRef.current?.focus());};
   const location = useLocation();
   const { state, selectedBox } = useGrowbox();
   const { experience, setPreferences } = useExperience();
@@ -114,7 +121,7 @@ export function Layout() {
     return () => window.removeEventListener("keydown", close);
   }, []);
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${focusMode?"focus-mode":""}`}>
       <a className="skip-link" href="#main-content">
         {tx("Zum Inhalt springen")}
       </a>
@@ -126,10 +133,11 @@ export function Layout() {
         />
       )}
       <aside
-        className={`sidebar ${open ? "open" : ""}`}
+        id="main-navigation" className={`sidebar ${open ? "open" : ""}`} inert={focusMode}
         aria-label={tx("Hauptnavigation")}
       >
-        <Link to="/" aria-label={tx("MycoBox Dashboard")}>
+        <button type="button" className="sidebar-hide button button-outline" onClick={hideNavigation}><X aria-hidden="true"/>{tx("Navigation ausblenden")}</button>
+        <Link ref={navRef} to="/" aria-label={tx("MycoBox Dashboard")}>
           <Logo />
         </Link>
         <p className="brand-tagline">{tx("Natürlich wachsen.")}</p>
@@ -194,12 +202,12 @@ export function Layout() {
           <div className="header-left">
             <div className="breadcrumb">
               <button
-                className="mobile-menu icon-button"
-                aria-label={tx("Navigationsmenü öffnen")}
+                ref={menuRef} className="mobile-menu icon-button"
+                aria-label={tx("Menü öffnen")} aria-controls="main-navigation"
                 aria-expanded={open}
-                onClick={() => setOpen(!open)}
+                onClick={showNavigation}
               >
-                <Menu size={22} />
+                <Menu size={22} aria-hidden="true"/><span className="menu-open-text">{tx("Menü öffnen")}</span>
               </button>
               <span className="breadcrumb-root">{tx("Mein Pilzlabor")}</span>
               <ChevronRight size={14} />
@@ -208,6 +216,7 @@ export function Layout() {
             <SystemClock />
           </div>
           <div className="topbar-right">
+            <FontSizeControl compact />
             <LanguageSelect />
             <button
               className={`icon-button reader-trigger ${experience.preferences.readerEnabled ? "active" : ""}`}
@@ -253,7 +262,8 @@ export function Layout() {
           </div>
           {experience.preferences.language!=="de"&&<p className="translation-notice" role="status" lang={experience.preferences.language}>{translationNotice[experience.preferences.language]}</p>}
           <BoxContext />
-          <div className="page-help"><HelpButton topic={location.pathname.startsWith("/pilze")?"library":location.pathname.startsWith("/einstellungen")?"accessibility":location.pathname.includes("klima")?"chart":location.pathname.startsWith("/wachstum")?"growth":"settings"}/></div>
+          <div className="main-tools"><div className="page-help"><HelpButton topic={location.pathname.startsWith("/pilze")?"library":location.pathname.startsWith("/einstellungen")?"accessibility":location.pathname.includes("klima")?"chart":location.pathname.startsWith("/wachstum")?"growth":"settings"}/></div>
+          <div className="champ-entry" ref={setAssistantHost}/></div>
           {!selectedBox.hasData && !["/einstellungen","/hilfe","/projekt"].includes(location.pathname) && !location.pathname.startsWith("/pilze") ? <div className="page"><GrowboxManager/><p role="status">{tx("Keine Messdaten vorhanden")}</p></div> : <Outlet key={selectedBox.id} />}
         </main>
         <footer className="app-footer">
@@ -291,7 +301,7 @@ export function Layout() {
       )}
       <ChampGuide />
       <SpeechPanel />
-      <VoiceAssistant />
+      <VoiceAssistant launchTarget={assistantHost} />
     </div>
   );
 }

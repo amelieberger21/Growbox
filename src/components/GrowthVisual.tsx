@@ -46,27 +46,40 @@ export function PhaseVisual({
           className="phase-substrate"
           aria-hidden="true"
         >
-          <rect x="15" y="15" width="370" height="220" rx="25" fill="#e9ede0" />
-          <path
-            d="M55 183 Q200 158 345 183 L337 223 Q200 244 63 223Z"
-            fill="#9b8a6a"
-          />
-          <ellipse cx="200" cy="181" rx="145" ry="19" fill="#b4a480" />
+          <rect width="400" height="250" fill="#eef2eb" />
+          <ellipse cx="205" cy="231" rx="171" ry="9" fill="#cbd5cb" />
+          {/* Front elevation of the prototype, with its top screen and side tank. */}
+          <rect x="243" y="48" width="15" height="20" fill="#394641" />
+          <rect x="224" y="65" width="53" height="5" rx="2" fill="#394641" />
+          <rect x="196" y="12" width="110" height="41" rx="4" fill="#26332e" />
+          <rect x="202" y="17" width="98" height="31" rx="2" fill="#465952" />
+          <path d="M32 76L54 68H355L370 81V225H32Z" fill="#26332e" />
+          <rect x="40" y="83" width="320" height="132" rx="3" fill="#d9e4da" />
+          <path d="M43 203H357M43 209H357" stroke="#6e8275" strokeWidth="2" />
+          <rect x="75" y="90" width="164" height="5" rx="2" fill="#fff9db" />
+          <rect x="300" y="84" width="7" height="130" fill="#40574c" />
+          <path d="M332 151V119Q332 108 321 108H286" fill="none" stroke="#63796e" strokeWidth="6" />
+          <rect x="315" y="143" width="36" height="63" rx="4" fill="#b8d6d1" stroke="#69877c" />
+          <path d="M318 178H348V202H318Z" fill="#73b5c7" />
+          <rect x="355" y="125" width="7" height="48" rx="3" fill="#14251e" />
+          <path d="M52 181H286L279 211H60Z" fill="#a5c5b7" stroke="#607f70" />
+          <path d="M57 183H281L276 207H63Z" fill="#8c7658" />
+          <path d="M52 181L66 174H277L286 181Z" fill="#b6a27c" />
           {Array.from({ length: 35 }, (_, i) => (
             <circle
               key={i}
-              cx={67 + ((i * 47) % 264)}
-              cy={174 + ((i * 13) % 48)}
+              cx={67 + ((i * 47) % 204)}
+              cy={181 + ((i * 13) % 22)}
               r={(i % 3) + 1}
               fill="#756647"
               opacity=".55"
             />
           ))}
           {phase > 0 &&
-            Array.from({ length: phase === 1 ? 11 : 20 }, (_, i) => (
+            Array.from({ length: phase === 1 ? 10 : 16 }, (_, i) => (
               <path
                 key={i}
-                d={`M${80 + i * 12} 183q20 ${i % 2 ? -18 : 18} 35 24m-19-10l-9 10m15-3l12-9`}
+                d={`M${67 + i * 12} 186q12 ${i % 2 ? -8 : 8} 22 15m-10-7l-5 6`}
                 stroke="#f8f4e6"
                 strokeWidth="2"
                 fill="none"
@@ -77,7 +90,7 @@ export function PhaseVisual({
             Array.from({ length: 7 }, (_, i) => (
               <g
                 key={i}
-                transform={`translate(${121 + i * 26} ${169 - (i % 3) * 5})`}
+                transform={`translate(${76 + i * 31} ${178 - (i % 3) * 4})`}
               >
                 <path d="M-3 0v-17h6V0" fill="#e8ddbf" />
                 {entry.illustration === "lion" ? (
@@ -92,7 +105,7 @@ export function PhaseVisual({
             ))}
           {phase === 0 && (
             <path
-              d="M177 124l23-32l23 32m-23-31v65"
+              d="M151 145l16-21l16 21m-16-20v43"
               stroke="#70835c"
               strokeWidth="3"
               fill="none"

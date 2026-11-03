@@ -1,3 +1,4 @@
+import { GrowboxModel } from "../components/GrowboxModel";
 import { TechnologySummary } from "../components/Technology";
 import { useT } from "../i18n";
 import {
@@ -57,6 +58,7 @@ export function DashboardPage() {
         }
       />
       <Alerts />
+      <GrowboxModel />
       <div className="dashboard-hero-grid">
         <section className="culture-hero">
           <div className="hero-contours" aria-hidden="true">
@@ -75,6 +77,14 @@ export function DashboardPage() {
               )}
             </svg>
           </div>
+          {tx(
+            entry && (
+              <div className="hero-art">
+                <MushroomArt entry={entry} hero />
+                <span>{tx("Bildnachweise im Projekt")}</span>
+              </div>
+            ),
+          )}
           <div className="culture-hero-content">
             <div className="hero-eyebrow">
               <span className="hero-label">
@@ -163,14 +173,6 @@ export function DashboardPage() {
               ),
             )}
           </div>
-          {tx(
-            entry && (
-              <div className="hero-art">
-                <MushroomArt entry={entry} hero />
-                <span>{tx("Fotografie · Bildnachweise im Projekt")}</span>
-              </div>
-            ),
-          )}
           <div className="hero-bottom">
             <span>
               <Check size={14} />

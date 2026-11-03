@@ -8,7 +8,7 @@ import {
   notificationText,
 } from "../experience/Monitoring";
 import { useT } from "../i18n";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Area,
   CartesianGrid,
@@ -27,7 +27,8 @@ import {
   Droplets,
   Table2,
   Thermometer,
-  Wind,
+  Gauge,
+  X,
   TriangleAlert,
 } from "lucide-react";
 import { useGrowbox } from "../state/GrowboxProvider";
@@ -65,7 +66,7 @@ export function SensorCards() {
       key: "co2",
       name: "CO₂-Gehalt",
       unit: "ppm",
-      icon: Wind,
+      icon: Gauge,
       color: "sage",
       digits: 0,
     },
@@ -131,14 +132,19 @@ export function SensorCards() {
 }
 export function Alerts() {
   const tx = useT();
+  const {selectedBox}=useGrowbox();
+  const [hidden,setHidden]=useState<string[]>([]);
   const { experience } = useExperience();
   const active = (["temperature", "humidity", "co2"] as const).filter(
     (metric) =>
       ["warning", "critical"].includes(experience.assessments[metric].level),
   );
+  const issueKey=(metric: typeof active[number])=>`${selectedBox.id}:${metric}:${experience.assessments[metric].level}:${experience.assessments[metric].direction}`;
+  const signature=active.map(issueKey).join('|');
+  useEffect(()=>{setHidden(previous=>previous.filter(key=>signature.split('|').includes(key)));},[signature]);
   return active.length ? (
     <div className="alert-stack">
-      {active.map((metric) => (
+      {active.filter(metric=>!hidden.includes(issueKey(metric))).map((metric) => (
         <div
           key={metric}
           className={`alert-banner alert-${experience.assessments[metric].level}`}
@@ -158,12 +164,15 @@ export function Alerts() {
             </strong>
             <p>
               {tx(
-                "Simulierte Abweichung. Prüfe die Einstellungen oder stelle im Demo-Bereich den Normalbetrieb wieder her.",
+                metric==='co2'?'Simulierter CO₂-Wert erhöht. Prüfe die Frischluft-Einstellung und den Klimaverlauf. Die tatsächliche Geräteaktion steht unter Luftzirkulation.':'Simulierter Klimawert außerhalb des Vergleichsbereichs. Prüfe Sollwert und Phasenprofil. Das ist kein Nachweis für Schimmel.',
               )}
             </p>
+            <Link className="button button-outline" to={metric==='co2'?'/growbox#air-settings':'/growbox#climate-settings'}>{tx(metric==='co2'?'Frischluft prüfen':'Klimaeinstellungen prüfen')}</Link>
           </div>
+          <button type="button" className="icon-button close-notice" aria-label={`${tx('Meldung schließen')}: ${tx(METRIC_LABELS[metric])}`} onClick={()=>setHidden(previous=>[...previous,issueKey(metric)])}><X aria-hidden="true"/></button>
         </div>
       ))}
+      {hidden.length>0&&<div className="hidden-alerts" role="status"><span>{tx('Hinweis ausgeblendet. Die Abweichung bleibt in den Messwerten sichtbar; Schließen behebt keine Ursache.')}</span><button className="button button-outline" onClick={()=>setHidden([])}>{tx('Hinweise wieder anzeigen')}</button></div>}
     </div>
   ) : null;
 }

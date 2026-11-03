@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { useT } from "../i18n";
 import {
   createContext,
@@ -85,7 +86,7 @@ export function GrowboxProvider({ children }: { children: ReactNode }) {
         role="status"
         aria-live="polite"
       >
-        {tx(message)}
+        <span>{tx(message)}</span>{message&&<button type="button" className="icon-button" aria-label={tx("Hinweis schließen")} onClick={()=>{setMessage("");clearTimeout(timer.current);}}><X aria-hidden="true"/></button>}
       </div>
     </Context.Provider>
   );

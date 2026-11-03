@@ -91,7 +91,6 @@ export function MushroomCard({
     >
       <div className="card-art" style={{ background: entry.background }}>
         <MushroomArt entry={entry} />
-        <span className="art-label">{tx("Fotografie")}</span>
         <span
           className={`difficulty difficulty-${getProfile(entry).difficulty}`}
         >

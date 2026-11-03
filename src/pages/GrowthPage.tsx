@@ -1,3 +1,4 @@
+import { growthLearning } from "../data/growthLearning";
 import { useT } from "../i18n";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -335,11 +336,28 @@ function GrowthContent() {
             </>
           }
         >
+          <nav className="growth-phase-navigation" aria-label={tx("Phasen durchblättern")}>
+            <button type="button" className="button button-outline" disabled={detailIndex === 0}
+              onClick={() => setSelected(detailIndex - 1)}>
+              <ArrowLeft aria-hidden="true" /> {tx("Vorherige Phase")}
+            </button>
+            <span aria-live="polite">{tx("Phase")} {detailIndex + 1} / {PHASES.length} · {tx(phase.short)}</span>
+            <button type="button" className="button button-primary" disabled={detailIndex === PHASES.length - 1}
+              onClick={() => setSelected(detailIndex + 1)}>
+              {tx("Nächste Phase")} <ArrowRight aria-hidden="true" />
+            </button>
+          </nav>
           <PhaseVisual frame={exampleFrame(entry, detailIndex)} />
           <p className="eyebrow">
             {tx("Demo-Tag")} {dayRange(detailIndex)}
           </p>
           <p>{tx(phase.description)}</p>
+          <div className="growth-phase-learning">
+            <section><h3>{tx("Was du beobachten kannst")}</h3><p>{tx(growthLearning[detailIndex].observe)}</p></section>
+            <section><h3>{tx("Praktischer Tipp")}</h3><p>{tx(growthLearning[detailIndex].tip)}</p></section>
+            <section><h3>{tx("Worauf du achten solltest")}</h3><p>{tx(growthLearning[detailIndex].caution)}</p></section>
+          </div>
+          <p><a href="https://smallfarms.cornell.edu/resources/methods-of-commercial-mushroom-cultivation-in-the-northeastern-united-states/2-seven-stages-of-cultivation/" target="_blank" rel="noreferrer">{tx("Fachquelle zu den Anbauphasen")} · Cornell Small Farms</a></p>
           <h3>{tx("Zugehöriges Demo-Profil")}</h3>
           <div className="phase-profile-values">
             <span>

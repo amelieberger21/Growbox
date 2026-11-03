@@ -36,3 +36,7 @@ Alle 15 Bibliothekseinträge haben eine eigene lokale Bildreferenz. Die Fotograf
 - `brauner-champignon-produkt.jpg`: echtes Cremini-Produktfoto von [Blue Apron](https://blog.blueapron.com/guides/9-types-of-mushrooms), © Blue Apron. Original 600 × 600 Pixel, weißer Rand auf 900 × 600 Pixel ergänzt; keine Farbänderung. **Für die lokale Prototypansicht eingebunden; es ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenziertes Ersatzfoto erforderlich.** Der Datensatz ist deshalb nicht als lizenzgeprüft markiert.
 
 Die ursprünglichen Dateien bleiben als nachvollziehbare Quellenhistorie erhalten; nur diese beiden Einträge referenzieren die neuen Produktbilder. Alle anderen Fotografien bleiben unverändert.
+
+- `weisser-champignon-kultur.jpg` – Dennis Myts, gemeinfrei. [Originalfoto](https://commons.wikimedia.org/wiki/File:Agaricus_bisporus_mushroom.jpg)
+- `brauner-champignon-kultur.jpg` – Lbgcogumelos, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). [Originalfoto](https://commons.wikimedia.org/wiki/File:Portobello.jpg)
+- `brauner-champignon-cremini.jpg` – wikioticsIan, [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/). [Originalfoto](https://commons.wikimedia.org/wiki/File:Agaricus_bisporus_5112261430_8556037af0_b.jpg)

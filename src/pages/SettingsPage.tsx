@@ -1,3 +1,4 @@
+import { FontSizeControl } from "../components/FontSizeControl";
 import { LANGUAGE_FILTER_LABEL } from "../i18n/coverage";
 import { LANGUAGES } from "../i18n/languages";
 import { HelpButton } from "../components/HelpButton";
@@ -126,7 +127,7 @@ export function SettingsPage() {
             <p>{tx("Vergrößere Texte, ohne Inhalte auszublenden.")}</p>
           </div>
           <div className="segmented">
-            {[1, 1.15, 1.3].map((scale) => (
+            {[1, 1.15, 1.3, 1.5, 2, 2.5].map((scale) => (
               <button
                 key={scale}
                 aria-pressed={p.fontScale === scale}
@@ -137,11 +138,12 @@ export function SettingsPage() {
                   ? tx("Standard")
                   : scale === 1.15
                     ? tx("Groß")
-                    : tx("Sehr groß")}
+                    : scale === 1.3 ? tx("Sehr groß") : `${Math.round(scale * 100)} %`}
               </button>
             ))}
           </div>
         </div>
+        <FontSizeControl />
         <div className="preference-row">
           <div>
             <strong>

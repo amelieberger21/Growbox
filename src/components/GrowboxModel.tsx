@@ -1,0 +1,186 @@
+import { PHASES } from '../data/catalog';
+import { useEffect, useId, useRef, useState } from 'react';
+import { Box, Cpu, DoorClosed, Droplets, Monitor, RotateCcw } from 'lucide-react';
+import { center, displayFrameName, housingColors, hotspots, overview } from './growboxModelConfig';
+import type { mountGrowboxScene } from './growboxScene';
+import { useT } from '../i18n';
+import './growboxModel.css';
+
+export function GrowboxModel() {
+  // A prototype running inside its own display must not create another display.
+  if (window.self !== window.top && window.name === displayFrameName) return null;
+  return <GrowboxModelPanel />;
+}
+
+function GrowboxModelPanel() {
+  const tx = useT();
+  const [colorIndex, setColorIndex] = useState(0);
+  const [cultivationPhase, setCultivationPhase] = useState<number | null>(null);
+  const [mistOn, setMistOn] = useState(false);
+  const [tankFilled, setTankFilled] = useState(false);
+  const [displayOn, setDisplayOn] = useState(false);
+  const title = useId();
+  const host = useRef<HTMLDivElement>(null);
+  const markerLayer = useRef<HTMLDivElement>(null);
+  const scene = useRef<Awaited<ReturnType<typeof mountGrowboxScene>>>(null);
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [canOpen, setCanOpen] = useState(false);
+  const [sensorMode, setSensorMode] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<number | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const target = host.current;
+    const markers = Array.from(markerLayer.current?.querySelectorAll('button') ?? []);
+    if (!target) return;
+    void import('./growboxScene')
+      .then(({ mountGrowboxScene }) => mountGrowboxScene(target, markers, controller.signal, focusComponent))
+      .then(view => {
+        if (controller.signal.aborted) return view.dispose();
+        scene.current = view;
+        setCanOpen(view.canOpen);
+        setStatus('ready');
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setStatus('error');
+      });
+    return () => {
+      controller.abort();
+      scene.current?.dispose();
+      scene.current = null;
+    };
+  }, []);
+
+  function toggleCultivation() {
+    const phase = cultivationPhase === null ? 0 : null;
+    setCultivationPhase(phase);
+    scene.current?.setCultivationPhase(phase);
+    setMistOn(false);
+    scene.current?.setTankPreview(phase !== null || tankFilled);
+    clearSelection();
+    if (phase !== null) {
+      scene.current?.animateCameraTo([0.39, 0.25, 0.44], [0.22, 0.12, -0.13]);
+    }
+  }
+
+  function toggleTankPreview() {
+    scene.current?.setTankPreview(!tankFilled || cultivationPhase !== null);
+    setTankFilled(!tankFilled);
+    if (!tankFilled) focusComponent(1);
+  }
+
+  function toggleDisplay() {
+    scene.current?.setDisplay(!displayOn);
+    setDisplayOn(!displayOn);
+    if (!displayOn) {
+      clearSelection();
+      scene.current?.animateCameraTo(hotspots[7].camera, hotspots[7].point);
+    }
+  }
+
+  function focusComponent(index: number) {
+    const { camera, point } = hotspots[index];
+    setSelected(index);
+    scene.current?.highlight(index);
+    scene.current?.animateCameraTo(camera, point);
+  }
+
+  function clearSelection() {
+    setSelected(null);
+    scene.current?.highlight(null);
+  }
+
+  return (
+    <section className="panel growbox-model" aria-labelledby={title}>
+      <h2 id={title}><Box aria-hidden="true" /> {tx('Growbox in 3D')}</h2>
+      <p>{tx('Ziehe zum Drehen, nutze die rechte Maustaste zum Schwenken und scrolle zum Zoomen. Auf Touchscreens schwenkst und zoomst du mit zwei Fingern.')}</p>
+      <div className="growbox-model-stage">
+        <div ref={host} className="growbox-model-canvas" />
+        <div className="growbox-color-picker" role="group" aria-label={tx('Gehäusefarbe')}>
+          {housingColors.map(({ label, hex }, index) => (
+            <button key={label} type="button" aria-label={tx(label)} title={tx(label)}
+              aria-pressed={colorIndex === index} disabled={status !== 'ready'}
+              style={{ backgroundColor: hex }} onClick={() => {
+                scene.current?.setHousingColor(hex);
+                setColorIndex(index);
+              }} />
+          ))}
+        </div>
+        <div ref={markerLayer} className="growbox-model-markers" hidden={status !== 'ready'}>
+          {hotspots.map(({ label }, index) => (
+            <button key={label} type="button" aria-label={tx(label)} aria-pressed={selected === index}
+              onClick={() => focusComponent(index)}>{index + 1}</button>
+          ))}
+        </div>
+        {status !== 'ready' && <p className="growbox-model-status" role="status">{tx(status === 'loading'
+          ? 'Das 3D-Modell wird geladen …'
+          : 'Die 3D-Ansicht konnte nicht geladen werden. Die Bauteilbeschreibungen sind unten verfügbar.')}</p>}
+        {selected !== null && <aside className="growbox-model-info" aria-live="polite">
+          <strong>{tx(hotspots[selected].label)}</strong>
+          <p>{tx(hotspots[selected].description)}</p>
+          {sensorMode && (selected === 0 || selected === 3) && <img
+            className="growbox-sensor-reference"
+            src={import.meta.env.BASE_URL + 'models/klimasensor-referenz.png'}
+            alt={tx('Beispiel einer Platine für Temperatur und Luftfeuchtigkeit mit vier Anschlusspins')}
+          />}
+          {selected === 1 && tankFilled && <p>{tx('Vorschau: Der Tank ist teilweise gefüllt.')}</p>}
+          {selected === 7 && <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={toggleDisplay}>{tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}</button>}
+          {selected === 6 && <p><a href="https://smallfarms.cornell.edu/resources/methods-of-commercial-mushroom-cultivation-in-the-northeastern-united-states/2-seven-stages-of-cultivation/" target="_blank" rel="noreferrer">Cornell Small Farms</a></p>}
+          <button type="button" className="button button-outline" onClick={clearSelection}>{tx('Infokarte schließen')}</button>
+        </aside>}
+      </div>
+      <div className="growbox-model-actions">
+        <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={toggleDisplay}>
+          <Monitor aria-hidden="true" /> {tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}
+        </button>
+        <button type="button" className="button button-outline" aria-pressed={cultivationPhase !== null}
+          disabled={status !== 'ready'} onClick={toggleCultivation}>
+          {tx('Betriebsmodus')}
+        </button>
+        <button type="button" className="button button-outline" aria-pressed={tankFilled}
+          disabled={status !== 'ready'} onClick={toggleTankPreview}>
+          <Droplets aria-hidden="true" /> {tx('Wasser im Tank anzeigen')}
+        </button>
+        <button type="button" className={sensorMode ? 'button button-primary' : 'button button-outline'}
+          aria-pressed={sensorMode} disabled={status !== 'ready'} onClick={() => {
+            scene.current?.setSensorMode(!sensorMode);
+            setSensorMode(!sensorMode);
+          }}><Cpu aria-hidden="true" /> {tx('Sensoransicht')}</button>
+        <button type="button" className="button button-primary" disabled={!canOpen} onClick={() => {
+          scene.current?.setDoor(!open);
+          setOpen(!open);
+        }}><DoorClosed aria-hidden="true" /> {tx(open ? 'Tür schließen' : 'Tür öffnen')}</button>
+        <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={() => {
+          scene.current?.animateCameraTo(overview, center);
+          clearSelection();
+        }}><RotateCcw aria-hidden="true" /> {tx('Ansicht zurücksetzen')}</button>
+      </div>
+      {cultivationPhase !== null && <section className="growbox-cultivation-controls" aria-label={tx('Wachstum im 3D-Modell')}>
+        <h3>{tx('Pilzwachstum in der Box')}</h3>
+        <p>{tx('Die weißen Fäden im Substrat sind das Myzel. Wähle eine Phase, um zu sehen, wie sich das Pilzgeflecht und die Fruchtkörper entwickeln.')}</p>
+        <div className="growbox-model-actions">
+          {PHASES.map((phase, index) => <button key={phase.name} type="button"
+            className={cultivationPhase === index ? 'button button-primary' : 'button button-outline'}
+            aria-pressed={cultivationPhase === index} onClick={() => {
+              setCultivationPhase(index);
+              scene.current?.setCultivationPhase(index);
+            }}>{index + 1}. {tx(phase.short)}</button>)}
+        </div>
+        <p aria-live="polite">{tx(PHASES[cultivationPhase].description)}</p>
+        <button type="button" className="button button-outline" aria-pressed={mistOn} onClick={() => {
+          scene.current?.setCultivationMist(!mistOn);
+          setMistOn(!mistOn);
+        }}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}</button>
+      </section>}
+      {sensorMode && <p>{tx('Die Platinen zeigen Beispielmodule für Temperatur, Luftfeuchtigkeit und CO₂. Die Einbauposition des CO₂-Sensors ist beispielhaft.')}</p>}
+      <p>{tx('Die Markierungen erklären die Bauteile. Einige zeigen beispielhafte Einbaupositionen.')}</p>
+      <div className="growbox-model-actions">
+        {hotspots.map(({ label }, index) => (
+          <button key={label} type="button" className="button button-outline" aria-pressed={selected === index}
+            onClick={() => focusComponent(index)}>{index + 1}. {tx(label)}</button>
+        ))}
+      </div>
+    </section>
+  );
+}

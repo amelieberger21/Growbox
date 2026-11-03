@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   Check,
   Droplets,
+  Container,
   Fan,
   Lightbulb,
   TriangleAlert,
@@ -47,7 +48,7 @@ export function TechnologySummary() {
     {
       name: "Tankfüllstand",
       value: `${state.water.level === null ? "–" : `${formatNumber(state.water.level)} %`} · ${tx(TANK_LABELS[devices.water])}`,
-      icon: Droplets,
+      icon: Container,
       target: "water-maintenance",
     },
     {
@@ -215,7 +216,7 @@ export function ClimateHints() {
         )}
       </InfoNote>
       {state.observation && (
-        <div className="technical-hint">
+        <div className="technical-hint observation-warning">
           <TriangleAlert size={19} />
           <div>
             <strong>{tx("Manuelle Beobachtung dokumentiert")}</strong>

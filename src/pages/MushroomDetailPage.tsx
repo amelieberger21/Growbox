@@ -1,9 +1,15 @@
+import { MushroomGallery } from "../components/MushroomGallery";
+import { MushroomFacts } from "../components/MushroomFacts";
 import { RecipeEntry } from "./RecipePages";
 import { ConditionsPanel } from "../experience/Monitoring";
 import { useT } from "../i18n";
 import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
+  ClipboardList,
+  Info,
+  Layers,
+  LibraryBig,
   ArrowLeft,
   ArrowRight,
   BookOpen,
@@ -64,16 +70,10 @@ export function MushroomDetailPage() {
         <ArrowLeft size={16} />
         {tx("Zur\u00FCck zur Pilzbibliothek")}
       </Link>
+      <div className="detail-layout">
+        <MushroomGallery key={entry.slug} entry={entry} />
+        <div className="detail-information">
       <div className="detail-hero">
-        <div className="detail-art" style={{ background: entry.background }}>
-          <span className="detail-art-index">
-            {tx("MYCOBOX \u00B7 PILZPORTRAIT")}
-          </span>
-          <MushroomArt entry={entry} />
-          <span className="art-label">
-            {tx("Fotografie \u00B7 kein Bestimmungsbild")}
-          </span>
-        </div>
         <div className="detail-intro">
           <p className="eyebrow">
             {tx("LERNE DEINE N\u00C4CHSTE KULTUR KENNEN")}
@@ -116,7 +116,6 @@ export function MushroomDetailPage() {
             {tx("In meiner Growbox anbauen")}
             <ArrowRight size={17} />
           </button>
-          <RecipeEntry entry={entry} librarySearch={backSearch} />
           <p className="detail-suitability">
             <Check size={14} />
             {tx(SUITABILITY)}
@@ -140,11 +139,16 @@ export function MushroomDetailPage() {
           </InfoNote>
         ),
       )}
+        </div>
+      </div>
+      <div className="detail-sections">
       <ConditionsPanel entry={entry} />
+      <MushroomFacts key={entry.slug} entry={entry}/>
+      <div className="detail-recipes"><RecipeEntry entry={entry} librarySearch={backSearch} /></div>
       <section className="panel demo-profile-panel">
         <div>
           <p className="eyebrow">{tx("EIN BEISPIEL, KEINE ANBAUEMPFEHLUNG")}</p>
-          <h2>{tx("Dein Demo-Profil")}</h2>
+          <h2><ClipboardList aria-hidden="true" />{tx("Dein Demo-Profil")}</h2>
           <p>{tx("Diese Werte werden nur in der Simulation verwendet.")}</p>
         </div>
         <div className="profile-values">
@@ -176,7 +180,7 @@ export function MushroomDetailPage() {
       </section>
       <div className="detail-content-grid">
         <section className="panel">
-          <h2>{tx("Ein Blick hinter den Hut")}</h2>
+          <h2><Layers aria-hidden="true" />{tx("Ein Blick hinter den Hut")}</h2>
           <dl className="care-list">
             <div>
               <span className="icon-tile">
@@ -222,7 +226,7 @@ export function MushroomDetailPage() {
           </p>
         </section>
         <section className="panel detail-phases">
-          <h2>{tx("Vom Anfang bis zum Aha.")}</h2>
+          <h2><Sprout aria-hidden="true" />{tx("Vom Anfang bis zum Aha.")}</h2>
           <p>
             {tx(
               "F\u00FCnf Phasen machen Wachstum verst\u00E4ndlich. Ein vereinfachtes Lernmodell.",
@@ -249,7 +253,7 @@ export function MushroomDetailPage() {
       </div>
       <section className="panel source-panel">
         <div>
-          <h2>{tx("Gut zu wissen")}</h2>
+          <h2><Info aria-hidden="true" />{tx("Gut zu wissen")}</h2>
           <p>{tx(info.harvest)}</p>
           {tx(
             entry.synonyms.length > 0 && (
@@ -268,7 +272,7 @@ export function MushroomDetailPage() {
           </p>
         </div>
         <div>
-          <h3>{tx("Quellen & Pr\u00FCfstand")}</h3>
+          <h3><LibraryBig aria-hidden="true" />{tx("Quellen & Pr\u00FCfstand")}</h3>
           {tx(
             info.sources.map((id) => {
               const source = SOURCES.find((item) => item.id === id)!;
@@ -298,6 +302,7 @@ export function MushroomDetailPage() {
           </p>
         </div>
       </section>
+      </div>
       {tx(
         preview && (
           <Modal

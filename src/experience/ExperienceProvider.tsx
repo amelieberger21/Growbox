@@ -26,7 +26,7 @@ export function validExperience(value: unknown): value is ExperienceState {
     data.version !== 1 ||
     !p ||
     !isLanguage(p.language) ||
-    ![1, 1.15, 1.3].includes(p.fontScale) ||
+    ( !Number.isFinite(p.fontScale) || p.fontScale < 1 || p.fontScale > 2.5 ) ||
     !Number.isFinite(p.speechRate) ||
     p.speechRate < 0.6 ||
     p.speechRate > 1.6 ||

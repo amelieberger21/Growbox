@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, Volume2, X } from "lucide-react";
 import { Modal } from "../components/ui";
@@ -142,11 +142,15 @@ export function ChampGuide() {
   const { notify } = useGrowbox();
   const navigate = useNavigate();
   const location = useLocation();
+  const [startupOffer,setStartupOffer]=useState(()=>{try{return experience.preferences.welcomeAnswered&&!sessionStorage.getItem('mycobox.tutorial.offered');}catch{return experience.preferences.welcomeAnswered;}});
+  useEffect(()=>{try{sessionStorage.setItem('mycobox.tutorial.offered','true');}catch{/* In-memory offer remains usable. */}},[]);
   const [step, setStep] = useState<number | null>(null);
   const [welcomeStep, setWelcomeStep] = useState<"tour" | "audio">("tour");
   const [wantsTour, setWantsTour] = useState(false);
   const [position, setPosition] = useState({ top: 120, left: 20 });
   const popover = useRef<HTMLElement>(null);
+  const markerId=useId().replace(/:/g,'');
+  const [arrow,setArrow]=useState<{x1:number;y1:number;x2:number;y2:number}|null>(null);
   const finish = () => {
     setStep(null);
     notify(
@@ -157,6 +161,7 @@ export function ChampGuide() {
   };
   useEffect(() => {
     requestTour = () => {
+      setStartupOffer(false);
       setStep(0);
       setPreferences({ champReminder: false, welcomeAnswered: true });
     };
@@ -182,6 +187,7 @@ export function ChampGuide() {
         target?.classList.add("tour-highlight");
       }
       if (!target) {
+        setArrow(null);
         setPosition({
           top: Math.max(80, window.innerHeight - 300),
           left: Math.max(12, (window.innerWidth - 350) / 2),
@@ -190,7 +196,7 @@ export function ChampGuide() {
       }
       const rect = target.getBoundingClientRect();
       const height = popover.current?.offsetHeight ?? 250;
-      const width = Math.min(350, window.innerWidth - 24);
+      const width = Math.min(popover.current?.offsetWidth ?? 350, window.innerWidth - 24);
       const left = Math.max(
         12,
         Math.min(window.innerWidth - width - 12, rect.left),
@@ -201,7 +207,12 @@ export function ChampGuide() {
           : rect.top - height - 12 > 75
             ? rect.top - height - 12
             : Math.max(82, window.innerHeight - height - 60);
-      setPosition({ top, left });
+      setPosition({ top:Math.max(12,top), left });
+      const panel=popover.current?.getBoundingClientRect();
+      if(panel&&rect.width&&rect.height&&(rect.bottom<panel.top||rect.top>panel.bottom)){
+        const x=Math.max(rect.left+8,Math.min(rect.right-8,panel.left+panel.width/2));
+        setArrow({x1:Math.max(panel.left+16,Math.min(panel.right-16,x)),y1:rect.bottom<panel.top?panel.top:panel.bottom,x2:x,y2:rect.bottom<panel.top?rect.bottom:rect.top});
+      }else setArrow(null);
     };
     const frame = requestAnimationFrame(() => {
       document.querySelector(TOUR_STEPS[step].selector)?.scrollIntoView({
@@ -295,8 +306,10 @@ export function ChampGuide() {
         </p>
       </Modal>
     );
+  if(startupOffer) return <Modal title={tx('Möchtest du eine kurze Einführung?')} onClose={()=>setStartupOffer(false)} footer={<><button className="button button-outline" onClick={()=>setStartupOffer(false)}>{tx('Ohne Tutorial fortfahren')}</button><button className="button button-primary" onClick={()=>{setStartupOffer(false);requestChampTour();}}>{tx('Tutorial starten')}</button></>}><p>{tx('Champ zeigt dir die wichtigsten Funktionen. Deine Growboxen und Einstellungen werden dabei nicht verändert.')}</p><p>{tx('Du kannst die Einführung jederzeit überspringen oder unter Hilfe erneut starten.')}</p></Modal>;
   return (
     <>
+      {step!==null&&arrow&&<svg className="champ-arrow" aria-hidden="true"><defs><marker id={markerId} markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#245740"/></marker></defs><line {...arrow} x1={arrow.x1} y1={arrow.y1} x2={arrow.x2} y2={arrow.y2} stroke="#245740" strokeWidth="4" markerEnd={`url(#${markerId})`}/></svg>}
       {step !== null && (
         <aside
           className="tour-popover"
@@ -320,6 +333,7 @@ export function ChampGuide() {
               <X size={17} />
             </button>
           </div>
+          <p className="tour-step-label">{tx("Schritt")} {step+1} / {TOUR_STEPS.length}</p>
           <p>{tx(TOUR_STEPS[step].body)}</p>
           <div
             className="tour-progress"

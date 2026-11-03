@@ -1118,7 +1118,7 @@ html[data-contrast="high"] {
   --dark: #092a15;
 }
 html[data-contrast="high"] body {
-  background: #fff;
+  background: #faf7f2;
   color: #101c10;
 }
 html[data-contrast="high"]
@@ -1128,8 +1128,6 @@ html[data-contrast="high"]
     .discovery-card,
     .culture-hero,
     .project-hero,
-    .sidebar,
-    .topbar,
     .mode-row,
     .phase-explainer,
     .setting-control,

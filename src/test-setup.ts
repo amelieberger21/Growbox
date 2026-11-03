@@ -22,6 +22,7 @@ import { initialExperience, EXPERIENCE_KEY } from "./experience/model";
 import { createInitialState } from "./simulation/engine";
 import i18n from "./i18n";
 beforeEach(() => {
+  sessionStorage.setItem("mycobox.tutorial.offered","true");
   const experience = initialExperience(createInitialState());
   experience.preferences.welcomeAnswered = true;
   localStorage.setItem(EXPERIENCE_KEY, JSON.stringify(experience));

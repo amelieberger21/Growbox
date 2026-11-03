@@ -5,7 +5,9 @@ import {
   HARDWARE_DEMO,
 } from "../simulation/hardware";
 import {
+  Thermometer,
   Bell,
+  X,
   Check,
   ChevronDown,
   Droplets,
@@ -27,6 +29,7 @@ import {
   phaseAt,
   percent,
 } from "../simulation/engine";
+import { Link } from "react-router-dom";
 import { Modal } from "../components/ui";
 import { useT } from "../i18n";
 import i18n from "../i18n";
@@ -99,7 +102,7 @@ export function ConditionsPanel({ entry }: { entry: MushroomEntry }) {
       <div className="section-title">
         <div>
           <p className="eyebrow">{tx("BEDINGUNGEN VERSTEHEN")}</p>
-          <h2>{tx("Kulturbedingungen nach Phase")}</h2>
+          <h2><Thermometer aria-hidden="true"/>{tx("Kulturbedingungen nach Phase")}</h2>
         </div>
         <span className="muted-tag">
           {tx(
@@ -312,6 +315,7 @@ export function WaterMaintenance() {
 }
 export function NotificationCenter() {
   const tx = useT();
+  const [hiddenNotices,setHiddenNotices]=useState<number[]>([]);
   const { experience, markRead } = useExperience();
   const [open, setOpen] = useState(false);
   const unread = experience.notifications.filter((n) => !n.read).length;
@@ -322,6 +326,7 @@ export function NotificationCenter() {
         aria-label={`${tx("Benachrichtigungen")} (${unread})`}
         onClick={(event) => {
           event.currentTarget.focus();
+          setHiddenNotices([]);
           setOpen(true);
         }}
       >
@@ -368,7 +373,7 @@ export function NotificationCenter() {
           )}
           {experience.notifications.length ? (
             <ol className="notification-list">
-              {experience.notifications.map((n) => (
+              {experience.notifications.filter(n=>!hiddenNotices.includes(n.id)).map((n) => (
                 <li
                   key={n.id}
                   className={`notice-${n.severity} ${n.read ? "read" : ""}`}
@@ -382,6 +387,9 @@ export function NotificationCenter() {
                   </span>
                   <div>
                     <p>{notificationText(n.key, n.params, tx)}</p>
+                    {/water-(empty|low)/.test(n.kind)&&<p>{tx('Fülle den Tank auf und bestätige unter Wasserwartung mit Wasser nachgefüllt. Wasser gewechselt ist eine separate Wartungsaktion.')}</p>}
+                    {n.kind==='water-unavailable'&&<p>{tx('Prüfe den Sensorstatus. Nachfüllen allein stellt einen fehlenden Sensorwert nicht wieder her.')}</p>}
+                    {n.kind.startsWith('water-')&&<Link className="button button-outline" to="/growbox#water-maintenance" onClick={()=>setOpen(false)}>{tx('Wasserwartung öffnen')}</Link>}
                     <small>
                       {formatDate(n.demoTime)} · {formatTime(n.demoTime)}{" "}
                       {tx("Demo-Zeit")}
@@ -394,8 +402,10 @@ export function NotificationCenter() {
                       {tx(n.read ? "Gelesen" : "Als gelesen markieren")}
                     </button>
                   </div>
+                  <button type="button" className="icon-button close-notice" aria-label={`${tx('Benachrichtigung ausblenden')}: ${notificationText(n.key,n.params,tx)}`} onClick={()=>setHiddenNotices(previous=>[...previous,n.id])}><X aria-hidden="true"/></button>
                 </li>
               ))}
+              {hiddenNotices.length>0&&<li><p>{tx('Ausblenden behebt keine Ursache und markiert die Meldung nicht als gelesen.')}</p><button className="button button-outline" onClick={()=>setHiddenNotices([])}>{tx('Ausgeblendete Meldungen anzeigen')}</button></li>}
             </ol>
           ) : (
             <div className="notification-empty">
