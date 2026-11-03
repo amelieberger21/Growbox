@@ -11,6 +11,7 @@ Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, k
 ## Inhalt
 
 - [Was MycoBox bietet](#was-mycobox-bietet)
+- [Interaktive Growbox in 3D](#interaktive-growbox-in-3d)
 - [Lokal starten](#lokal-starten)
 - [Den Prototyp ausprobieren](#den-prototyp-ausprobieren)
 - [Sprachen und barrierearme Bedienung](#sprachen-und-barrierearme-bedienung)
@@ -24,13 +25,14 @@ Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, k
 | Bereich | Funktionen |
 | --- | --- |
 | **Dashboard** | Aktive Kultur, Klimawerte, Hinweise und Gerätestatus der ausgewählten Growbox auf einen Blick. |
-| **Pilzbibliothek** | 15 Einträge mit Fotos, Suche, Filtern, Detailseiten und passenden Beispielprofilen. |
+| **Pilzbibliothek** | 15 Einträge mit Suche, Filtern und Sortierung, Fotogalerien, Kulturbedingungen, Nährwerten, Sicherheitshinweisen und Rezeptideen. |
+| **3D-Modell im Dashboard** | Drehbare Blender-Growbox mit Glastür, Gehäusefarben, Sensoransicht, interaktivem Bildschirm und simuliertem Zuchtbetrieb. |
 | **Mehrere Growboxen** | Auswahl nach Name, ID und Standort; eigene Kulturen, Einstellungen und Verläufe; erkennbare Online-/Offline-Simulation. |
 | **Klima und Technik** | Temperatur, Luftfeuchtigkeit, Umluft, Frischluft und sichtbares Licht mit Automatik- und manuellem Modus. |
-| **Wachstumsverlauf** | Fünf vereinfachte Phasen, schematische Entwicklungsbilder sowie Klimadiagramm und Datentabelle. |
+| **Wachstumsverlauf** | Fünf einzeln erkundbare Phasen mit Hinweisen und Tipps, Modellillustrationen, vergrößerbarer Kamera-Vorschau, Klimadiagramm und Datentabelle. |
 | **Wasser und Hinweise** | Tankfüllstand, getrenntes Nachfüllen und Wechseln, Wartungserinnerungen und Benachrichtigungscenter. |
 | **Champ** | Geführtes Tutorial, Vorlesefunktion und Sprachassistent mit optionaler Mistral-Anbindung. |
-| **Bedienhilfen** | Fragezeichen-Hilfe, drei Schriftgrößen, Kontrastmodus, einfache Sprache und große Plus-/Minus-Tasten. |
+| **Bedienhilfen** | Fragezeichen-Hilfe, einstellbare Schriftgröße, Kontrastmodus, einfache Sprache, einklappbare Navigation und große Plus-/Minus-Tasten. |
 | **Rezeptideen** | 26 lokale Rezeptkompositionen mit Zutaten, Zubereitungsschritten und passenden Pilzzuordnungen. |
 
 ### Einstellungen bewusst übernehmen
@@ -38,6 +40,19 @@ Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, k
 Klima- und Gerätefelder bearbeiten zunächst einen **Entwurf**. Erst **„Einstellungen übernehmen“** wendet ihn an. Ungültige Werte verhindern die Übernahme. Beim Verlassen der Steuerung oder beim Wechsel zu einer anderen Growbox schützt ein Dialog vor dem unbeabsichtigten Verlust nicht übernommener Änderungen.
 
 Aktuelle Messwerte, gespeicherte Sollwerte und ausgeführte Geräteaktionen bleiben getrennt erkennbar.
+
+## Interaktive Growbox in 3D
+
+Das Dashboard zeigt das Blender-Modell mit transparentem Glas und dem roten Logo der Hochschule Coburg. Ziehe zum Drehen, schwenke mit der rechten Maustaste und zoome mit dem Scrollrad. Auf Touchscreens kannst du mit zwei Fingern schwenken und zoomen.
+
+- **Glastür und Gehäuse:** Öffne oder schließe die Tür per Schaltfläche. Die Farbkreise wechseln das Gehäuse zwischen Schwarz, Weiß, Dunkelgrün und Hellgrün.
+- **Acht Bauteile:** Luftfeuchtigkeit, Wassertank und Vernebler, CO₂-Sensor, Temperatur, Frischluft und HEPA-Filter, LED, Abluftlüfter und Bildschirm. Die Auswahl über Marker oder Bauteilliste fokussiert den Bereich, hebt ihn lila hervor und öffnet die Infokarte.
+- **Sensoransicht:** Das Gehäuse tritt grau und transparent zurück. Beispielplatinen zeigen einen kombinierten Temperatur- und Feuchtesensor sowie ein CO₂-Modul.
+- **Tank und Betriebsmodus:** Zeige einen teilgefüllten Tank und klicke durch fünf Phasen. Im Substrat breitet sich Myzel aus, anschließend wachsen Champignons. Der zuschaltbare Vernebler lässt feuchten Dunst aus dem Rohr in den Zuchtraum strömen.
+- **Bildschirm:** Schalte das Display am Modell ein und bediene darauf den Webprototyp mit seiner Navigation und seinen Unterseiten.
+- **Ansicht zurücksetzen:** Kehre zur Startperspektive zurück. Bei reduzierter Bewegung entfallen die Übergänge. Die Bauteilinfos bleiben auch ohne WebGL zugänglich.
+
+Modellpfad, Türscharnier und Kamerakoordinaten sind in der [3D-Dokumentation](docs/Growbox-3D.md) beschrieben.
 
 ## Lokal starten
 
@@ -88,7 +103,8 @@ Arabisch und Persisch verwenden eine Leserichtung von rechts nach links. Zahlen 
 
 ### Lesen, verstehen und präzise bedienen
 
-- **Drei Schriftgrößen:** Standard, Groß und Sehr groß; relative Schrifteinheiten berücksichtigen zusätzlich die Browser-Textgröße.
+- **Schriftgröße von 100 bis 250 %:** Direkt in der Kopfzeile oder in den Einstellungen in 5-Prozent-Schritten anpassen.
+- **Darstellung und Fokus:** Weiß-beiger Hauptbereich, hellgrüne Kopfzeile und weiße Seitenleiste. Die Navigation lässt sich für mehr Platz einklappen.
 - **Kontrast und Symbole:** Deutlichere Konturen, beschriftete Zustände und erkennbare Symbole ergänzen die Farbgebung. Informationen werden nicht allein durch Farben vermittelt.
 - **Große Bedienelemente:** Mindestens 48 Pixel hohe Schaltflächen; Plus-/Minus-Tasten mit mindestens 52 × 52 Pixel Trefferfläche und 16 Pixel Abstand.
 - **Präzise Schritte:** Temperatur in 0,5 °C, Luftfeuchtigkeit und Helligkeit in einem Prozentpunkt, Demo-CO₂ in 50 ppm. Slider und Schritttasten verwenden denselben Wert und beachten dieselben Grenzen.
@@ -201,7 +217,7 @@ Es gibt keine Konten, Cloud-Synchronisierung oder dauerhafte Hintergrundüberwac
 
 ## Entwicklung und Projektstruktur
 
-**Technik:** React 19 · TypeScript · Vite · React Router · Tailwind CSS · Lucide · Recharts · react-i18next · Vitest · React Testing Library
+**Technik:** React 19 · TypeScript · Vite · React Router · Tailwind CSS · Three.js · Lucide · Recharts · react-i18next · Vitest · React Testing Library
 
 ```text
 src/
@@ -256,7 +272,7 @@ Unbekannte Routen zeigen eine 404-Ansicht mit Rückweg. Bei statischem Hosting m
 
 ### Automatisierte Prüfungen
 
-Der zuletzt geprüfte Stand umfasst **140 bestandene Tests in 16 Testdateien** sowie einen erfolgreichen Produktionsbuild. Die Tests decken unter anderem folgende Bereiche ab:
+Der zuletzt geprüfte Stand umfasst **150 bestandene Tests in 17 Testdateien** mit verlängertem Test-Timeout sowie einen erfolgreichen Produktionsbuild. Die Tests decken unter anderem folgende Bereiche ab:
 
 - Auswahl, Suche, Filter und alle 15 Pilzdetail-Zuordnungen
 - Kulturabläufe, Entwurfsschutz, Grenzwerte und synchronisierte Schrittbedienung
@@ -275,12 +291,13 @@ Nameko und Goldkäppchen teilen ein Artenprofil; die beiden Champignon-Kulturfor
 
 Weiterführende Dokumentation:
 
+- [UI-Optimierung und Bedienhilfen](docs/UI-Optimierung.md)
 - [Fachlicher Prüfstand und Quellen](docs/Kulturdaten-Pruefstand.md)
 - [Bilder, Schriften und weitere Assets](ASSETS.md)
 - [Einzelne Bildquellen und Lizenzen](public/mushrooms/LICENSES.md)
 - [Growbox-Beispielillustrationen](public/growboxes/README.md)
 
-**Offener Bildrechtepunkt:** Für das neue braune Champignon-Produktfoto von Blue Apron ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer öffentlichen Website-Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenzierter Ersatz erforderlich; die Einzelheiten stehen in den Bildnachweisen.
+**Offener Bildrechtepunkt:** Das aktive Foto des braunen Champignons ist ein unter CC BY-SA 2.0 lizenziertes Cremini-Foto. Für das frühere, separat in den Bildnachweisen aufgeführte Blue-Apron-Produktfoto ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer öffentlichen Website-Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenzierter Ersatz erforderlich; die Einzelheiten stehen in den Bildnachweisen.
 
 Die Rezepte sind eigene Zubereitungsideen des Prototyps. Zeit- und Mengenangaben sind keine Garantie für ausreichendes Garen oder zu erwartenden Ertrag. Allgemeine Verzehrhinweise orientieren sich unter anderem an den Informationen des [Bayerischen Landesamts für Gesundheit und Lebensmittelsicherheit](https://www.lgl.bayern.de/lebensmittel/warengruppen/wc_27_pilze/hinweise_verbraucher_pilze.htm) und den [Enoki-Hinweisen der Singapore Food Agency](https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/risk-at-a-glance/enoki-mushrooms).
 

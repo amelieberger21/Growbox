@@ -1,6 +1,6 @@
 # Growbox in 3D
 
-Die Ansicht ist auf dem Dashboard und unter „Meine Growbox“ eingebunden. Der vollständige Code liegt in `src/components/GrowboxModel.tsx` (Bedienung und Infokarten), `growboxScene.ts` (Three.js-Szene und Animation), `growboxModelConfig.ts` (Modell und Koordinaten) sowie `growboxModel.css` (Darstellung).
+Die Ansicht ist auf dem Dashboard eingebunden. Der vollständige Code liegt in `src/components/GrowboxModel.tsx` (Bedienung und Infokarten), `growboxScene.ts` (Three.js-Szene und Animation), `growboxModelConfig.ts` (Modell und Koordinaten) sowie `growboxModel.css` (Darstellung).
 
 ## Ein Blender-Modell austauschen
 
