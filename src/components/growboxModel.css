@@ -70,3 +70,5 @@
   border-radius: 12px;
 }
 .growbox-cultivation-controls p { margin-block: 10px; }
+
+.growbox-model [hidden] { display: none !important; }

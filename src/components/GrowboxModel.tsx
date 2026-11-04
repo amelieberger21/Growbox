@@ -14,6 +14,7 @@ export function GrowboxModel() {
 
 function GrowboxModelPanel() {
   const tx = useT();
+  const [productView, setProductView] = useState(false);
   const [colorIndex, setColorIndex] = useState(0);
   const [cultivationPhase, setCultivationPhase] = useState<number | null>(null);
   const [mistOn, setMistOn] = useState(false);
@@ -80,6 +81,8 @@ function GrowboxModelPanel() {
   }
 
   function focusComponent(index: number) {
+    setProductView(false);
+    scene.current?.setInspectionEnabled(true);
     const { camera, point } = hotspots[index];
     setSelected(index);
     scene.current?.highlight(index);
@@ -97,7 +100,7 @@ function GrowboxModelPanel() {
       <p>{tx('Ziehe zum Drehen, nutze die rechte Maustaste zum Schwenken und scrolle zum Zoomen. Auf Touchscreens schwenkst und zoomst du mit zwei Fingern.')}</p>
       <div className="growbox-model-stage">
         <div ref={host} className="growbox-model-canvas" />
-        <div className="growbox-color-picker" role="group" aria-label={tx('Gehäusefarbe')}>
+        <div className="growbox-color-picker" hidden={productView} role="group" aria-label={tx('Gehäusefarbe')}>
           {housingColors.map(({ label, hex }, index) => (
             <button key={label} type="button" aria-label={tx(label)} title={tx(label)}
               aria-pressed={colorIndex === index} disabled={status !== 'ready'}
@@ -107,7 +110,7 @@ function GrowboxModelPanel() {
               }} />
           ))}
         </div>
-        <div ref={markerLayer} className="growbox-model-markers" hidden={status !== 'ready'}>
+        <div ref={markerLayer} className="growbox-model-markers" hidden={status !== 'ready' || productView}>
           {hotspots.map(({ label }, index) => (
             <button key={label} type="button" aria-label={tx(label)} aria-pressed={selected === index}
               onClick={() => focusComponent(index)}>{index + 1}</button>
@@ -116,7 +119,7 @@ function GrowboxModelPanel() {
         {status !== 'ready' && <p className="growbox-model-status" role="status">{tx(status === 'loading'
           ? 'Das 3D-Modell wird geladen …'
           : 'Die 3D-Ansicht konnte nicht geladen werden. Die Bauteilbeschreibungen sind unten verfügbar.')}</p>}
-        {selected !== null && <aside className="growbox-model-info" aria-live="polite">
+        {!productView && selected !== null && <aside className="growbox-model-info" aria-live="polite">
           <strong>{tx(hotspots[selected].label)}</strong>
           <p>{tx(hotspots[selected].description)}</p>
           {sensorMode && (selected === 0 || selected === 3) && <img
@@ -131,6 +134,13 @@ function GrowboxModelPanel() {
         </aside>}
       </div>
       <div className="growbox-model-actions">
+        <button type="button" className={productView ? 'button button-primary' : 'button button-outline'}
+          aria-pressed={productView} disabled={status !== 'ready'} onClick={() => {
+            const enabled = !productView;
+            setProductView(enabled);
+            scene.current?.setInspectionEnabled(!enabled);
+            clearSelection();
+          }}><Box aria-hidden="true" /> {tx(productView ? 'Bauteilmarkierungen anzeigen' : 'Produktansicht')}</button>
         <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={toggleDisplay}>
           <Monitor aria-hidden="true" /> {tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}
         </button>
@@ -173,14 +183,14 @@ function GrowboxModelPanel() {
           setMistOn(!mistOn);
         }}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}</button>
       </section>}
-      {sensorMode && <p>{tx('Die Platinen zeigen Beispielmodule für Temperatur, Luftfeuchtigkeit und CO₂. Die Einbauposition des CO₂-Sensors ist beispielhaft.')}</p>}
-      <p>{tx('Die Markierungen erklären die Bauteile. Einige zeigen beispielhafte Einbaupositionen.')}</p>
+      {!productView && sensorMode && <p>{tx('Die Sensoransicht zeigt Temperatur, Luftfeuchtigkeit, CO₂ sowie die Substratsonde (9), den Schwimmschalter (10) und das optionale Partikelmodul (11). Die Bauformen und Einbaupositionen sind Beispiele für die Hardwareplanung.')}</p>}
+      {!productView && <><p>{tx('Die Markierungen erklären die Bauteile. Einige zeigen beispielhafte Einbaupositionen.')}</p>
       <div className="growbox-model-actions">
         {hotspots.map(({ label }, index) => (
           <button key={label} type="button" className="button button-outline" aria-pressed={selected === index}
             onClick={() => focusComponent(index)}>{index + 1}. {tx(label)}</button>
         ))}
-      </div>
+      </div></>}
     </section>
   );
 }

@@ -1,7 +1,8 @@
+import { displayFrameName } from "./components/growboxModelConfig";
 import { RecipeListPage, RecipeDetailPage } from "./pages/RecipePages";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createMemoryRouter, RouterProvider } from "react-router-dom";
 import "@fontsource/dm-sans/latin-400.css";
 import "@fontsource/dm-sans/latin-500.css";
 import "@fontsource/dm-sans/latin-600.css";
@@ -29,7 +30,10 @@ import { GrowboxPage } from "./pages/GrowboxPage";
 import { ClimatePage, GrowthPage } from "./pages/GrowthPage";
 import { ProjectPage } from "./pages/ProjectPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-const router = createBrowserRouter([
+const createRouter = window.self !== window.top && window.name === displayFrameName
+  ? createMemoryRouter
+  : createBrowserRouter;
+const router = createRouter([
   {
     element: <Layout />,
     children: [

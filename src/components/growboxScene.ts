@@ -1,3 +1,4 @@
+import { createAdditionalSensors } from './growboxAdditionalSensors';
 import { createCultivationPreview } from './growboxCultivation';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -147,7 +148,12 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
       iframe.src = import.meta.env.BASE_URL;
       iframe.style.width = '1024px';
       iframe.style.height = '624px';
-      displayObject = new CSS3DObject(iframe);
+      // Transform the screen surface, keeping the browsing context in a flat child.
+      const surface = document.createElement('div');
+      surface.style.width = '1024px';
+      surface.style.height = '624px';
+      surface.append(iframe);
+      displayObject = new CSS3DObject(surface);
       displayObject.position.copy(displayCenter);
       displayObject.scale.setScalar(0.205 / 1024);
       displayScene.add(displayObject);
@@ -211,11 +217,14 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
     block('#dcb558', [0.004, 0.004, 0.001], [x, 0.133, -0.275]);
     block('#bdc3c9', [0.0015, 0.011, 0.0015], [x, 0.125, -0.274]);
   }
-  block('#26684a', [0.048, 0.029, 0.002], [0.13, 0.065, -0.17]);
-  block('#252a30', [0.036, 0.022, 0.009], [0.13, 0.067, -0.164]);
-  for (const x of [0.118, 0.14]) {
-    block('#a6afb7', [0.009, 0.009, 0.002], [x, 0.068, -0.158]);
+  const [co2X, co2Y, co2Z] = hotspots[2].point;
+  block('#26684a', [0.002, 0.029, 0.048], [co2X - 0.007, co2Y, co2Z]);
+  block('#252a30', [0.009, 0.022, 0.036], [co2X - 0.002, co2Y + 0.002, co2Z]);
+  for (const offset of [-0.012, 0.01]) {
+    block('#a6afb7', [0.002, 0.009, 0.009], [co2X + 0.004, co2Y + 0.003, co2Z + offset]);
   }
+
+  const additionalSensors = createAdditionalSensors(scene);
 
   const tankWater = new THREE.Mesh(
     new THREE.BoxGeometry(0.072, 0.048, 0.17),
@@ -236,7 +245,7 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
   const exhaustBounds = exhaust ? new THREE.Box3().setFromObject(exhaust) : null;
   const sensorBounds = sensor ? new THREE.Box3().setFromObject(sensor) : null;
   const highlights = hotspots.map(({ point }, index) => {
-    const bounds = index === 0 || index === 3 ? sensorBounds : index === 6 ? exhaustBounds : index === 7 ? displayBounds : null;
+    const bounds = index === 0 || index === 3 ? sensorBounds : index === 6 ? exhaustBounds : index === 7 ? displayBounds : additionalSensors.has(index) ? new THREE.Box3().setFromObject(additionalSensors.get(index)!) : null;
     const size = bounds?.getSize(new THREE.Vector3()).multiplyScalar(1.2);
     const geometry = size
       ? new THREE.BoxGeometry(size.x, size.y, size.z)
@@ -250,6 +259,7 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
   });
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
+  let inspectionEnabled = true;
   let press: { x: number; y: number } | undefined;
   const canvas = renderer.domElement;
   canvas.addEventListener('pointerdown', event => {
@@ -259,10 +269,15 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
   canvas.addEventListener('pointerup', event => {
     const start = press;
     press = undefined;
-    if (!start || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) return;
+    if (!inspectionEnabled || !start || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) return;
     const rect = canvas.getBoundingClientRect();
     pointer.set(2 * (event.clientX - rect.left) / rect.width - 1, 1 - 2 * (event.clientY - rect.top) / rect.height);
     raycaster.setFromCamera(pointer, camera);
+    const sensorHit = raycaster.intersectObjects([...additionalSensors.values()], true)[0];
+    if (sensorHit) {
+      const selected = [...additionalSensors].find(([, group]) => group === sensorHit.object.parent);
+      if (selected) { onSelect(selected[0]); return; }
+    }
     const hit = raycaster.intersectObjects(highlights, false)[0];
     if (hit) onSelect(highlights.findIndex(mesh => mesh === hit.object));
   }, { signal });
@@ -301,6 +316,7 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
 
   return {
     canOpen,
+    setInspectionEnabled(enabled: boolean) { inspectionEnabled = enabled; },
     setDisplay,
     setCultivationPhase: cultivation.setPhase,
     setCultivationMist: cultivation.setMist,
@@ -348,6 +364,12 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
         logo.geometry.dispose();
         logo.material.dispose();
       }
+      additionalSensors.forEach(group => group.traverse(object => {
+        if (object instanceof THREE.Mesh) {
+          object.geometry.dispose();
+          (object.material as THREE.Material).dispose();
+        }
+      }));
       highlights.forEach(mesh => mesh.geometry.dispose());
       highlightMaterial.dispose();
       tankWater.geometry.dispose();
