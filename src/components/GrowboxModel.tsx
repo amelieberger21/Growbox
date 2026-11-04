@@ -95,8 +95,12 @@ function GrowboxModelPanel() {
   }
 
   return (
-    <section className="panel growbox-model" aria-labelledby={title}>
+    <section className="panel growbox-model" aria-labelledby={title} aria-describedby={`${title}-preview`}>
       <h2 id={title}><Box aria-hidden="true" /> {tx('Growbox in 3D')}</h2>
+      <div className="growbox-preview-note" id={`${title}-preview`}>
+        <strong>{tx('Lernansicht · unabhängig von der aktiven Kultur')}</strong>
+        <p>{tx('Tank, Nebel und Wachstumsphasen dieser Lernansicht sind unabhängig von der aktiven Kultur. Das 3D-Wachstum zeigt beispielhaft Champignons.')}</p>
+      </div>
       <p>{tx('Ziehe zum Drehen, nutze die rechte Maustaste zum Schwenken und scrolle zum Zoomen. Auf Touchscreens schwenkst und zoomst du mit zwei Fingern.')}</p>
       <div className="growbox-model-stage">
         <div ref={host} className="growbox-model-canvas" />
@@ -145,12 +149,12 @@ function GrowboxModelPanel() {
           <Monitor aria-hidden="true" /> {tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}
         </button>
         <button type="button" className="button button-outline" aria-pressed={cultivationPhase !== null}
-          disabled={status !== 'ready'} onClick={toggleCultivation}>
-          {tx('Betriebsmodus')}
+          disabled={status !== 'ready'} onClick={toggleCultivation} aria-label={tx('Wachstumsvorschau')} title={tx('Wachstumsvorschau')}>
+          {tx('Wachstumsvorschau')}
         </button>
         <button type="button" className="button button-outline" aria-pressed={tankFilled}
-          disabled={status !== 'ready'} onClick={toggleTankPreview} aria-label={tx('Wasser im Tank anzeigen')} title={tx('Wasser im Tank anzeigen')}>
-          <Droplets aria-hidden="true" /> {tx('Wasser im Tank anzeigen')}
+          disabled={status !== 'ready'} onClick={toggleTankPreview} aria-label={tx('Tankvorschau')} title={tx('Tankvorschau')}>
+          <Droplets aria-hidden="true" /> {tx('Tankvorschau')}
         </button>
         <button type="button" className={sensorMode ? 'button button-primary' : 'button button-outline'}
           aria-pressed={sensorMode} disabled={status !== 'ready'} onClick={() => {
@@ -167,7 +171,7 @@ function GrowboxModelPanel() {
         }} aria-label={tx('Ansicht zurücksetzen')} title={tx('Ansicht zurücksetzen')}><RotateCcw aria-hidden="true" /> {tx('Ansicht zurücksetzen')}</button>
       </div>
       {cultivationPhase !== null && <section className="growbox-cultivation-controls" aria-label={tx('Wachstum im 3D-Modell')}>
-        <h3>{tx('Pilzwachstum in der Box')}</h3>
+        <h3>{tx('Wachstumsvorschau · Champignons')}</h3>
         <p>{tx('LED-Beleuchtung eingeschaltet · Der Zuchtbereich wird sanft ausgeleuchtet.')}</p>
         <p>{tx('Die weißen Fäden im Substrat sind das Myzel. Wähle eine Phase, um zu sehen, wie sich das Pilzgeflecht und die Fruchtkörper entwickeln.')}</p>
         <div className="growbox-model-actions">
@@ -182,7 +186,7 @@ function GrowboxModelPanel() {
         <button type="button" className="button button-outline" aria-pressed={mistOn} onClick={() => {
           scene.current?.setCultivationMist(!mistOn);
           setMistOn(!mistOn);
-        }} aria-label={tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')} title={tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}</button>
+        }} aria-label={tx(mistOn ? 'Nebelvorschau ausschalten' : 'Nebelvorschau einschalten')} title={tx(mistOn ? 'Nebelvorschau ausschalten' : 'Nebelvorschau einschalten')}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebelvorschau ausschalten' : 'Nebelvorschau einschalten')}</button>
       </section>}
       {!productView && sensorMode && <p>{tx('Die Sensoransicht zeigt Temperatur, Luftfeuchtigkeit, CO₂ sowie die Substratsonde (9), den Schwimmschalter (10) und das optionale Partikelmodul (11). Die Bauformen und Einbaupositionen sind Beispiele für die Hardwareplanung.')}</p>}
       {!productView && <><p>{tx('Die Markierungen erklären die Bauteile. Einige zeigen beispielhafte Einbaupositionen.')}</p>

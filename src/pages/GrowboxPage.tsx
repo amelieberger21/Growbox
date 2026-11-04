@@ -58,7 +58,10 @@ export function GrowboxPage() {
   const dirty =
     JSON.stringify(draft) !== JSON.stringify(asDraft(state.settings));
   useEffect(() => { setBoxDraftDirty(dirty); return () => setBoxDraftDirty(false); }, [dirty, selectedBox.id]);
-  const errors = validateSettings(asSettings(draft));
+  const draftSettings = asSettings(draft);
+  const errors = validateSettings(draftSettings);
+  const temperatureError = errors.find(error => error.startsWith("Temperatur"));
+  const humidityError = errors.find(error => error.startsWith("Luftfeuchtigkeit"));
   const blocker = useBlocker(dirty);
   useEffect(() => {
     setDraft(asDraft(state.settings));
@@ -307,19 +310,19 @@ export function GrowboxPage() {
                       />
                       <span>{tx("\u00B0C")}</span>
                     </div>
-                    <input
+                    {!temperatureError && <input
                       aria-label={tx("Demo-Solltemperatur per Slider")}
                       className="slider peach-slider"
                       type="range"
                       min="10"
                       max="30"
                       step="0.5"
-                      value={Number(draft.temperature) || 10}
+                      value={draftSettings.temperature}
                       onChange={(event) =>
                         setField("temperature", event.target.value)
                       }
-                    />
-                    <StepButtons label="Demo-Solltemperatur" value={Number(draft.temperature)} min={10} max={30} step={0.5} unit="°C" onChange={value => setField("temperature", String(value))} />
+                    />}
+                    <StepButtons label="Demo-Solltemperatur" value={draftSettings.temperature} min={10} max={30} step={0.5} unit="°C" invalid={Boolean(temperatureError)} onChange={value => setField("temperature", String(value))} />
                     <div className="range-labels">
                       <span>{tx("10 \u00B0C")}</span>
                       <span>{tx("30 \u00B0C")}</span>
@@ -330,6 +333,7 @@ export function GrowboxPage() {
                         .map((error) => (
                           <p
                             id="temperature-error"
+                            role="alert"
                             className="field-error"
                             key={error}
                           >
@@ -372,19 +376,19 @@ export function GrowboxPage() {
                       />
                       <span>{tx("%")}</span>
                     </div>
-                    <input
+                    {!humidityError && <input
                       aria-label={tx("Demo-Sollluftfeuchtigkeit per Slider")}
                       className="slider blue-slider"
                       type="range"
                       min="60"
                       max="95"
                       step="1"
-                      value={Number(draft.humidity) || 60}
+                      value={draftSettings.humidity}
                       onChange={(event) =>
                         setField("humidity", event.target.value)
                       }
-                    />
-                    <StepButtons label="Demo-Sollluftfeuchtigkeit" value={Number(draft.humidity)} min={60} max={95} step={1} unit="%" onChange={value => setField("humidity", String(value))} />
+                    />}
+                    <StepButtons label="Demo-Sollluftfeuchtigkeit" value={draftSettings.humidity} min={60} max={95} step={1} unit="%" invalid={Boolean(humidityError)} onChange={value => setField("humidity", String(value))} />
                     <div className="range-labels">
                       <span>{tx("60 %")}</span>
                       <span>{tx("95 %")}</span>
@@ -395,6 +399,7 @@ export function GrowboxPage() {
                         .map((error) => (
                           <p
                             id="humidity-error"
+                            role="alert"
                             className="field-error"
                             key={error}
                           >

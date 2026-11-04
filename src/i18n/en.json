@@ -1077,5 +1077,12 @@
   "Verringern": "Decrease",
   "Erhöhen": "Increase",
   "Weißer Champignon: ein frischer Champignon mit cremeweißer Kappe und hellem Stiel auf weißem Hintergrund.": "White button mushroom: a fresh mushroom with a creamy white cap and pale stem on a white background.",
-  "Brauner Champignon: ein frischer Cremini mit natürlicher brauner Kappe und hellem Stiel auf weißem Hintergrund.": "Brown button mushroom: a fresh cremini with a natural brown cap and pale stem on a white background."
+  "Brauner Champignon: ein frischer Cremini mit natürlicher brauner Kappe und hellem Stiel auf weißem Hintergrund.": "Brown button mushroom: a fresh cremini with a natural brown cap and pale stem on a white background.",
+  "Lernansicht · unabhängig von der aktiven Kultur": "Learning view · independent of the active culture",
+  "Tank, Nebel und Wachstumsphasen dieser Lernansicht sind unabhängig von der aktiven Kultur. Das 3D-Wachstum zeigt beispielhaft Champignons.": "The tank, mist and growth phases in this learning view are independent of the active culture. The 3D growth uses button mushrooms as an example.",
+  "Wachstumsvorschau": "Growth preview",
+  "Tankvorschau": "Tank preview",
+  "Wachstumsvorschau · Champignons": "Growth preview · button mushrooms",
+  "Nebelvorschau einschalten": "Turn on mist preview",
+  "Nebelvorschau ausschalten": "Turn off mist preview"
 }

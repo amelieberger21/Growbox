@@ -489,3 +489,77 @@ html[data-contrast="high"] .technology-summary .technology-card > span {
 .community-post-images button { padding: 0; border: 1px solid var(--line); border-radius: .5rem; }
 .community-photo-large { display: block; width: 100%; max-height: 65vh; object-fit: contain; }
 html[data-contrast="high"] :is(.community-notice, .community-compose input, .community-compose textarea) { color: #123820; background: #fff; border: 2px solid #123820; }
+
+/* Keep climate controls legible when the content area or text size changes. */
+.settings-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(19rem * var(--user-font-scale, 1))), 1fr));
+}
+.setting-control { min-width: 0; }
+.setting-control > label { padding: 0; align-items: flex-start; }
+.setting-control > label > span { min-width: 0; }
+.setting-control :is(label, strong, small, .field-error) {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.setting-control .number-field {
+  position: static;
+  width: 100%;
+  min-height: 48px;
+  height: auto;
+  margin-block-start: 16px;
+  padding-inline: 12px;
+}
+.setting-control .number-field input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  min-height: 48px;
+}
+.setting-control .number-field > span { flex-shrink: 0; }
+.step-buttons output { min-width: 0; overflow-wrap: anywhere; }
+.presentation-heading { flex-wrap: wrap; min-width: 0; }
+.presentation-heading strong { max-width: 100%; overflow-wrap: break-word; hyphens: auto; }
+.demo-measurements :is(label, .demo-measurement) > span { flex-wrap: wrap; gap: 8px; min-width: 0; }
+.demo-measurements strong { white-space: normal; overflow-wrap: anywhere; }
+.demo-scenarios summary > span:nth-child(2) { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
+.demo-scenarios summary > svg { flex-shrink: 0; }
+.sidebar .nav-item { overflow-wrap: break-word; hyphens: auto; }
+.sidebar .nav-item > span { min-width: 0; }
+.sidebar :is(.nav-count, .nav-active-dot) { flex-shrink: 0; }
+
+/* Use one drawer breakpoint instead of squeezing navigation at tablet widths. */
+@media (max-width: 900px) {
+  .sidebar {
+    left: 0;
+    right: auto;
+    width: min(calc(20rem * var(--user-font-scale, 1)), calc(100vw - 24px));
+    padding: 28px 20px;
+    z-index: 90;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform .2s, visibility .2s;
+    box-shadow: 10px 0 40px #17342122;
+  }
+  .sidebar.open { visibility: visible; transform: translateX(0); }
+  .sidebar .sidebar-hide { display: none; }
+  .sidebar .mobile-close {
+    display: grid;
+    position: absolute;
+    top: 16px;
+    right: 12px;
+  }
+  .sidebar .brand-tagline { margin-block-end: 40px; }
+  .workspace, html[dir="rtl"] .workspace { margin-inline: 0; }
+  .mobile-menu { display: grid; }
+  .menu-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 89;
+    border: 0;
+    background: #172d2360;
+    backdrop-filter: blur(2px);
+  }
+  html[dir="rtl"] .sidebar { left: auto; right: 0; transform: translateX(100%); }
+  html[dir="rtl"] .sidebar.open { transform: translateX(0); }
+  html[dir="rtl"] .sidebar .mobile-close { right: auto; left: 12px; }
+}

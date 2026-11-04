@@ -1,5 +1,13 @@
 .growbox-model { margin-block: 24px; }
 .growbox-model h2 { display: flex; align-items: center; gap: 12px; }
+.growbox-preview-note {
+  margin-block: 16px;
+  padding: 16px;
+  border-inline-start: 4px solid #637d69;
+  border-radius: 8px;
+  background: #edf2e7;
+}
+.growbox-preview-note p { margin: 8px 0 0; }
 .growbox-model-stage { position: relative; background: #fff; color: #19352a; border-radius: 14px; overflow: hidden; }
 .growbox-model-canvas { height: clamp(320px, 48vw, 560px); }
 .growbox-model-canvas canvas { display: block; }

@@ -1,4 +1,4 @@
-import { act, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { it, describe, expect } from "vitest";
@@ -268,6 +268,41 @@ describe("Erweiterte Bedienabläufe", () => {
 });
 
 describe('Präzise Werte ohne Ziehen', () => {
+  it.each([
+    {field:'Demo-Solltemperatur', slider:'Demo-Solltemperatur per Slider', value:'45', shown:'45 °C'},
+    {field:'Demo-Solltemperatur', slider:'Demo-Solltemperatur per Slider', value:'20.3', shown:'20,3 °C'},
+    {field:'Demo-Solltemperatur', slider:'Demo-Solltemperatur per Slider', value:'', shown:'– °C'},
+    {field:'Demo-Sollluftfeuchtigkeit', slider:'Demo-Sollluftfeuchtigkeit per Slider', value:'96', shown:'96 %'},
+    {field:'Demo-Sollluftfeuchtigkeit', slider:'Demo-Sollluftfeuchtigkeit per Slider', value:'90.5', shown:'90,5 %'},
+    {field:'Demo-Sollluftfeuchtigkeit', slider:'Demo-Sollluftfeuchtigkeit per Slider', value:'', shown:'– %'},
+  ])('zeigt einen ungültigen Entwurf $field=$value ohne einen abweichenden Ersatzwert', ({field,slider,value,shown}) => {
+    setup('/growbox');
+    const before=saved().settings;
+    const input=screen.getByRole('spinbutton',{name:new RegExp(field)});
+    fireEvent.change(input,{target:{value}});
+    const controls=within(screen.getByRole('group',{name:field}));
+    expect(controls.getByRole('status')).toHaveTextContent(shown);
+    expect(controls.getAllByRole('button').every(button=>(button as HTMLButtonElement).disabled)).toBe(true);
+    expect(screen.queryByRole('slider',{name:slider})).not.toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-invalid','true');
+    expect(screen.getByRole('button',{name:'Einstellungen übernehmen'})).toBeDisabled();
+    expect(saved().settings).toEqual(before);
+  });
+  it('stellt nach Korrektur oder Verwerfen die synchronisierten Bedienelemente wieder her', async () => {
+    const {user}=setup('/growbox');
+    const input=screen.getByRole('spinbutton',{name:/Demo-Solltemperatur/});
+    fireEvent.change(input,{target:{value:'45'}});
+    fireEvent.change(input,{target:{value:'21.5'}});
+    expect(screen.getByRole('slider',{name:'Demo-Solltemperatur per Slider'})).toHaveValue('21.5');
+    expect(within(screen.getByRole('group',{name:'Demo-Solltemperatur'})).getByRole('status')).toHaveTextContent('21,5 °C');
+    await user.click(screen.getByRole('button',{name:'Einstellungen übernehmen'}));
+    expect(saved().settings.temperature).toBe(21.5);
+    fireEvent.change(input,{target:{value:''}});
+    await user.click(screen.getByRole('button',{name:'Änderungen verwerfen'}));
+    expect(input).toHaveValue(21.5);
+    expect(input).toHaveAttribute('aria-invalid','false');
+    expect(screen.getByRole('slider',{name:'Demo-Solltemperatur per Slider'})).toHaveValue('21.5');
+  });
   it('synchronisiert Plus, Minus, Zahleneingabe und Slider und übernimmt erst nach Bestätigung', async () => {
     const {user}=setup('/growbox');
     const before=saved().settings;

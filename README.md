@@ -54,6 +54,8 @@ Klima- und Gerätefelder bearbeiten zunächst einen **Entwurf**. Erst **„Einst
 
 Aktuelle Messwerte, gespeicherte Sollwerte und ausgeführte Geräteaktionen bleiben getrennt erkennbar.
 
+Bei ungültigen Temperatur- oder Feuchtewerten bleibt die Eingabe sichtbar, statt in den Schritttasten durch einen Grenzwert ersetzt zu werden. Die Schritttasten sind dann gesperrt und der zugehörige Slider wird ausgeblendet. Nach Korrektur oder Verwerfen des Entwurfs stehen die synchronisierten Bedienelemente wieder zur Verfügung. Fehlermeldungen nennen den gültigen Bereich und werden auch für Screenreader angekündigt.
+
 ## Tutorial und Orientierung
 
 Beim ersten Einstieg stellt sich **Champ**, der Pilzbegleiter, vor und bietet eine kurze Einführung an. Das Tutorial führt Schritt für Schritt über die Oberfläche, erklärt die wichtigsten Bereiche und hebt die passenden Bedienelemente hervor. So lernen neue Nutzer, wo sie Kulturen auswählen, Daten lesen, Einstellungen verändern und Hilfe finden.
@@ -68,7 +70,7 @@ Das Dashboard zeigt das Blender-Modell mit transparentem Glas und dem roten Logo
 - **Produktansicht:** Blende nummerierte Markierungen und Bauteilinformationen aus, um die reine Growbox zu betrachten. Über „Bauteilmarkierungen anzeigen“ werden sie wieder eingeblendet.
 - **Elf Bauteilmarkierungen:** Luftfeuchtigkeit, Wassertank und Vernebler, CO₂-Sensor, Temperatur, Frischluft und HEPA-Filter, LED-Beleuchtung, Abluftlüfter, Bildschirm, Substratfeuchtesensor, Wasserstandssensor und optionaler Partikelsensor. Die Auswahl über Marker oder Bauteilliste fokussiert den Bereich, hebt ihn lila hervor und öffnet eine Infokarte mit Funktion und Bedeutung. Die Nummern folgen den räumlichen Positionen beim Drehen und Zoomen.
 - **Sensoransicht:** Das Gehäuse tritt grau und transparent zurück, damit die Sensoren sichtbar werden. Nachgebildete Bauformen zeigen einen kombinierten Temperatur- und Feuchtesensor, ein CO₂-Modul, eine kapazitive Substratsonde, einen Schwimmschalter und das optionale Partikelmodul mit Halterungen. Es handelt sich um anschauliche Modelle, keine angeschlossene Hardware.
-- **Tank und Betriebsmodus:** Zeige einen teilgefüllten Tank und klicke durch fünf Phasen. Im Substrat breitet sich Myzel aus, anschließend wachsen Champignons. Der zuschaltbare Vernebler lässt feuchten Dunst aus dem Rohr in den Zuchtraum strömen. Im Betriebsmodus leuchtet auch die modellierte LED-Lampe und erhellt den Innenraum.
+- **Tank- und Wachstumsvorschau:** Zeige einen teilgefüllten Tank und klicke durch fünf Phasen. Im Substrat breitet sich Myzel aus, anschließend wachsen beispielhaft Champignons. Die Nebelvorschau lässt feuchten Dunst aus dem Rohr in den Zuchtraum strömen. Die modellierte LED-Lampe beleuchtet die Wachstumsvorschau. Der sichtbare Hinweis zur Lernansicht erklärt, dass Tank, Nebel und Wachstumsphasen unabhängig von der aktiven Kultur sind.
 - **Bildschirm:** Schalte das Display am Modell ein und bediene darauf den Webprototyp mit seiner Navigation und seinen Unterseiten.
 - **Ansicht zurücksetzen:** Kehre zur Startperspektive zurück. Bei reduzierter Bewegung entfallen die Übergänge. Die Bauteilinfos bleiben auch ohne WebGL zugänglich.
 
