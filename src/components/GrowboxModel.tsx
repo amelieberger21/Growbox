@@ -113,7 +113,7 @@ function GrowboxModelPanel() {
         <div ref={markerLayer} className="growbox-model-markers" hidden={status !== 'ready' || productView}>
           {hotspots.map(({ label }, index) => (
             <button key={label} type="button" aria-label={tx(label)} aria-pressed={selected === index}
-              onClick={() => focusComponent(index)}>{index + 1}</button>
+              onClick={() => focusComponent(index)} title={tx(label)}>{index + 1}</button>
           ))}
         </div>
         {status !== 'ready' && <p className="growbox-model-status" role="status">{tx(status === 'loading'
@@ -140,8 +140,8 @@ function GrowboxModelPanel() {
             setProductView(enabled);
             scene.current?.setInspectionEnabled(!enabled);
             clearSelection();
-          }}><Box aria-hidden="true" /> {tx(productView ? 'Bauteilmarkierungen anzeigen' : 'Produktansicht')}</button>
-        <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={toggleDisplay}>
+          }} aria-label={tx(productView ? 'Bauteilmarkierungen anzeigen' : 'Produktansicht')} title={tx(productView ? 'Bauteilmarkierungen anzeigen' : 'Produktansicht')}><Box aria-hidden="true" /> {tx(productView ? 'Bauteilmarkierungen anzeigen' : 'Produktansicht')}</button>
+        <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={toggleDisplay} aria-label={tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')} title={tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}>
           <Monitor aria-hidden="true" /> {tx(displayOn ? 'Bildschirm ausschalten' : 'Bildschirm einschalten')}
         </button>
         <button type="button" className="button button-outline" aria-pressed={cultivationPhase !== null}
@@ -149,25 +149,26 @@ function GrowboxModelPanel() {
           {tx('Betriebsmodus')}
         </button>
         <button type="button" className="button button-outline" aria-pressed={tankFilled}
-          disabled={status !== 'ready'} onClick={toggleTankPreview}>
+          disabled={status !== 'ready'} onClick={toggleTankPreview} aria-label={tx('Wasser im Tank anzeigen')} title={tx('Wasser im Tank anzeigen')}>
           <Droplets aria-hidden="true" /> {tx('Wasser im Tank anzeigen')}
         </button>
         <button type="button" className={sensorMode ? 'button button-primary' : 'button button-outline'}
           aria-pressed={sensorMode} disabled={status !== 'ready'} onClick={() => {
             scene.current?.setSensorMode(!sensorMode);
             setSensorMode(!sensorMode);
-          }}><Cpu aria-hidden="true" /> {tx('Sensoransicht')}</button>
+          }} aria-label={tx('Sensoransicht')} title={tx('Sensoransicht')}><Cpu aria-hidden="true" /> {tx('Sensoransicht')}</button>
         <button type="button" className="button button-primary" disabled={!canOpen} onClick={() => {
           scene.current?.setDoor(!open);
           setOpen(!open);
-        }}><DoorClosed aria-hidden="true" /> {tx(open ? 'Tür schließen' : 'Tür öffnen')}</button>
+        }} aria-label={tx(open ? 'Tür schließen' : 'Tür öffnen')} title={tx(open ? 'Tür schließen' : 'Tür öffnen')}><DoorClosed aria-hidden="true" /> {tx(open ? 'Tür schließen' : 'Tür öffnen')}</button>
         <button type="button" className="button button-outline" disabled={status !== 'ready'} onClick={() => {
           scene.current?.animateCameraTo(overview, center);
           clearSelection();
-        }}><RotateCcw aria-hidden="true" /> {tx('Ansicht zurücksetzen')}</button>
+        }} aria-label={tx('Ansicht zurücksetzen')} title={tx('Ansicht zurücksetzen')}><RotateCcw aria-hidden="true" /> {tx('Ansicht zurücksetzen')}</button>
       </div>
       {cultivationPhase !== null && <section className="growbox-cultivation-controls" aria-label={tx('Wachstum im 3D-Modell')}>
         <h3>{tx('Pilzwachstum in der Box')}</h3>
+        <p>{tx('LED-Beleuchtung eingeschaltet · Der Zuchtbereich wird sanft ausgeleuchtet.')}</p>
         <p>{tx('Die weißen Fäden im Substrat sind das Myzel. Wähle eine Phase, um zu sehen, wie sich das Pilzgeflecht und die Fruchtkörper entwickeln.')}</p>
         <div className="growbox-model-actions">
           {PHASES.map((phase, index) => <button key={phase.name} type="button"
@@ -181,7 +182,7 @@ function GrowboxModelPanel() {
         <button type="button" className="button button-outline" aria-pressed={mistOn} onClick={() => {
           scene.current?.setCultivationMist(!mistOn);
           setMistOn(!mistOn);
-        }}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}</button>
+        }} aria-label={tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')} title={tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}><Droplets aria-hidden="true" /> {tx(mistOn ? 'Nebel ausschalten' : 'Nebel einschalten')}</button>
       </section>}
       {!productView && sensorMode && <p>{tx('Die Sensoransicht zeigt Temperatur, Luftfeuchtigkeit, CO₂ sowie die Substratsonde (9), den Schwimmschalter (10) und das optionale Partikelmodul (11). Die Bauformen und Einbaupositionen sind Beispiele für die Hardwareplanung.')}</p>}
       {!productView && <><p>{tx('Die Markierungen erklären die Bauteile. Einige zeigen beispielhafte Einbaupositionen.')}</p>

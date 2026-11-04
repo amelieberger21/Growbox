@@ -27,6 +27,7 @@ export function localAnswer(text: string, state: PersistedAppState, locale = 'de
     else if (/bibliothek|library|pilze|biblioth|bibliot|catalog|katalog|kütüphane|kutuphane|knihovn/.test(q)) navigate = '/pilze';
     else if (/einstellung|settings|paramètre|parametre|ajustes|impostaz|instelling|ustawieni|nastavení|nastaveni|ayar/.test(q)) navigate = '/einstellungen';
     else if (/dashboard|startseite|accueil|inicio|home|pulpit|přehled|prehled|ana sayfa/.test(q)) navigate = '/';
+    else if (/community|gemeinschaft|communaut|comunidad|comunit|gemeenschap|społeczno|spoleczno|komunita|topluluk/.test(q)) navigate = '/community';
     else if (/hilfe|help|aide|ayuda|aiuto|hulp|pomoc|yardım|yardim/.test(q)) navigate = '/hilfe';
   }
   const requestedData = /daten|zustand|pflanze|pilz|temperatuur|température|temperatur|feucht|co2|co₂|tank|status|data|condition|humidity|donn|état|etat|champignon|humidité|humidite|datos|estado|hongo|humedad|dati|stato|fungo|umidit|gegevens|toestand|vocht|dane|stan|grzyb|wilgot|teplota|údaj|udaj|vlhk|stav|veri|durum|mantar|sıcak|sicak|nem/.test(q);

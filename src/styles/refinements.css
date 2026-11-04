@@ -313,3 +313,179 @@ html .topbar { background-color: #f0f7ee; }
 html:not([data-contrast="high"]) :is(.panel, .sensor-card) {
   background-color: #fffdf8;
 }
+
+/* Shared product palette. The high-contrast preference keeps its own colours. */
+html:not([data-contrast="high"]) {
+  --green: #224b32;
+  --dark: #262a23;
+  --muted: #7d8177;
+  --sage: #eff2e9;
+  --bg: #f7f5f1;
+}
+html:not([data-contrast="high"]) body {
+  --bg: #f7f5f1;
+  background-color: var(--bg);
+}
+html:not([data-contrast="high"]) :is(.app-shell, .workspace, #main-content) {
+  background-color: #f7f5f1;
+}
+html:not([data-contrast="high"]) :is(h1, h2, h3, h4) {
+  color: #262a23;
+}
+html:not([data-contrast="high"]) :is(
+  .page-description, .section-description, .card-description,
+  .detail-description, .scientific, .sensor-target, .sensor-updated,
+  .growth-meta, .monitoring-note, .example-caption, .verification-note
+) {
+  color: #7d8177;
+}
+html:not([data-contrast="high"]) :is(
+  .panel, .sensor-card, .mushroom-card, .box-card,
+  .technology-card, .recipe-card, .visual-phase-card, .setting-control
+) {
+  background-color: #fcfcfc;
+}
+html:not([data-contrast="high"]) :is(
+  .status-badge, .sensor-status, .assessment, .muted-tag,
+  .draft-badge, .box-context, .library-count
+) {
+  background-color: #eff2e9;
+}
+html:not([data-contrast="high"]) :is(
+  .demo-banner, .verification-note, .info-note, .technical-hint,
+  .growth-phase-learning section, .library-intro
+) {
+  background-color: #f7f6f1;
+}
+html:not([data-contrast="high"]) :is(.button-primary, .button-lime, .voice-launch) {
+  background-color: #224b32;
+  border-color: #224b32;
+  color: #fff;
+}
+html:not([data-contrast="high"]) :is(.button-outline, .text-button, .help-button) {
+  color: #224b32;
+  border-color: #224b32;
+}
+html:not([data-contrast="high"]) .nav-item.active {
+  background-color: #224b32;
+  color: #fff;
+}
+html:not([data-contrast="high"]) .culture-hero :is(h1, h2, h3, h4) {
+  color: #fff;
+}
+
+/* The culture card has a light surface in high-contrast mode. */
+html[data-contrast="high"] .culture-hero :is(
+  .hero-progress-heading, .hero-progress-heading *,
+  .hero-label, .hero-label *, .hero-phase, .hero-phase *,
+  .hero-progress-footer, .hero-progress-footer *, .hero-recipe-link,
+  .hero-bottom, .hero-bottom *, .hero-art > span
+) {
+  color: #163b21 !important;
+  opacity: 1 !important;
+}
+html[data-contrast="high"] :is(.status-badge, .difficulty, .assessment) {
+  color: #163b21 !important;
+  background: #eff2e9 !important;
+  border: 1px solid #163b21;
+}
+html[data-contrast="high"] :is(.status-dot, .hero-phase-dot) {
+  background: #163b21 !important;
+}
+html[data-contrast="high"] .culture-hero .progress-track {
+  background: #d5dfd1;
+  border: 1px solid #163b21;
+}
+html[data-contrast="high"] .culture-hero .progress-track > span {
+  background: #163b21;
+}
+
+/* Readable device overview, including the user's text-size preference. */
+.technology-summary .section-title h2 {
+  font-size: calc(1.375rem * var(--user-font-scale, 1));
+}
+.technology-summary .technology-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 16px;
+}
+.technology-summary .technology-card {
+  min-width: 0;
+  min-height: 190px;
+  padding: 24px;
+  gap: 14px;
+  align-content: start;
+  border-color: var(--line);
+}
+.technology-summary .technology-card > svg:first-child {
+  width: calc(3rem * var(--user-font-scale, 1));
+  height: calc(3rem * var(--user-font-scale, 1));
+  max-width: 72px;
+  max-height: 72px;
+  stroke-width: 2;
+}
+.technology-summary .technology-card > span {
+  font-size: calc(1.0625rem * var(--user-font-scale, 1));
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.technology-summary .technology-card > strong {
+  font-size: calc(1.25rem * var(--user-font-scale, 1));
+  line-height: 1.4;
+}
+.technology-summary .technology-card > svg:last-child {
+  width: 24px;
+  height: 24px;
+  top: 24px;
+  inset-inline-end: 20px;
+}
+html[data-contrast="high"] .technology-summary .technology-card {
+  color: #163b21;
+}
+html[data-contrast="high"] .technology-summary .technology-card > span {
+  color: #163b21;
+}
+
+/* Culture research and local community use the established colour/accessibility tokens. */
+.conditions-values > div > span { display: flex; align-items: center; gap: .45rem; }
+.conditions-values > div > span svg { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
+.cultivation-context { margin-block: 1rem; line-height: 1.65; }
+.cultivation-source { display: inline-flex; gap: .5rem; align-items: center; margin-top: 1rem; overflow-wrap: anywhere; }
+.cultivation-reviewed { display: block; margin-top: .5rem; }
+.cultivation-table-scroll { overflow-x: auto; }
+.cultivation-table-scroll caption { text-align: start; font-weight: 700; padding-block: .75rem; }
+.community-notice { display: flex; align-items: start; gap: 1rem; padding: 1rem 1.25rem; background: var(--surface-soft, #eff2e9); border: 1px solid var(--border, #bdc9b7); border-radius: .75rem; margin-bottom: 1.5rem; }
+.community-notice svg { flex-shrink: 0; width: 1.75rem; height: 1.75rem; }
+.community-notice p { margin: 0; }
+.community-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 1.5rem; align-items: start; }
+.community-compose h2, .community-compose label { display: flex; align-items: center; gap: .65rem; }
+.community-compose form { display: grid; gap: .75rem; margin-top: 1rem; }
+.community-compose label { font-weight: 700; margin-top: .5rem; }
+.community-compose input, .community-compose textarea { width: 100%; min-width: 0; min-height: 44px; padding: .8rem; font: inherit; color: inherit; background: var(--surface, #fcfcfc); border: 1px solid var(--border, #82917f); border-radius: .5rem; }
+.community-compose textarea { resize: vertical; }
+.community-compose small, .community-storage-note { font-size: .85rem; line-height: 1.6; }
+.community-storage-note { margin-top: 1rem; }
+.community-feed { min-width: 0; }
+.community-feed .section-title { margin-bottom: 0; }
+.community-post { margin-bottom: 1rem; }
+.community-post header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+.community-author { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.community-author > svg { width: 2rem; height: 2rem; flex-shrink: 0; }
+.community-author h3 { margin: 0; overflow-wrap: anywhere; }
+.community-author time { font-size: .8rem; }
+.community-post-text { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; margin-block: 1rem; }
+.community-previews, .community-post-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .75rem; }
+.community-previews figure { position: relative; margin: 0; }
+.community-previews img { width: 100%; height: 120px; object-fit: cover; border-radius: .5rem; }
+.community-previews button { position: absolute; top: .25rem; right: .25rem; background: var(--surface, #fff); }
+.community-post-images img { display: block; width: 100%; height: 200px; object-fit: cover; border-radius: .5rem; }
+.community-example-photo { margin: 0; }
+.community-example-photo img { width: 100%; max-height: 300px; object-fit: cover; border-radius: .5rem; }
+.community-example-photo figcaption { font-size: .8rem; line-height: 1.6; margin-top: .4rem; }
+.community-error { padding: 1rem; border: 1px solid currentColor; color: #922b21; background: #fff0ed; border-radius: .5rem; }
+.community-status:empty { display: none; }
+.community-status { padding-block: .5rem; font-weight: 700; }
+@media (max-width: 1050px) { .community-layout { grid-template-columns: minmax(0, 1fr); } }
+.community-post-images button { padding: 0; border: 1px solid var(--line); border-radius: .5rem; }
+.community-photo-large { display: block; width: 100%; max-height: 65vh; object-fit: contain; }
+html[data-contrast="high"] :is(.community-notice, .community-compose input, .community-compose textarea) { color: #123820; background: #fff; border: 2px solid #123820; }

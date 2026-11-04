@@ -283,6 +283,21 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
   }, { signal });
 
   const cultivation = createCultivationPreview(scene);
+  // The luminous diffuser sits on the underside of the model's ceiling light (hotspot 6).
+  const ledStrip = new THREE.Mesh(
+    new THREE.BoxGeometry(0.245, 0.003, 0.018),
+    new THREE.MeshStandardMaterial({
+      color: '#f5fff4', emissive: '#e3ffe4', emissiveIntensity: 2.5, toneMapped: false,
+    }),
+  );
+  ledStrip.position.set(hotspots[5].point[0], 0.258, hotspots[5].point[2]);
+  ledStrip.visible = false;
+  const ledLight = new THREE.SpotLight('#f0fff0', 0.32, 0.55, Math.PI * 0.38, 0.65, 2);
+  ledLight.position.set(hotspots[5].point[0], 0.253, hotspots[5].point[2]);
+  ledLight.target.position.set(0.18, 0.055, -0.15);
+  ledLight.visible = false;
+  scene.add(ledStrip, ledLight, ledLight.target);
+
   let previousFrame = 0;
   const projected = new THREE.Vector3();
   renderer.setAnimationLoop(time => {
@@ -318,7 +333,11 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
     canOpen,
     setInspectionEnabled(enabled: boolean) { inspectionEnabled = enabled; },
     setDisplay,
-    setCultivationPhase: cultivation.setPhase,
+    setCultivationPhase(phase: number | null) {
+      cultivation.setPhase(phase);
+      ledStrip.visible = phase !== null;
+      ledLight.visible = phase !== null;
+    },
     setCultivationMist: cultivation.setMist,
     setTankPreview(filled: boolean) { tankWater.visible = filled; },
     setHousingColor(color: string) { housingMaterial.color.set(color); },
@@ -340,6 +359,9 @@ export async function mountGrowboxScene(host: HTMLElement, markers: HTMLElement[
       observer.disconnect();
       controls.dispose();
       cultivation.dispose();
+      ledStrip.geometry.dispose();
+      ledStrip.material.dispose();
+      ledLight.dispose();
       for (const { mesh, material } of shell) mesh.material = material;
       shellMaterial.dispose();
       housingMaterial.dispose();

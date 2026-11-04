@@ -19,15 +19,14 @@ import {
 import { useState } from "react";
 import { useGrowbox } from "../state/GrowboxProvider";
 import { useExperience } from "./ExperienceProvider";
-import { CULTIVATION, phaseRange, type Assessment, type Metric } from "./model";
+import { type Assessment, type Metric } from "./model";
+import { CULTIVATION_GUIDES } from "../data/cultivationGuides";
 import { PHASES } from "../data/catalog";
 import {
   demoTime,
   formatDate,
   formatNumber,
   formatTime,
-  phaseAt,
-  percent,
 } from "../simulation/engine";
 import { Link } from "react-router-dom";
 import { Modal } from "../components/ui";
@@ -93,114 +92,37 @@ export function MetricAssessment({ metric }: { metric: Metric }) {
 }
 export function ConditionsPanel({ entry }: { entry: MushroomEntry }) {
   const tx = useT();
-  const { state } = useGrowbox();
-  const info = CULTIVATION[entry.speciesId];
-  const phase = state.cycle?.slug === entry.slug ? phaseAt(percent(state)) : 3;
+  const info = CULTIVATION_GUIDES[entry.speciesId];
   const [expanded, setExpanded] = useState(false);
+  const rangeLabel = (range: readonly [number, number], unit: string) =>
+    `${formatNumber(range[0])}${range[0] === range[1] ? "" : `–${formatNumber(range[1])}`} ${unit}`;
   return (
     <section className="panel conditions-panel">
       <div className="section-title">
-        <div>
-          <p className="eyebrow">{tx("BEDINGUNGEN VERSTEHEN")}</p>
-          <h2><Thermometer aria-hidden="true"/>{tx("Kulturbedingungen nach Phase")}</h2>
-        </div>
-        <span className="muted-tag">
-          {tx(
-            info.verified
-              ? "Studienbezogen geprüft"
-              : "Vorläufig · noch zu validieren",
-          )}
-        </span>
+        <div><p className="eyebrow">{tx("BEDINGUNGEN VERSTEHEN")}</p>
+          <h2><Thermometer aria-hidden="true"/>{tx("Kulturbedingungen nach Phase")}</h2></div>
+        <span className="muted-tag">{tx(info.evidence)}</span>
       </div>
-      <p>
-        {tx(
-          "Die Angaben beziehen sich auf konkrete Phasen. Sie sind keine universellen Sicherheitsgrenzen oder Ernteversprechen.",
-        )}
-      </p>
+      <p>{tx("Orientierungswerte für Fruchtung und Wachstum auf bereits besiedeltem Substrat. Je nach Zuchtstamm und Kulturverfahren unterscheiden sich die idealen Bedingungen.")}</p>
       <div className="conditions-values">
-        {(["temperature", "humidity"] as const).map((metric) => {
-          const data = phaseRange(entry, phase, metric);
-          return (
-            <div key={metric}>
-              <span>{tx(METRIC_LABELS[metric])}</span>
-              <strong>
-                {data.range
-                  ? `${formatNumber(data.range[0])}–${formatNumber(data.range[1])} ${metric === "temperature" ? "°C" : "%"}`
-                  : tx("Nicht verifiziert")}
-              </strong>
-              <small>{tx(PHASES[phase].name)}</small>
-            </div>
-          );
-        })}
+        <div><span><Thermometer aria-hidden="true"/> {tx("Temperatur")}</span><strong>{rangeLabel(info.fruiting.temperature, "°C")}</strong><small>{tx(info.fruiting.name)}</small></div>
+        <div><span><Droplets aria-hidden="true"/> {tx("Relative Luftfeuchtigkeit")}</span><strong>{rangeLabel(info.fruiting.humidity, "% RH")}</strong><small>{tx(info.fruiting.name)}</small></div>
       </div>
-      <button
-        className="text-button"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-      >
-        {tx("Alle Phasen & Prüfstand")}
-        <ChevronDown size={15} />
+      <p className="cultivation-context">{tx(info.note)}</p>
+      <button className="text-button" onClick={() => setExpanded(!expanded)} aria-expanded={expanded} aria-label={tx("Phasen und Quellen ansehen")} title={tx("Phasen und Quellen ansehen")}>
+        {tx("Phasen und Quellen ansehen")} <ChevronDown aria-hidden="true"/>
       </button>
-      {expanded && (
-        <div className="conditions-expanded">
-          <table>
-            <thead>
-              <tr>
-                <th>{tx("Phase")}</th>
-                <th>{tx("Temperatur")}</th>
-                <th>{tx("Luftfeuchtigkeit")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[1, 2].map((phaseId) => (
-                <tr key={phaseId}>
-                  <td>
-                    {tx(
-                      phaseId === 1
-                        ? "Besiedlung des Substrats"
-                        : "Fruchtungsphase",
-                    )}
-                  </td>
-                  {(["temperature", "humidity"] as const).map((metric) => {
-                    const r = phaseRange(entry, phaseId, metric).range;
-                    return (
-                      <td key={metric}>
-                        {r
-                          ? `${formatNumber(r[0])}–${formatNumber(r[1])} ${metric === "temperature" ? "°C" : "%"}`
-                          : tx("Nicht verifiziert")}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p>{tx(info.note)}</p>
-          {entry.speciesId === "shimeji" && (
-            <p>
-              {tx(
-                "Im zitierten Shimeji-Protokoll: CO₂ bei Besiedlung 2.500–4.000 ppm, bei Fruchtung 1.000–2.000 ppm; Licht an Fruchtungstagen 1–7: 50–100 lux, an Tagen 8–20: 200–300 lux. Diese Studienwerte werden nicht als Hardware-Grenzen übernommen.",
-              )}
-            </p>
-          )}
-          <p>
-            {tx(
-              "CO₂-Zielbereich, numerischer Lichtbedarf und reale Growbox-Eignung für unsere Hardware sind nicht verifiziert. Studienbezogene Angaben sind gegebenenfalls separat aufgeführt. Kulturdauern bleiben synthetische Demo-Werte.",
-            )}
-          </p>
-          {info.sourceUrl && (
-            <a
-              className="text-link"
-              href={info.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {tx("Quelle und Geltungsbereich")}
-              <ExternalLink size={13} />
-            </a>
-          )}
-        </div>
-      )}
+      {expanded && <div className="conditions-expanded">
+        <div className="cultivation-table-scroll"><table><caption>{tx("Dokumentierte Kulturbedingungen")}</caption>
+          <thead><tr><th>{tx("Phase")}</th><th>{tx("Temperatur")}</th><th>{tx("Relative Luftfeuchtigkeit")}</th></tr></thead>
+          <tbody>{info.stages.map(stage => <tr key={stage.name}><td>{tx(stage.name)}</td><td>{rangeLabel(stage.temperature, "°C")}</td><td>{rangeLabel(stage.humidity, "% RH")}</td></tr>)}</tbody>
+        </table></div>
+        {entry.speciesId === "shimeji" && <p>{tx("Im zitierten Shimeji-Protokoll: CO₂ bei Besiedlung 2.500–4.000 ppm, bei Fruchtung 1.000–2.000 ppm; Licht an Fruchtungstagen 1–7: 50–100 lux, an Tagen 8–20: 200–300 lux. Diese Studienwerte werden nicht als Hardware-Grenzen übernommen.")}</p>}
+        <p>{tx("Luftfeuchte bezeichnet die relative Feuchte der Umgebungsluft, nicht den Wassergehalt des Substrats. Für die Vorbereitung gelten die Hygiene- und Substratanweisungen des jeweiligen Zuchtsets.")}</p>
+        <p>{tx("Diese recherchierten Kulturangaben ändern keine Demo-Sollwerte. Die Eignung der realen Growbox ist noch nicht erprobt.")}</p>
+      </div>}
+      <a className="text-link cultivation-source" href={info.source.url} target="_blank" rel="noreferrer">{info.source.title} <ExternalLink aria-hidden="true"/></a>
+      <small className="cultivation-reviewed">{tx("Quellen geprüft am 04.11.2026")}</small>
     </section>
   );
 }
@@ -216,7 +138,7 @@ export function WaterMaintenance() {
     <section className="panel water-panel" id="water-maintenance"><HelpButton topic="water"/>
       <div className="section-title">
         <h2>
-          <Droplets size={18} />
+          <Droplets size={18}  aria-hidden="true" />
           {tx("Wasserwartung")}
         </h2>
         <span className="muted-tag">{tx("Simulierter Tank")}</span>
@@ -240,9 +162,9 @@ export function WaterMaintenance() {
         </strong>
         <span className={`tank-status tank-${devices.water}`}>
           {devices.water === "sufficient" ? (
-            <Check size={16} />
+            <Check size={16}  aria-hidden="true" />
           ) : (
-            <TriangleAlert size={16} />
+            <TriangleAlert size={16}  aria-hidden="true" />
           )}
           {tx(TANK_LABELS[devices.water])}
         </span>
@@ -259,7 +181,7 @@ export function WaterMaintenance() {
         </p>
       )}
       <p className="pump-state">
-        <Droplets size={16} />
+        <Droplets size={16}  aria-hidden="true" />
         {tx("Wasserförderung")}:{" "}
         <strong>
           {tx(devices.pumpBlocked ? "Gesperrt" : devices.pumpOn ? "An" : "Aus")}
@@ -305,8 +227,8 @@ export function WaterMaintenance() {
         <button
           className="button button-primary"
           disabled={!canControl} onClick={() => waterAction("changed")}
-        >
-          <Check size={15} />
+         aria-label={tx("Wasser gewechselt")} title={tx("Wasser gewechselt")}>
+          <Check size={15}  aria-hidden="true" />
           {tx("Wasser gewechselt")}
         </button>
       </div>
@@ -329,8 +251,8 @@ export function NotificationCenter() {
           setHiddenNotices([]);
           setOpen(true);
         }}
-      >
-        <Bell size={19} />
+       title={`${tx("Benachrichtigungen")} (${unread})`}>
+        <Bell size={19}  aria-hidden="true" />
         {unread > 0 && (
           <span className="notification-count">
             {unread > 99 ? "99+" : unread}
@@ -380,9 +302,9 @@ export function NotificationCenter() {
                 >
                   <span>
                     {n.severity === "info" ? (
-                      <Info size={18} />
+                      <Info size={18}  aria-hidden="true" />
                     ) : (
-                      <TriangleAlert size={18} />
+                      <TriangleAlert size={18}  aria-hidden="true" />
                     )}
                   </span>
                   <div>
@@ -402,14 +324,14 @@ export function NotificationCenter() {
                       {tx(n.read ? "Gelesen" : "Als gelesen markieren")}
                     </button>
                   </div>
-                  <button type="button" className="icon-button close-notice" aria-label={`${tx('Benachrichtigung ausblenden')}: ${notificationText(n.key,n.params,tx)}`} onClick={()=>setHiddenNotices(previous=>[...previous,n.id])}><X aria-hidden="true"/></button>
+                  <button type="button" className="icon-button close-notice" aria-label={`${tx('Benachrichtigung ausblenden')}: ${notificationText(n.key,n.params,tx)}`} onClick={()=>setHiddenNotices(previous=>[...previous,n.id])} title={`${tx('Benachrichtigung ausblenden')}: ${notificationText(n.key,n.params,tx)}`}><X aria-hidden="true"/></button>
                 </li>
               ))}
               {hiddenNotices.length>0&&<li><p>{tx('Ausblenden behebt keine Ursache und markiert die Meldung nicht als gelesen.')}</p><button className="button button-outline" onClick={()=>setHiddenNotices([])}>{tx('Ausgeblendete Meldungen anzeigen')}</button></li>}
             </ol>
           ) : (
             <div className="notification-empty">
-              <Check size={25} />
+              <Check size={25}  aria-hidden="true" />
               <strong>{tx("Alles im Blick. Noch keine Meldungen.")}</strong>
               <p>
                 {tx("Du kannst neue Hinweise unter „Demo-Szenarien“ erzeugen.")}

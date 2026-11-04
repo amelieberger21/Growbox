@@ -86,7 +86,7 @@ export function GrowboxProvider({ children }: { children: ReactNode }) {
         role="status"
         aria-live="polite"
       >
-        <span>{tx(message)}</span>{message&&<button type="button" className="icon-button" aria-label={tx("Hinweis schließen")} onClick={()=>{setMessage("");clearTimeout(timer.current);}}><X aria-hidden="true"/></button>}
+        <span>{tx(message)}</span>{message&&<button type="button" className="icon-button" aria-label={tx("Hinweis schließen")} onClick={()=>{setMessage("");clearTimeout(timer.current);}} title={tx("Hinweis schließen")}><X aria-hidden="true"/></button>}
       </div>
     </Context.Provider>
   );

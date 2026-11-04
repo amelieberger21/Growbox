@@ -51,6 +51,13 @@ export function createAdditionalSensors(scene: THREE.Scene) {
   part(level, new THREE.BoxGeometry(0.002, 0.024, 0.002), '#323532', [0.003, 0.042, 0]);
 
   const particles = sensor(10, 'PMS5003 Beispielmodul');
+  // The mounting plate meets the module's underside; standoffs reach into the roof.
+  part(particles, new THREE.BoxGeometry(0.058, 0.004, 0.046), '#566259', [0, -0.0125, 0]);
+  for (const x of [-0.021, 0.021]) {
+    part(particles, new THREE.CylinderGeometry(0.003, 0.003, 0.024, 16), '#89958c', [x, -0.0265, 0]);
+    part(particles, new THREE.CylinderGeometry(0.0025, 0.0025, 0.002, 12), '#c6cec7', [x, -0.0095, 0.019]);
+  }
+
   part(particles, new THREE.BoxGeometry(0.05, 0.021, 0.038), '#286c9a', [0, 0, 0]);
   part(particles, new THREE.BoxGeometry(0.047, 0.001, 0.035), '#bdc7cd', [0, 0.011, 0]);
   part(particles, new THREE.BoxGeometry(0.019, 0.012, 0.001), '#171f26', [-0.012, 0, 0.0195]);

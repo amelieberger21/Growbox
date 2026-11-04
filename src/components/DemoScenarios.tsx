@@ -26,9 +26,9 @@ export function DemoScenarios() {
   };
   return (
     <details className="demo-scenarios panel">
-      <summary>
+      <summary aria-label={tx("Demo-Szenarien")} title={tx("Demo-Szenarien")}>
         <span className="icon-tile">
-          <FlaskConical size={18} />
+          <FlaskConical size={18}  aria-hidden="true" />
         </span>
         <span>
           <strong>{tx("Demo-Szenarien")}</strong>
@@ -36,7 +36,7 @@ export function DemoScenarios() {
             {tx("Einmal ausprobieren. Zusammenh\u00E4nge verstehen.")}
           </small>
         </span>
-        <ChevronDown size={18} />
+        <ChevronDown size={18}  aria-hidden="true" />
       </summary>
       <div className="scenario-content"><HelpButton topic="scenarios"/>
         <p>
@@ -50,32 +50,32 @@ export function DemoScenarios() {
             className="button button-outline"
             disabled={!enabled}
             onClick={() => activate("normal")}
-          >
-            <Check size={16} />
+           aria-label={tx("Normalbetrieb")} title={tx("Normalbetrieb")}>
+            <Check size={16}  aria-hidden="true" />
             {tx("Normalbetrieb")}
           </button>
           <button
             className="button button-outline"
             disabled={!enabled}
             onClick={() => activate("humidity")}
-          >
-            <Droplets size={16} />
+           aria-label={tx("Luftfeuchtigkeit zu niedrig")} title={tx("Luftfeuchtigkeit zu niedrig")}>
+            <Droplets size={16}  aria-hidden="true" />
             {tx("Luftfeuchtigkeit zu niedrig")}
           </button>
           <button
             className="button button-outline"
             disabled={!enabled}
             onClick={() => activate("temperature")}
-          >
-            <Thermometer size={16} />
+           aria-label={tx("Temperatur zu hoch")} title={tx("Temperatur zu hoch")}>
+            <Thermometer size={16}  aria-hidden="true" />
             {tx("Temperatur zu hoch")}
           </button>
           <button
             className="button button-outline"
             disabled={!enabled}
             onClick={() => activate("co2")}
-          >
-            <Wind size={16} />
+           aria-label={tx("CO\u2082 erh\u00F6ht")} title={tx("CO\u2082 erh\u00F6ht")}>
+            <Wind size={16}  aria-hidden="true" />
             {tx("CO\u2082 erh\u00F6ht")}
           </button>
           <button
@@ -85,8 +85,8 @@ export function DemoScenarios() {
               dispatch({ type: "TICK", hours: 24 });
               notify("Ein Demo-Tag wurde vorgespult.");
             }}
-          >
-            <FastForward size={16} />
+           aria-label={tx("Einen Demo-Tag vorspulen")} title={tx("Einen Demo-Tag vorspulen")}>
+            <FastForward size={16}  aria-hidden="true" />
             {tx("Einen Demo-Tag vorspulen")}
           </button>
         </div>

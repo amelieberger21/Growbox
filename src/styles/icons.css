@@ -1,0 +1,139 @@
+/* Icon contrast follows the surface, independently of the user's text colours. */
+:root {
+  --ui-icon: #224b32;
+  --ui-icon-on-dark: #ffffff;
+  --ui-icon-size: 1.5rem;
+  --ui-icon-stroke: 2.25;
+}
+html body svg.lucide,
+html body .app-shell svg.lucide {
+  color: var(--ui-icon);
+  stroke-width: var(--ui-icon-stroke);
+  opacity: 1;
+  flex-shrink: 0;
+}
+:where(svg.lucide) {
+  width: var(--ui-icon-size);
+  height: var(--ui-icon-size);
+}
+:is(.culture-hero, .toast, [data-icon-surface="dark"]) {
+  --ui-icon: var(--ui-icon-on-dark);
+}
+:is(.button-primary, .button-lime, .voice-launch, .nav-item.active) {
+  --ui-icon: var(--ui-icon-on-dark);
+}
+:is(.button-outline, .icon-button, .help-button, .sensor-icon, .icon-tile,
+    .recipe-entry-icon, .difficulty, .assessment, [data-icon-surface="light"]) {
+  --ui-icon: #224b32;
+}
+html[data-contrast="high"] .culture-hero {
+  --ui-icon: #163b21;
+}
+html[data-contrast="high"] {
+  --ui-icon: #163b21;
+}
+:is(.alert-critical, .observation-warning, .button-danger) {
+  --ui-icon: #8d2118;
+}
+html body .button-danger {
+  background-color: #8d2118;
+  color: #fff;
+  --ui-icon: #fff;
+}
+html body :is(.button, .icon-button, .help-button, .nav-item,
+             .text-button, .text-link, .back-link, .gallery-caption) > svg.lucide {
+  width: 28px;
+  height: 28px;
+}
+html body :is(.button, .icon-button, .help-button, .nav-item,
+             .text-button, .text-link, .back-link) {
+  min-width: 44px;
+  min-height: 44px;
+  gap: 10px;
+}
+html body .icon-button {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+:is(.text-button, .text-link, .back-link) {
+  display: inline-flex;
+  align-items: center;
+}
+:is(.filter-pills, .segmented) button {
+  min-width: 44px;
+  min-height: 44px;
+}
+html body :is(.button, .help-button) {
+  padding-inline: 16px;
+}
+html body .step-buttons button > svg.lucide {
+  width: 28px;
+  height: 28px;
+}
+:is(.sensor-icon, .icon-tile, .recipe-entry-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px;
+}
+html body .toggle {
+  width: 68px;
+  min-width: 68px;
+  height: 44px;
+  padding: 6px;
+}
+html body .toggle > span {
+  width: 30px;
+  height: 30px;
+  --ui-icon: #224b32;
+}
+html body .toggle.on {
+  background-color: #224b32;
+}
+html body .toggle.on > span {
+  transform: translateX(24px);
+}
+html body .toggle > span > svg.lucide {
+  width: 20px;
+  height: 20px;
+}
+html body .toggle::before {
+  inset: 0;
+}
+:is(button, a, summary):focus-visible {
+  outline: 3px solid #224b32;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px #fff;
+}
+html body .culture-hero :is(.button-primary, .button-lime) {
+  background-color: #224b32;
+  color: #fff;
+  --ui-icon: #fff;
+}
+
+.sidebar .sidebar-hide { height: auto; min-height: 48px; line-height: 1.4; padding-block: 10px; }
+.sidebar .nav-count { flex-shrink: 0; white-space: nowrap; }
+.growbox-color-picker button { min-width: 44px; min-height: 44px; }
+
+html body :is(button, a, summary):has(> svg.lucide) {
+  min-width: 44px;
+  min-height: 44px;
+}
+html body .mycelium-art svg.lucide {
+  color: var(--ui-icon);
+}
+
+.toast .icon-button {
+  --ui-icon: #fff;
+}
+
+html body svg.lucide:is(
+  [width="12"], [width="13"], [width="14"], [width="15"], [width="16"],
+  [width="17"], [width="18"], [width="19"], [width="20"]
+) {
+  min-width: 24px;
+  min-height: 24px;
+}

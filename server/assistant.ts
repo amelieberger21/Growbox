@@ -2,7 +2,7 @@ import { isAssistantLanguage, languageInfo } from '../src/experience/assistantLa
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
 import { assistantSetup } from './assistantSetup.ts';
-const paths = ['', '/', '/growbox', '/wachstum', '/wachstum/klima', '/pilze', '/einstellungen', '/hilfe', '/projekt'];
+const paths = ['', '/', '/growbox', '/wachstum', '/wachstum/klima', '/pilze', '/einstellungen', '/community', '/hilfe', '/projekt'];
 export function assistantMiddleware(env: Record<string, string>) {
   const middleware = async (req: IncomingMessage, res: ServerResponse, next: () => void) => {
     if (!req.url?.startsWith('/api/assistant')) return next();

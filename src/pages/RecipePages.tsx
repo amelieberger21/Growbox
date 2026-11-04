@@ -62,15 +62,15 @@ export function RecipeEntry({
         className="recipe-entry"
         to={`/pilze/${entry.slug}/rezepte`}
         state={{ returnTo: `/pilze/${entry.slug}`, librarySearch }}
-      >
+       aria-label={tx("Rezeptideen")} title={tx("Rezeptideen")}>
         <span className="recipe-entry-icon">
-          <ChefHat size={24} />
+          <ChefHat size={24}  aria-hidden="true" />
         </span>
         <span>
           <h2>{tx("Rezeptideen")}</h2>
           <small>{tx("Zubereitungsideen für diesen Pilz entdecken")}</small>
         </span>
-        <ArrowRight size={18} />
+        <ArrowRight size={18}  aria-hidden="true" />
       </Link>
       <RecipeCards
         entry={entry}
@@ -97,15 +97,15 @@ function RecipeMeta({ recipe }: { recipe: MushroomRecipe }) {
   return (
     <div className="recipe-meta">
       <span>
-        <Clock3 size={15} />
+        <Clock3 size={15}  aria-hidden="true" />
         {tx("ca.")} {formatNumber(recipe.minutes)} {tx("Minuten")}
       </span>
       <span>
-        <Users size={15} />
+        <Users size={15}  aria-hidden="true" />
         {formatNumber(recipe.servings)} {tx("Portionen")}
       </span>
       <span className="recipe-diet">
-        <Leaf size={14} />
+        <Leaf size={14}  aria-hidden="true" />
         {tx(recipe.diet === "vegan" ? "Vegan" : "Vegetarisch")}
       </span>
     </div>
@@ -115,15 +115,15 @@ export function EmptyRecipes({ slug }: { slug: string }) {
   const tx = useT();
   return (
     <div className="empty-state recipe-empty">
-      <ChefHat size={37} />
+      <ChefHat size={37}  aria-hidden="true" />
       <h2>{tx("Für dieses Profil sind noch keine Rezeptideen hinterlegt.")}</h2>
       <p>
         {tx(
           "Du kannst zum Pilz zurückkehren und seine Informationen weiter ansehen.",
         )}
       </p>
-      <Link to={`/pilze/${slug}`} className="button button-primary">
-        <ArrowLeft size={16} />
+      <Link to={`/pilze/${slug}`} className="button button-primary" aria-label={tx("Zurück zum Pilz")} title={tx("Zurück zum Pilz")}>
+        <ArrowLeft size={16}  aria-hidden="true" />
         {tx("Zurück zum Pilz")}
       </Link>
     </div>
@@ -147,24 +147,24 @@ export function RecipeCards({
           key={recipe.id}
           to={`/pilze/${entry.slug}/rezepte/${recipe.id}`}
           state={navigation}
-        >
+         title={tx("EINE IDEE FÜR DEINE KÜCHE")}>
           <div className={`recipe-card-visual recipe-tone-${index % 3}`}>
             <span className="recipe-card-number">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <ChefHat size={53} strokeWidth={1.2} />
+            <ChefHat size={53} strokeWidth={1.2}  aria-hidden="true" />
             <span>{tx("EINE IDEE FÜR DEINE KÜCHE")}</span>
           </div>
           <div className="recipe-card-body">
             <p className="recipe-mushroom-name">
-              <Utensils size={13} />
+              <Utensils size={13}  aria-hidden="true" />
               {tx(entry.name)}
             </p>
             <h3>{tx(recipe.name)}</h3>
             <RecipeMeta recipe={recipe} />
             <span className="recipe-card-link">
               {tx("Zutaten & Zubereitung")}
-              <ArrowRight size={16} />
+              <ArrowRight size={16}  aria-hidden="true" />
             </span>
           </div>
         </Link>
@@ -185,9 +185,12 @@ export function RecipeListPage() {
       <Link
         className="back-link"
         to={navigation.returnTo}
-        state={{ librarySearch: navigation.librarySearch }}
-      >
-        <ArrowLeft size={16} />
+        state={{ librarySearch: navigation.librarySearch }} title={tx(
+          navigation.returnTo === "/"
+            ? "Zurück zur Kulturübersicht"
+            : "Zurück zum Pilz",
+        )}>
+        <ArrowLeft size={16}  aria-hidden="true" />
         {tx(
           navigation.returnTo === "/"
             ? "Zurück zur Kulturübersicht"
@@ -207,7 +210,7 @@ export function RecipeListPage() {
         <>
           <div className="recipe-list-caption">
             <span>
-              <BookOpen size={16} />
+              <BookOpen size={16}  aria-hidden="true" />
               {formatNumber(ideas.length)} {tx("Rezeptideen")}
             </span>
             <span>{tx("In Ruhe stöbern. Ohne Anmeldung.")}</span>
@@ -239,9 +242,12 @@ export function RecipeDetailPage() {
         <Link
           className="back-link"
           to={`/pilze/${slug}/rezepte`}
-          state={navigation}
-        >
-          <ArrowLeft size={16} />
+          state={navigation} title={tx(
+            navigation.detailReturnTo === `/pilze/${entry.slug}`
+              ? "Zurück zum Pilz"
+              : "Zurück zu den Rezeptideen",
+          )}>
+          <ArrowLeft size={16}  aria-hidden="true" />
           {tx(
             navigation.detailReturnTo === `/pilze/${entry.slug}`
               ? "Zurück zum Pilz"
@@ -249,7 +255,7 @@ export function RecipeDetailPage() {
           )}
         </Link>
         <div className="empty-state">
-          <ChefHat size={35} />
+          <ChefHat size={35}  aria-hidden="true" />
           <h1>
             {tx(
               "Diese Rezeptidee ist für den ausgewählten Pilz nicht hinterlegt.",
@@ -271,9 +277,12 @@ export function RecipeDetailPage() {
         <Link
           className="back-link"
           to={navigation.detailReturnTo}
-          state={navigation}
-        >
-          <ArrowLeft size={16} />
+          state={navigation} title={tx(
+            navigation.detailReturnTo === `/pilze/${entry.slug}`
+              ? "Zurück zum Pilz"
+              : "Zurück zu den Rezeptideen",
+          )}>
+          <ArrowLeft size={16}  aria-hidden="true" />
           {tx(
             navigation.detailReturnTo === `/pilze/${entry.slug}`
               ? "Zurück zum Pilz"
@@ -284,14 +293,14 @@ export function RecipeDetailPage() {
           className="text-link"
           to={`/pilze/${entry.slug}`}
           state={{ librarySearch: navigation.librarySearch }}
-        >
+         aria-label={tx("Zum Pilzprofil")} title={tx("Zum Pilzprofil")}>
           {tx("Zum Pilzprofil")}: {tx(entry.name)}
-          <ArrowRight size={15} />
+          <ArrowRight size={15}  aria-hidden="true" />
         </Link>
       </div>
       <section className="recipe-detail-heading">
         <span className="recipe-heading-icon">
-          <ChefHat size={42} strokeWidth={1.3} />
+          <ChefHat size={42} strokeWidth={1.3}  aria-hidden="true" />
         </span>
         <div>
           <p className="eyebrow">
@@ -343,7 +352,7 @@ export function RecipeDetailPage() {
             ))}
           </ol>
           <p className="recipe-timing-note">
-            <Clock3 size={16} />
+            <Clock3 size={16}  aria-hidden="true" />
             {tx(
               "Die Zeitangaben sind ungefähr. Vollständiges Garen und artspezifische Hinweise gehen vor Zeitangaben.",
             )}
@@ -366,7 +375,7 @@ export function RecipeDetailPage() {
             rel="noreferrer"
           >
             {source.name}
-            <ExternalLink size={14} />
+            <ExternalLink size={14}  aria-hidden="true" />
           </a>
         ))}
       </details>

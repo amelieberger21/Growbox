@@ -50,10 +50,10 @@ export function DashboardPage() {
         title={tx("Deine MycoBox im \u00DCberblick")}
         description={tx("Ein kleines \u00D6kosystem. Und du bist mittendrin.")}
         action={
-          <Link to="/growbox" className="button button-outline">
-            <SlidersHorizontal size={16} />
+          <Link to="/growbox" className="button button-outline" aria-label={tx("Growbox steuern")} title={tx("Growbox steuern")}>
+            <SlidersHorizontal size={16}  aria-hidden="true" />
             {tx("Growbox steuern")}
-            <ArrowUpRight size={16} />
+            <ArrowUpRight size={16}  aria-hidden="true" />
           </Link>
         }
       />
@@ -88,7 +88,7 @@ export function DashboardPage() {
           <div className="culture-hero-content">
             <div className="hero-eyebrow">
               <span className="hero-label">
-                <Leaf size={13} />
+                <Leaf size={13}  aria-hidden="true" />
                 {tx("DEINE AKTUELLE KULTUR")}
               </span>
               <StatusBadge status={state.cycle?.status} />
@@ -99,15 +99,15 @@ export function DashboardPage() {
                   <Link
                     className="hero-culture-name"
                     to={`/pilze/${entry.slug}`}
-                  >
+                   title={tx(entry.name)}>
                     <h2>{tx(entry.name)}</h2>
-                    <ArrowUpRight size={22} />
+                    <ArrowUpRight size={22}  aria-hidden="true" />
                   </Link>
                   <p className="hero-scientific">
                     {tx(species[entry.speciesId].scientificName)}
                   </p>
                   <div className="hero-phase">
-                    <Sprout size={16} />
+                    <Sprout size={16}  aria-hidden="true" />
                     <span>{tx(phase.name)}</span>
                     <span className="hero-phase-dot" />
                     <span>{tx(state.settings.mode)}</span>
@@ -130,7 +130,7 @@ export function DashboardPage() {
                   <Progress value={progress} />
                   <div className="hero-progress-footer">
                     <span>
-                      <Clock3 size={12} />
+                      <Clock3 size={12}  aria-hidden="true" />
                       {tx("Noch")}
                       {tx(" ")}
                       {tx(
@@ -143,18 +143,18 @@ export function DashboardPage() {
                       {tx(" ")}
                       {tx("simulierte Tage")}
                     </span>
-                    <Link to="/wachstum">
+                    <Link to="/wachstum" aria-label={tx("Verlauf ansehen")} title={tx("Verlauf ansehen")}>
                       {tx("Verlauf ansehen")}
-                      <ChevronRight size={14} />
+                      <ChevronRight size={14}  aria-hidden="true" />
                     </Link>
                   </div>
                   <Link
                     className="hero-recipe-link"
                     to={`/pilze/${entry.slug}/rezepte`}
                     state={{ returnTo: "/" }}
-                  >
+                   aria-label={tx("Rezeptideen")} title={tx("Rezeptideen")}>
                     {tx("Rezeptideen")}
-                    <ArrowUpRight size={13} />
+                    <ArrowUpRight size={13}  aria-hidden="true" />
                   </Link>
                 </>
               ) : (
@@ -165,9 +165,9 @@ export function DashboardPage() {
                       "Entdecke deinen ersten Pilz und bereite eine virtuelle Kultur vor.",
                     )}
                   </p>
-                  <Link to="/pilze" className="button button-lime">
+                  <Link to="/pilze" className="button button-lime" aria-label={tx("Pilz ausw\u00E4hlen")} title={tx("Pilz ausw\u00E4hlen")}>
                     {tx("Pilz ausw\u00E4hlen")}
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16}  aria-hidden="true" />
                   </Link>
                 </>
               ),
@@ -175,7 +175,7 @@ export function DashboardPage() {
           </div>
           <div className="hero-bottom">
             <span>
-              <Check size={14} />
+              <Check size={14}  aria-hidden="true" />
               {tx("Eine Growbox. Deine kleine Pilzwelt.")}
             </span>
             {tx(
@@ -193,9 +193,9 @@ export function DashboardPage() {
                 >
                   {tx(
                     state.cycle?.status === "Läuft" ? (
-                      <Pause size={13} />
+                      <Pause size={13}  aria-hidden="true" />
                     ) : (
-                      <Play size={13} />
+                      <Play size={13}  aria-hidden="true" />
                     ),
                   )}
                   {tx("Demo")}
@@ -213,7 +213,7 @@ export function DashboardPage() {
         <aside className="discovery-card">
           <div className="discovery-top">
             <span className="tip-icon">
-              <Lightbulb size={20} />
+              <Lightbulb size={20}  aria-hidden="true" />
             </span>
             <span>{tx("WISSEN, DAS W\u00C4CHST")}</span>
           </div>
@@ -227,9 +227,9 @@ export function DashboardPage() {
               "Unter der Oberfl\u00E4che liegt das Myzel \u2013 ein feines Geflecht, aus dem die sichtbaren Fruchtk\u00F6rper entstehen.",
             )}
           </p>
-          <Link to="/wachstum">
+          <Link to="/wachstum" aria-label={tx("Lerne die Wachstumsphasen kennen")} title={tx("Lerne die Wachstumsphasen kennen")}>
             {tx("Lerne die Wachstumsphasen kennen")}
-            <ArrowUpRight size={17} />
+            <ArrowUpRight size={17}  aria-hidden="true" />
           </Link>
           <div className="mycelium-art" aria-hidden="true">
             <svg viewBox="0 0 300 90">
@@ -242,7 +242,7 @@ export function DashboardPage() {
                 )),
               )}
             </svg>
-            <Sprout size={33} />
+            <Sprout size={33}  aria-hidden="true" />
           </div>
         </aside>
       </div>
@@ -261,9 +261,9 @@ export function DashboardPage() {
       </div>
       <section className="featured-section">
         <SectionTitle title={tx("Dein n\u00E4chstes kleines Wunder")}>
-          <Link className="text-link" to="/pilze">
+          <Link className="text-link" to="/pilze" aria-label={tx("Alle 15 Pilze entdecken")} title={tx("Alle 15 Pilze entdecken")}>
             {tx("Alle 15 Pilze entdecken")}
-            <ArrowRight size={16} />
+            <ArrowRight size={16}  aria-hidden="true" />
           </Link>
         </SectionTitle>
         <p className="section-description">

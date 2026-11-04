@@ -21,7 +21,7 @@ export function PhaseSuggestion({
     <div className="phase-proposal">
       <div>
         <strong>
-          <WandSparkles size={16} />
+          <WandSparkles size={16}  aria-hidden="true" />
           {tx("Vorschlag für die aktuelle Phase")}: {tx(phase.name)}
         </strong>
         <p>
@@ -39,9 +39,9 @@ export function PhaseSuggestion({
           event.currentTarget.focus();
           setOpen(true);
         }}
-      >
+       aria-label={tx("Phasenprofil vorschlagen")} title={tx("Phasenprofil vorschlagen")}>
         {tx("Phasenprofil vorschlagen")}
-        <ArrowRight size={15} />
+        <ArrowRight size={15}  aria-hidden="true" />
       </button>
       {open && (
         <Modal

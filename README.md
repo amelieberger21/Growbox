@@ -4,14 +4,25 @@
 
 MycoBox ist ein interaktiver Hochschulprototyp für die verständliche und möglichst barrierearme Bedienung einer Pilz-Growbox. Wähle eine Pilzkultur, beobachte ihren virtuellen Verlauf und entdecke, wie Temperatur, Luftfeuchtigkeit, Licht und Belüftung im Demo-Modell zusammenwirken.
 
-Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, kontextbezogener Hilfe und dem Sprachassistenten **Champ**.
+Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, kontextbezogener Hilfe, einer Community-Demo und dem Sprachassistenten **Champ**.
+
+### Direkt ausprobieren
+
+**[→ Öffentlichen MyCoBox-Prototyp öffnen](https://mycobox-growbox-prototyp.spiffyfield1027.chatgpt.site)**
+
+Der Link lässt sich an andere Personen weitergeben. Die Website läuft unabhängig vom lokalen Entwicklungsrechner. Besucher können den Prototyp bedienen; ihre Einstellungen, Kulturen und Community-Beiträge werden im eigenen Browser gespeichert. Der öffentliche Stand ist eine statische Vorschau: Freie Mistral-Gespräche und serverseitige Transkription sind dort nicht angebunden. Lokale Bedienbefehle und verfügbare Browser-Sprachfunktionen bleiben nutzbar.
 
 > **Prototyp statt echter Gerätesteuerung:** Messwerte, Geräteverbindungen, Wachstum und Geräteaktionen sind simuliert. Die Anwendung liefert keine Gesundheitsdiagnose, Bestimmungshilfe oder Freigabe zum Verzehr. Die Basisdemo funktioniert ohne Anmeldung und ohne API-Schlüssel; freie KI-Gespräche sind optional.
 
 ## Inhalt
 
 - [Was MycoBox bietet](#was-mycobox-bietet)
+- [Tutorial und Orientierung](#tutorial-und-orientierung)
 - [Interaktive Growbox in 3D](#interaktive-growbox-in-3d)
+- [Technische Daten und Benachrichtigungen](#technische-daten-und-benachrichtigungen)
+- [Pilzbibliothek und Wachstumsphasen](#pilzbibliothek-und-wachstumsphasen)
+- [Community und Pilzsets kaufen](#community-und-pilzsets-kaufen)
+- [Feedback und Weiterentwicklung](#feedback-und-weiterentwicklung)
 - [Lokal starten](#lokal-starten)
 - [Den Prototyp ausprobieren](#den-prototyp-ausprobieren)
 - [Sprachen und barrierearme Bedienung](#sprachen-und-barrierearme-bedienung)
@@ -31,7 +42,9 @@ Die Anwendung verbindet eine Pilzbibliothek mit mehreren virtuellen Growboxen, k
 | **Klima und Technik** | Temperatur, Luftfeuchtigkeit, Umluft, Frischluft und sichtbares Licht mit Automatik- und manuellem Modus. |
 | **Wachstumsverlauf** | Fünf einzeln erkundbare Phasen mit Hinweisen und Tipps, Modellillustrationen, vergrößerbarer Kamera-Vorschau, Klimadiagramm und Datentabelle. |
 | **Wasser und Hinweise** | Tankfüllstand, getrenntes Nachfüllen und Wechseln, Wartungserinnerungen und Benachrichtigungscenter. |
-| **Champ** | Geführtes Tutorial, Vorlesefunktion und Sprachassistent mit optionaler Mistral-Anbindung. |
+| **Champ** | Geführtes Tutorial, Vorlesefunktion und Sprachassistent mit optionaler Mistral-Anbindung; Start über zweimal F oder den beschrifteten Knopf. |
+| **Community** | Eigene Kommentare und Erfahrungen mit optionalem Namen oder als „Anonym“, bis zu drei Bildern, Bildvorschau und lokaler Speicherung; fünf gekennzeichnete Beispielbeiträge. |
+| **Pilzsets kaufen** | Externer Menülink direkt über „Einstellungen“ zur Pilzzuchtset-Seite von pilzbrut.de; öffnet einen neuen Tab. |
 | **Bedienhilfen** | Fragezeichen-Hilfe, einstellbare Schriftgröße, Kontrastmodus, einfache Sprache, einklappbare Navigation und große Plus-/Minus-Tasten. |
 | **Rezeptideen** | 26 lokale Rezeptkompositionen mit Zutaten, Zubereitungsschritten und passenden Pilzzuordnungen. |
 
@@ -41,18 +54,77 @@ Klima- und Gerätefelder bearbeiten zunächst einen **Entwurf**. Erst **„Einst
 
 Aktuelle Messwerte, gespeicherte Sollwerte und ausgeführte Geräteaktionen bleiben getrennt erkennbar.
 
+## Tutorial und Orientierung
+
+Beim ersten Einstieg stellt sich **Champ**, der Pilzbegleiter, vor und bietet eine kurze Einführung an. Das Tutorial führt Schritt für Schritt über die Oberfläche, erklärt die wichtigsten Bereiche und hebt die passenden Bedienelemente hervor. So lernen neue Nutzer, wo sie Kulturen auswählen, Daten lesen, Einstellungen verändern und Hilfe finden.
+
+Die Einführung ist freiwillig: Sie lässt sich überspringen und später unter **„Hilfe & Champ“** erneut starten. Das reine Erkunden setzt keine Growbox-Einstellungen zurück. Zusätzlich erklären anklickbare Fragezeichen direkt bei wichtigen Funktionen, was sie bedeuten und wie sie bedient werden.
+
 ## Interaktive Growbox in 3D
 
 Das Dashboard zeigt das Blender-Modell mit transparentem Glas und dem roten Logo der Hochschule Coburg. Ziehe zum Drehen, schwenke mit der rechten Maustaste und zoome mit dem Scrollrad. Auf Touchscreens kannst du mit zwei Fingern schwenken und zoomen.
 
 - **Glastür und Gehäuse:** Öffne oder schließe die Tür per Schaltfläche. Die Farbkreise wechseln das Gehäuse zwischen Schwarz, Weiß, Dunkelgrün und Hellgrün.
-- **Acht Bauteile:** Luftfeuchtigkeit, Wassertank und Vernebler, CO₂-Sensor, Temperatur, Frischluft und HEPA-Filter, LED, Abluftlüfter und Bildschirm. Die Auswahl über Marker oder Bauteilliste fokussiert den Bereich, hebt ihn lila hervor und öffnet die Infokarte.
-- **Sensoransicht:** Das Gehäuse tritt grau und transparent zurück. Beispielplatinen zeigen einen kombinierten Temperatur- und Feuchtesensor sowie ein CO₂-Modul.
-- **Tank und Betriebsmodus:** Zeige einen teilgefüllten Tank und klicke durch fünf Phasen. Im Substrat breitet sich Myzel aus, anschließend wachsen Champignons. Der zuschaltbare Vernebler lässt feuchten Dunst aus dem Rohr in den Zuchtraum strömen.
+- **Produktansicht:** Blende nummerierte Markierungen und Bauteilinformationen aus, um die reine Growbox zu betrachten. Über „Bauteilmarkierungen anzeigen“ werden sie wieder eingeblendet.
+- **Elf Bauteilmarkierungen:** Luftfeuchtigkeit, Wassertank und Vernebler, CO₂-Sensor, Temperatur, Frischluft und HEPA-Filter, LED-Beleuchtung, Abluftlüfter, Bildschirm, Substratfeuchtesensor, Wasserstandssensor und optionaler Partikelsensor. Die Auswahl über Marker oder Bauteilliste fokussiert den Bereich, hebt ihn lila hervor und öffnet eine Infokarte mit Funktion und Bedeutung. Die Nummern folgen den räumlichen Positionen beim Drehen und Zoomen.
+- **Sensoransicht:** Das Gehäuse tritt grau und transparent zurück, damit die Sensoren sichtbar werden. Nachgebildete Bauformen zeigen einen kombinierten Temperatur- und Feuchtesensor, ein CO₂-Modul, eine kapazitive Substratsonde, einen Schwimmschalter und das optionale Partikelmodul mit Halterungen. Es handelt sich um anschauliche Modelle, keine angeschlossene Hardware.
+- **Tank und Betriebsmodus:** Zeige einen teilgefüllten Tank und klicke durch fünf Phasen. Im Substrat breitet sich Myzel aus, anschließend wachsen Champignons. Der zuschaltbare Vernebler lässt feuchten Dunst aus dem Rohr in den Zuchtraum strömen. Im Betriebsmodus leuchtet auch die modellierte LED-Lampe und erhellt den Innenraum.
 - **Bildschirm:** Schalte das Display am Modell ein und bediene darauf den Webprototyp mit seiner Navigation und seinen Unterseiten.
 - **Ansicht zurücksetzen:** Kehre zur Startperspektive zurück. Bei reduzierter Bewegung entfallen die Übergänge. Die Bauteilinfos bleiben auch ohne WebGL zugänglich.
 
 Modellpfad, Türscharnier und Kamerakoordinaten sind in der [3D-Dokumentation](docs/Growbox-3D.md) beschrieben.
+
+## Technische Daten und Benachrichtigungen
+
+Das Dashboard zeigt **Temperatur in °C, relative Luftfeuchtigkeit in Prozent und CO₂ in ppm**. Die Messwertkarten erklären Einheiten, Demo-Sollwerte beziehungsweise Hinweisgrenzen, die letzte Aktualisierung und die Bewertung des aktuellen Werts. „Technik im Überblick“ ergänzt große, beschriftete Symbole für Umluft, Frischluft, Beleuchtung, Tankfüllstand und aktive Hinweise; ein Klick führt zur passenden Steuerung.
+
+Der Klimaverlauf zeigt vergangene Messwerte und Sollwerte im Diagramm. Zeitraum und Messgröße lassen sich wechseln; eine Datentabelle bietet dieselben Daten ohne alleinige Abhängigkeit vom Diagramm.
+
+**Benachrichtigungen und Fehlermeldungen** sind über das Glockensymbol erreichbar und zusätzlich im jeweiligen Kontext sichtbar. Hinweise benennen das Problem und den nächsten Schritt, beispielsweise Tank nachfüllen, Wasser wechseln oder Klimaeinstellungen überprüfen. Schließbare Meldungen besitzen ein Kreuz. Offline-Verbindungen, unbekannte Werte, leere Tanks und Abweichungen werden unterscheidbar beschriftet. Eine Klimawarnung ist keine Schimmel- oder Gesundheitsdiagnose.
+
+## Pilzbibliothek und Wachstumsphasen
+
+### Den passenden Pilz entdecken
+
+Die Bibliothek enthält **15 Einträge**, die sich über Suche, Sortierung und die Schwierigkeitsfilter **„Einfach“**, **„Mittel“** und **„Anspruchsvoll“** erkunden lassen. „Anspruchsvoll“ bezeichnet dabei die schwierige Stufe. Diese Einteilung ist eine vereinfachte Demo-Bewertung.
+
+Die Detailseite eines Pilzes bietet:
+
+- Foto, wissenschaftlichen Namen und eine verständliche Beschreibung;
+- recherchierte Temperatur- und Luftfeuchteangaben für die Fruchtung sowie eine aufklappbare Übersicht dokumentierter Kulturphasen mit Quellen und Geltungsbereich;
+- Nährwerte pro 100 g mit Mengen, Einheiten und Quellen;
+- passende Rezeptideen mit Zutaten, Zubereitungsschritten, Zeit und Portionen;
+- artspezifische Hinweise und den Einstieg „In meiner Growbox anbauen“.
+
+Alle aktiven Fotoreferenzen wurden mit den Artangaben ihrer Quellen abgeglichen. Nameko und Goldkäppchen teilen als Handelsbezeichnungen ein Artenprofil, zeigen aber zwei unterschiedliche dokumentierte Kulturfotos. Die 15 Einträge sind deshalb keine 15 biologisch unterschiedlichen Arten. Quellenzuordnung und Bildlizenzen sind in [ASSETS.md](ASSETS.md) und den [Bildnachweisen](public/mushrooms/LICENSES.md) dokumentiert; die Fotos ersetzen keine Pilzbestimmung.
+
+### Die fünf Phasen verstehen
+
+Im Wachstumsverlauf lässt sich durch **Vorbereitung → Besiedlung → Fruchtkörper → Wachstum → Ernte** wechseln. Jede Phase erklärt genauer, was im vereinfachten Lernmodell passiert, worauf Nutzer achten sollten und welche nächsten Schritte beziehungsweise Pflegetipps hilfreich sind. Die Phasen lassen sich über die Phasenauswahl und die Vor-/Zurück-Bedienung erkunden.
+
+Illustrationen sind an die Growbox und ihren Kulturbehälter angelehnt. Fortschritt, Demo-Tag und Kulturstatus geben Orientierung; die vergrößerbare Kamera-Vorschau ist ein schematisches Beispielbild. Das Lesen einer anderen Phase spult die aktive Kultur nicht vor und verändert keine Einstellungen.
+
+## Community und Pilzsets kaufen
+
+### Erfahrungen teilen
+
+Unter **„Community“**, zwischen Wachstumsverlauf und dem Einkaufslink, können Nutzer einen eigenen Kommentar oder Tipp verfassen. Ein Name ist optional; ohne Namen erscheint **„Anonym“**. Dazu lassen sich bis zu **drei eigene Bilder** im Format JPEG, PNG oder WebP mit jeweils höchstens 5 MB auswählen. Eine Vorschau zeigt die Auswahl; einzelne Bilder können vor dem Speichern entfernt werden.
+
+Eigene Beiträge werden im Browser gespeichert, bleiben beim erneuten Öffnen erhalten und lassen sich wieder löschen. Hochgeladene Bilder können vergrößert betrachtet werden. Speicher- oder Uploadfehler werden angezeigt, ohne den Entwurf zu verwerfen.
+
+Die Seite enthält **fünf ausdrücklich gekennzeichnete Beispielbeiträge**, davon zwei anonym, sowie zwei lizenzierte Beispielbilder aus der Pilzbibliothek. Katjas Beispiel lautet: „Braune Champignons schmecken besonders gut klein geschnitten auf Baguette“.
+
+**Derzeit eine lokale Community-Demo:** Beiträge werden nicht öffentlich geteilt und nicht mit anderen Besuchern synchronisiert. Wer den Prototyp auf einem anderen Gerät öffnet, sieht seine eigenen lokal gespeicherten Beiträge und dieselben Beispiele. Für eine echte gemeinsame Community wäre ein Backend mit Speicherung und Moderation nötig.
+
+### Pilzsets selbst kaufen
+
+Der Menüpunkt **„Pilzsets kaufen“** öffnet die [Pilzzuchtset-Seite von Hawlik Pilzbrut](https://www.pilzbrut.de/pilze-selber-zuechten) in einem neuen Tab. Nutzer können sich dort selbst über Sets informieren. MyCoBox enthält keinen eigenen Shop, Warenkorb oder Bestellvorgang.
+
+## Feedback und Weiterentwicklung
+
+Für die Weiterentwicklung haben **einzelne Studierende und Hochschulmitarbeitende** den Prototyp durchgeklickt und bewertet. Diese individuellen Befragungen und Erprobungen liefern **qualitatives Nutzerfeedback** zur Verständlichkeit und Bedienung. Sie werden nicht als repräsentative große Umfrage oder als Untersuchung mit vorab erstellten Personas dargestellt.
+
+Das Feedback dient dazu, mögliche Verständnisschwierigkeiten und Bedienhürden zu erkennen und die Oberfläche schrittweise zu verbessern. Der aktuelle Stand bietet unter anderem größere Symbole und Bedienelemente, anpassbare Schrift, Kontrastoptionen, kontextbezogene Hilfen und ausführlichere Phasenerklärungen. Welche Änderung auf welche konkrete Rückmeldung zurückgeht, muss anhand der vorhandenen Feedbackunterlagen dokumentiert werden. Diese README behauptet keine nicht belegten Teilnehmerzahlen, Erfolgsquoten oder Testergebnisse.
 
 ## Lokal starten
 
@@ -79,15 +151,16 @@ Die Basisdemo benötigt nach der Installation keine externe KI-Anbindung. Ihre B
 
 ## Den Prototyp ausprobieren
 
-1. **Überblick gewinnen:** Öffne das Dashboard und beachte die ausgewählte Growbox sowie den dauerhaften Demo-Hinweis.
-2. **Pilz entdecken:** Suche in der Bibliothek beispielsweise nach „Igelstachelbart“ und öffne die Details. Suche, Filter und Sortierung bleiben in der URL erhalten.
-3. **Kultur vorbereiten:** Wähle bei einer verbundenen Demo-Box „In meiner Growbox anbauen“. Eine vorhandene Kultur wird erst nach deiner Bestätigung ersetzt.
-4. **Simulation starten:** Starte die vorbereitete Kultur unter „Meine Growbox“.
-5. **Bedienung testen:** Ändere Sollwerte per Slider, Zahlenfeld oder Plus-/Minus-Tasten. Übernimm den Entwurf ausdrücklich.
-6. **Zusammenhänge beobachten:** Öffne „Demo-Szenarien“ und simuliere beispielsweise erhöhtes CO₂. Vergleiche Hinweise, Gerätestatus und Ereignisprotokoll.
-7. **Verlauf erkunden:** Öffne Wachstumsphasen oder den Klimaverlauf mit seiner Datentabelle. Das reine Lesen einer Phase verändert keine Kultur.
-8. **Box wechseln:** Wähle eine andere Growbox. Name, Standort, Kultur und Verlauf beziehen sich anschließend auf diese Box. Offline-Boxen zeigen letzte bekannte Daten und sperren Geräteaktionen.
-9. **Hilfe nutzen:** Öffne ein Fragezeichen oder starte Champ. Ein bestätigter Demo-Reset setzt den Betriebszustand der ausgewählten steuerbaren Box zurück; Sprache und Darstellung bleiben erhalten.
+1. **Tutorial kennenlernen:** Lass dich von Champ über die Oberfläche führen oder überspringe die Einführung und starte sie später unter „Hilfe & Champ“.
+2. **Überblick gewinnen:** Öffne das Dashboard und beachte die ausgewählte Growbox sowie den dauerhaften Demo-Hinweis.
+3. **Pilz entdecken:** Suche in der Bibliothek beispielsweise nach „Igelstachelbart“ und öffne die Details. Suche, Filter und Sortierung bleiben in der URL erhalten.
+4. **Kultur vorbereiten:** Wähle bei einer verbundenen Demo-Box „In meiner Growbox anbauen“. Eine vorhandene Kultur wird erst nach deiner Bestätigung ersetzt.
+5. **Simulation starten:** Starte die vorbereitete Kultur unter „Meine Growbox“.
+6. **Bedienung testen:** Ändere Sollwerte per Slider, Zahlenfeld oder Plus-/Minus-Tasten. Übernimm den Entwurf ausdrücklich.
+7. **Zusammenhänge beobachten:** Öffne „Demo-Szenarien“ und simuliere beispielsweise erhöhtes CO₂. Vergleiche Hinweise, Gerätestatus und Ereignisprotokoll.
+8. **Verlauf erkunden:** Öffne Wachstumsphasen oder den Klimaverlauf mit seiner Datentabelle. Das reine Lesen einer Phase verändert keine Kultur.
+9. **Box wechseln:** Wähle eine andere Growbox. Name, Standort, Kultur und Verlauf beziehen sich anschließend auf diese Box. Offline-Boxen zeigen letzte bekannte Daten und sperren Geräteaktionen.
+10. **Hilfe nutzen:** Öffne ein Fragezeichen oder starte Champ. Ein bestätigter Demo-Reset setzt den Betriebszustand der ausgewählten steuerbaren Box zurück; Sprache und Darstellung bleiben erhalten.
 
 ## Sprachen und barrierearme Bedienung
 
@@ -106,7 +179,7 @@ Arabisch und Persisch verwenden eine Leserichtung von rechts nach links. Zahlen 
 - **Schriftgröße von 100 bis 250 %:** Direkt in der Kopfzeile oder in den Einstellungen in 5-Prozent-Schritten anpassen.
 - **Darstellung und Fokus:** Weiß-beiger Hauptbereich, hellgrüne Kopfzeile und weiße Seitenleiste. Die Navigation lässt sich für mehr Platz einklappen.
 - **Kontrast und Symbole:** Deutlichere Konturen, beschriftete Zustände und erkennbare Symbole ergänzen die Farbgebung. Informationen werden nicht allein durch Farben vermittelt.
-- **Große Bedienelemente:** Mindestens 48 Pixel hohe Schaltflächen; Plus-/Minus-Tasten mit mindestens 52 × 52 Pixel Trefferfläche und 16 Pixel Abstand.
+- **Große Bedienelemente:** Interaktive Symbolschaltflächen besitzen mindestens 44 × 44 Pixel Trefferfläche; Plus-/Minus-Tasten ergänzen die Slider mit gut erreichbaren Schritten. Einheitliche Symbolkonturen, Beschriftungen und Tooltips unterstützen die Wiedererkennung.
 - **Präzise Schritte:** Temperatur in 0,5 °C, Luftfeuchtigkeit und Helligkeit in einem Prozentpunkt, Demo-CO₂ in 50 ppm. Slider und Schritttasten verwenden denselben Wert und beachten dieselben Grenzen.
 - **Kontextbezogene Hilfe:** Fragezeichen erklären Bedeutung, Bedienung und Grenzen der wichtigsten Funktionsgruppen, ohne Einstellungen zu verändern.
 - **Tastatur und Screenreader:** Sichtbarer Fokus, beschriftete Eingaben, native Dialoge mit Escape und Rückkehr zum auslösenden Bedienelement.
@@ -177,7 +250,7 @@ Der lokale Server speichert weder Audio noch Gespräch; der Gesprächsverlauf li
 
 ### Eigene Daten für jede Box
 
-Jede Growbox besitzt eine unveränderliche ID, einen editierbaren Namen und einen Standort, zum Beispiel „Küche – Fensterbank“ oder „Raum 3 – Regal links“. Beispielillustrationen helfen bei der Zuordnung; sie sind keine Fotos realer Geräte oder Kameraaufnahmen.
+Jede Growbox besitzt eine unveränderliche ID, einen editierbaren Namen und einen Standort, zum Beispiel „Küche – Fensterbank“ oder „Raum 3 – Regal links“. Drei vorkonfigurierte Demo-Growboxen (**GB-001, GB-002 und GB-003**) lassen sich auswählen; weitere Demo-Boxen können hinzugefügt werden. Modellnahe Beispielbilder helfen bei der Zuordnung; sie sind keine Fotos realer Geräte oder Kameraaufnahmen.
 
 Die Anwendung unterscheidet drei unabhängige Angaben:
 
@@ -199,6 +272,7 @@ Die Daten bleiben im `localStorage` des verwendeten Browsers:
 | `mycobox.demo.v1` | Kompatibilitätsstand der ausgewählten Growbox für das frühere Einzelbox-Modell |
 | `mycobox.experience.v1` | Bedienpräferenzen und kompatibler Experience-Stand |
 | `mycobox.experience.boxes.v1` | Boxbezogene Bewertungen, Präferenzen und Benachrichtigungen |
+| `mycobox.community.v1` | Eigene lokale Community-Beiträge und verkleinerte Bilder |
 | `mycobox.assistant.language` | Gewählte Gesprächssprache |
 | `mycobox.assistant.followWebsite` | Kopplung an die Website-Sprache |
 
@@ -221,6 +295,7 @@ Es gibt keine Konten, Cloud-Synchronisierung oder dauerhafte Hintergrundüberwac
 
 ```text
 src/
+├── community/      Validierung, Bildaufbereitung und lokale Community-Speicherung
 ├── components/     Gemeinsame UI, Growbox-Verwaltung und Hilfedialoge
 ├── data/           Pilze, Rezepte, Bildnachweise und Hilfetexte
 ├── experience/     Champ, Sprache, Vorlesen, Bewertungen und Hinweise
@@ -260,6 +335,7 @@ Die Lockfiles halten die verwendeten Abhängigkeiten fest. Für eine reproduzier
 | `/growbox` | Growbox-Verwaltung und Steuerung |
 | `/wachstum` | Visueller Wachstumsverlauf |
 | `/wachstum/klima` | Historischer Klimaverlauf |
+| `/community` | Lokale Community mit Kommentaren und Bildern |
 | `/einstellungen` | Sprache, Darstellung und Hinweise |
 | `/hilfe` | Hilfe und Champ |
 | `/projekt` | Projektinformationen und Demo-Erklärung |
@@ -272,7 +348,7 @@ Unbekannte Routen zeigen eine 404-Ansicht mit Rückweg. Bei statischem Hosting m
 
 ### Automatisierte Prüfungen
 
-Der zuletzt geprüfte Stand umfasst **150 bestandene Tests in 17 Testdateien** mit verlängertem Test-Timeout sowie einen erfolgreichen Produktionsbuild. Die Tests decken unter anderem folgende Bereiche ab:
+Der zuletzt geprüfte Stand umfasst **170 bestandene Tests in 19 Testdateien** (Prüfstand: 04.11.2026) mit verlängertem Test-Timeout sowie einen erfolgreichen Produktionsbuild. Die Tests decken unter anderem folgende Bereiche ab:
 
 - Auswahl, Suche, Filter und alle 15 Pilzdetail-Zuordnungen
 - Kulturabläufe, Entwurfsschutz, Grenzwerte und synchronisierte Schrittbedienung
@@ -280,12 +356,14 @@ Der zuletzt geprüfte Stand umfasst **150 bestandene Tests in 17 Testdateien** m
 - Mehrbox-Migration, Datentrennung, Auswahl, Offline-Sperren und Hilfedialoge
 - Sprachwechsel, RTL, Sprachbefehle sowie kontrollierte Browser- und Mistral-Schnittstellen
 - Rezeptzuordnung und Rücknavigation
+- Community-Beiträge, optionale Namen, Speicherung, Löschung und Fehlerbehandlung
+- Kulturangaben für alle 15 Einträge sowie passende Bildzuordnungen und unterschiedliche Bildinhalte
 
 Sprachtests verwenden simulierte Schnittstellen. Sie belegen keine reale Erkennungsqualität oder hörbare Ausgabe in jeder Sprache. Echte Mikrofontests, Gerätestimmen und eine umfassende Barrierefreiheitsprüfung bleiben zusätzliche Prüfschritte. Der Build meldet derzeit außerdem einen Hinweis auf große JavaScript-Bundles.
 
 ### Fachliche Einordnung und Bildnachweise
 
-Sollwerte, Kulturdauern, Schwierigkeitsgrade und viele Vergleichsbereiche sind synthetische oder vorläufige Projektdaten. Konkrete Studienangaben werden im Projekt separat gekennzeichnet und sind keine universellen Sicherheitsgrenzen. Fehlende oder nicht bestätigte Phasendaten bleiben als unbekannt erkennbar. Eine positive Klimabewertung bestätigt weder Gesundheit noch Genießbarkeit oder Schimmelfreiheit.
+Sollwerte, Kulturdauern, Schwierigkeitsgrade und viele Vergleichsbereiche sind synthetische oder vorläufige Projektdaten. Konkrete Studienangaben werden im Projekt separat gekennzeichnet und sind keine universellen Sicherheitsgrenzen. Die Bibliothek trennt recherchierte Hersteller- und Studienprotokolle von den Demo-Sollwerten. Sie zeigt konkrete Fruchtungsbedingungen mit Quellen und benennt Abhängigkeiten von Stamm, Substrat und Kulturverfahren; nicht dokumentierte Phasen werden nicht erfunden. Eine positive Klimabewertung bestätigt weder Gesundheit noch Genießbarkeit oder Schimmelfreiheit.
 
 Nameko und Goldkäppchen teilen ein Artenprofil; die beiden Champignon-Kulturformen bleiben derselben Art zugeordnet. Stockschwämmchen behält seinen Verwechslungshinweis. Die Kamera-Vorschau besteht aus schematischen Beispielbildern; sie ist kein Livebild und führt keine Bilddiagnose aus. UV ist ein nicht angebundenes Zusatzmodul ohne Wirkungsversprechen.
 
@@ -297,7 +375,7 @@ Weiterführende Dokumentation:
 - [Einzelne Bildquellen und Lizenzen](public/mushrooms/LICENSES.md)
 - [Growbox-Beispielillustrationen](public/growboxes/README.md)
 
-**Offener Bildrechtepunkt:** Das aktive Foto des braunen Champignons ist ein unter CC BY-SA 2.0 lizenziertes Cremini-Foto. Für das frühere, separat in den Bildnachweisen aufgeführte Blue-Apron-Produktfoto ist keine freie Weiterverwendungslizenz nachgewiesen. Vor einer öffentlichen Website-Veröffentlichung ist eine Nutzungserlaubnis oder ein entsprechend lizenzierter Ersatz erforderlich; die Einzelheiten stehen in den Bildnachweisen.
+**Bildrechte:** Das aktive Foto des braunen Champignons ist ein unter CC BY-SA 2.0 lizenziertes Cremini-Foto. Das frühere Blue-Apron-Produktfoto ist nicht mehr aktiv eingebunden; für diese historische Datei ist keine freie Nutzungslizenz nachgewiesen. Es darf ohne Klärung nicht erneut als Website-Motiv verwendet werden. Aktive Bildreferenzen und Lizenzangaben stehen in den Bildnachweisen.
 
 Die Rezepte sind eigene Zubereitungsideen des Prototyps. Zeit- und Mengenangaben sind keine Garantie für ausreichendes Garen oder zu erwartenden Ertrag. Allgemeine Verzehrhinweise orientieren sich unter anderem an den Informationen des [Bayerischen Landesamts für Gesundheit und Lebensmittelsicherheit](https://www.lgl.bayern.de/lebensmittel/warengruppen/wc_27_pilze/hinweise_verbraucher_pilze.htm) und den [Enoki-Hinweisen der Singapore Food Agency](https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/risk-at-a-glance/enoki-mushrooms).
 

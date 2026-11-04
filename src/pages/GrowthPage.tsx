@@ -78,7 +78,7 @@ function GrowthContent() {
           )}
         />
         <div className="empty-state">
-          <Sprout size={38} />
+          <Sprout size={38}  aria-hidden="true" />
           <h2>{tx("Eine neue Geschichte wartet.")}</h2>
           <Link className="button button-primary" to="/pilze">
             {tx("Pilz auswählen")}
@@ -140,13 +140,13 @@ function GrowthContent() {
             {formatNumber(state.cycle.totalDays)} · {tx("Demo-Zeit")}
           </p>
           <div className="growth-actions">
-            <Link className="button button-outline" to={`/pilze/${entry.slug}`}>
+            <Link className="button button-outline" to={`/pilze/${entry.slug}`} aria-label={tx("Zum Pilzprofil")} title={tx("Zum Pilzprofil")}>
               {tx("Zum Pilzprofil")}
-              <ArrowRight size={16} />
+              <ArrowRight size={16}  aria-hidden="true" />
             </Link>
-            <Link className="text-link" to={`/pilze/${entry.slug}#rezeptideen`}>
+            <Link className="text-link" to={`/pilze/${entry.slug}#rezeptideen`} aria-label={tx("Rezeptideen")} title={tx("Rezeptideen")}>
               {tx("Rezeptideen")}
-              <ArrowRight size={15} />
+              <ArrowRight size={15}  aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -173,7 +173,7 @@ function GrowthContent() {
                   e.currentTarget.focus();
                   setSelected(index);
                 }}
-              >
+               title={`${tx(item.name)} · ${tx(index < active ? "Abgeschlossen" : index === active ? "Aktuelle Phase" : "Kommende Phase")}`}>
                 <PhaseVisual frame={exampleFrame(entry, index)} compact />
                 <span className="phase-card-name">
                   <Icon size={18} />
@@ -207,7 +207,7 @@ function GrowthContent() {
           <div>
             <p className="eyebrow">{tx("BEISPIELANSICHT")}</p>
             <h2>
-              <Camera size={20} />
+              <Camera size={20}  aria-hidden="true" />
               {tx("Blick in die Growbox")}
             </h2>
           </div>
@@ -237,8 +237,8 @@ function GrowthContent() {
                 e.currentTarget.focus();
                 setCameraOpen(true);
               }}
-            >
-              <Expand size={17} />
+             aria-label={tx("Kamera-Vorschau vergrößern")} title={tx("Kamera-Vorschau vergrößern")}>
+              <Expand size={17}  aria-hidden="true" />
               {tx("Kamera-Vorschau vergrößern")}
             </button>
           </div>
@@ -255,9 +255,9 @@ function GrowthContent() {
           {tx(
             "Dies ist keine Aussage über Essbarkeit oder echte Erntereife. Informationen und Rezepte bleiben erreichbar.",
           )}{" "}
-          <Link className="text-link" to="/pilze">
+          <Link className="text-link" to="/pilze" aria-label={tx("Neue Kultur auswählen")} title={tx("Neue Kultur auswählen")}>
             {tx("Neue Kultur auswählen")}
-            <ArrowRight size={15} />
+            <ArrowRight size={15}  aria-hidden="true" />
           </Link>
         </InfoNote>
       )}
@@ -273,8 +273,16 @@ function GrowthContent() {
                 "Die nächste Phasengrenze wurde im Demo-Modell simuliert.",
               );
             }}
-          >
-            <FastForward size={16} />
+           aria-label={tx(
+              active === 4
+                ? "Demo-Zyklus abschließen"
+                : "Nächste Phase simulieren",
+            )} title={tx(
+              active === 4
+                ? "Demo-Zyklus abschließen"
+                : "Nächste Phase simulieren",
+            )}>
+            <FastForward size={16}  aria-hidden="true" />
             {tx(
               active === 4
                 ? "Demo-Zyklus abschließen"
@@ -293,9 +301,9 @@ function GrowthContent() {
               }
             >
               {state.cycle.status === "Läuft" ? (
-                <Pause size={16} />
+                <Pause size={16}  aria-hidden="true" />
               ) : (
-                <Play size={16} />
+                <Play size={16}  aria-hidden="true" />
               )}
               {tx(
                 state.cycle.status === "Läuft"
@@ -321,29 +329,29 @@ function GrowthContent() {
               <button
                 className="button button-outline"
                 onClick={() => setSelected(null)}
-              >
-                <ArrowLeft size={15} />
+               aria-label={tx("Zurück zum Wachstumsverlauf")} title={tx("Zurück zum Wachstumsverlauf")}>
+                <ArrowLeft size={15}  aria-hidden="true" />
                 {tx("Zurück zum Wachstumsverlauf")}
               </button>
               <Link
                 to="/growbox#climate-settings"
                 className="button button-primary"
                 onClick={() => setSelected(null)}
-              >
+               aria-label={tx("Phasenprofil bewusst prüfen")} title={tx("Phasenprofil bewusst prüfen")}>
                 {tx("Phasenprofil bewusst prüfen")}
-                <ArrowRight size={16} />
+                <ArrowRight size={16}  aria-hidden="true" />
               </Link>
             </>
           }
         >
           <nav className="growth-phase-navigation" aria-label={tx("Phasen durchblättern")}>
             <button type="button" className="button button-outline" disabled={detailIndex === 0}
-              onClick={() => setSelected(detailIndex - 1)}>
+              onClick={() => setSelected(detailIndex - 1)} aria-label={tx("Vorherige Phase")} title={tx("Vorherige Phase")}>
               <ArrowLeft aria-hidden="true" /> {tx("Vorherige Phase")}
             </button>
             <span aria-live="polite">{tx("Phase")} {detailIndex + 1} / {PHASES.length} · {tx(phase.short)}</span>
             <button type="button" className="button button-primary" disabled={detailIndex === PHASES.length - 1}
-              onClick={() => setSelected(detailIndex + 1)}>
+              onClick={() => setSelected(detailIndex + 1)} aria-label={tx("Nächste Phase")} title={tx("Nächste Phase")}>
               {tx("Nächste Phase")} <ArrowRight aria-hidden="true" />
             </button>
           </nav>

@@ -202,7 +202,7 @@ export function SpeechPanel() {
     >
       <div className="speech-toolbar">
         <strong>
-          <Volume2 size={17} />
+          <Volume2 size={17}  aria-hidden="true" />
           {tx("Vorlesen")}
         </strong>
         <div>
@@ -211,8 +211,8 @@ export function SpeechPanel() {
             aria-label={tx("Vorlesen starten")}
             disabled={!reader.supported}
             onClick={reader.start}
-          >
-            <Play size={17} />
+           title={tx("Vorlesen starten")}>
+            <Play size={17}  aria-hidden="true" />
           </button>
           <button
             className="icon-button"
@@ -223,27 +223,31 @@ export function SpeechPanel() {
             )}
             disabled={reader.status === "idle"}
             onClick={reader.status === "paused" ? reader.resume : reader.pause}
-          >
+           title={tx(
+              reader.status === "paused"
+                ? "Vorlesen fortsetzen"
+                : "Vorlesen pausieren",
+            )}>
             {reader.status === "paused" ? (
-              <Play size={17} />
+              <Play size={17}  aria-hidden="true" />
             ) : (
-              <Pause size={17} />
+              <Pause size={17}  aria-hidden="true" />
             )}
           </button>
           <button
             className="icon-button"
             aria-label={tx("Vorlesen stoppen")}
             onClick={reader.stop}
-          >
-            <Square size={16} />
+           title={tx("Vorlesen stoppen")}>
+            <Square size={16}  aria-hidden="true" />
           </button>
           <button
             className="icon-button"
             aria-label={tx("Text erneut vorlesen")}
             disabled={!reader.supported}
             onClick={reader.start}
-          >
-            <RotateCcw size={16} />
+           title={tx("Text erneut vorlesen")}>
+            <RotateCcw size={16}  aria-hidden="true" />
           </button>
           <label className="speech-speed">
             <span className="sr-only">{tx("Vorlesegeschwindigkeit")}</span>
@@ -268,8 +272,8 @@ export function SpeechPanel() {
               reader.stop();
               setPreferences({ readerEnabled: false });
             }}
-          >
-            <X size={17} />
+           title={tx("Vorlesefunktion deaktivieren")}>
+            <X size={17}  aria-hidden="true" />
           </button>
         </div>
       </div>

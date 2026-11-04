@@ -149,7 +149,7 @@ export function Alerts() {
           key={metric}
           className={`alert-banner alert-${experience.assessments[metric].level}`}
         >
-          <TriangleAlert size={19} />
+          <TriangleAlert size={19}  aria-hidden="true" />
           <div>
             <strong>
               {metric === "co2" &&
@@ -169,7 +169,7 @@ export function Alerts() {
             </p>
             <Link className="button button-outline" to={metric==='co2'?'/growbox#air-settings':'/growbox#climate-settings'}>{tx(metric==='co2'?'Frischluft prüfen':'Klimaeinstellungen prüfen')}</Link>
           </div>
-          <button type="button" className="icon-button close-notice" aria-label={`${tx('Meldung schließen')}: ${tx(METRIC_LABELS[metric])}`} onClick={()=>setHidden(previous=>[...previous,issueKey(metric)])}><X aria-hidden="true"/></button>
+          <button type="button" className="icon-button close-notice" aria-label={`${tx('Meldung schließen')}: ${tx(METRIC_LABELS[metric])}`} onClick={()=>setHidden(previous=>[...previous,issueKey(metric)])} title={`${tx('Meldung schließen')}: ${tx(METRIC_LABELS[metric])}`}><X aria-hidden="true"/></button>
         </div>
       ))}
       {hidden.length>0&&<div className="hidden-alerts" role="status"><span>{tx('Hinweis ausgeblendet. Die Abweichung bleibt in den Messwerten sichtbar; Schließen behebt keine Ursache.')}</span><button className="button button-outline" onClick={()=>setHidden([])}>{tx('Hinweise wieder anzeigen')}</button></div>}
@@ -224,7 +224,7 @@ export function TelemetryChart({ full = false }: { full?: boolean }) {
             <option value="24">{tx("Letzte 24 Demo-Stunden")}</option>
             <option value="168">{tx("Letzte 7 Demo-Tage")}</option>
           </select>
-          <ChevronDown size={13} />
+          <ChevronDown size={13}  aria-hidden="true" />
         </label>
       </SectionTitle>
       <div className="chart-subheader">
@@ -382,8 +382,8 @@ export function TelemetryChart({ full = false }: { full?: boolean }) {
           className="text-button"
           onClick={() => setTable(!table)}
           aria-expanded={table}
-        >
-          <Table2 size={14} />
+         aria-label={tx(table ? "Tabelle schließen" : "Datentabelle")} title={tx(table ? "Tabelle schließen" : "Datentabelle")}>
+          <Table2 size={14}  aria-hidden="true" />
           {tx(table ? "Tabelle schließen" : "Datentabelle")}
         </button>
       </div>
@@ -447,7 +447,7 @@ export function TelemetryChart({ full = false }: { full?: boolean }) {
   );
 }
 function SproutIcon() {
-  return <ArrowDown size={20} />;
+  return <ArrowDown size={20}  aria-hidden="true" />;
 }
 export function EventLog({ full = false }: { full?: boolean }) {
   const tx = useT();
@@ -482,9 +482,9 @@ export function EventLog({ full = false }: { full?: boolean }) {
               <span className={`event-dot event-${event.type}`}>
                 {tx(
                   event.type === "warning" ? (
-                    <TriangleAlert size={13} />
+                    <TriangleAlert size={13}  aria-hidden="true" />
                   ) : (
-                    <Check size={12} />
+                    <Check size={12}  aria-hidden="true" />
                   ),
                 )}
               </span>
@@ -506,9 +506,9 @@ export function EventLog({ full = false }: { full?: boolean }) {
           <button
             className="text-button event-expand"
             onClick={() => setExpanded(!expanded)}
-          >
+           aria-label={tx(expanded ? "Weniger anzeigen" : "Alle Ereignisse ansehen")} title={tx(expanded ? "Weniger anzeigen" : "Alle Ereignisse ansehen")}>
             {tx(expanded ? "Weniger anzeigen" : "Alle Ereignisse ansehen")}
-            <ChevronDown size={15} />
+            <ChevronDown size={15}  aria-hidden="true" />
           </button>
         ),
       )}

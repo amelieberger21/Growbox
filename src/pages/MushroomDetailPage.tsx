@@ -66,8 +66,8 @@ export function MushroomDetailPage() {
       <Link
         className="back-link"
         to={`/pilze${backSearch ? `?${backSearch}` : ""}`}
-      >
-        <ArrowLeft size={16} />
+       aria-label={tx("Zur\u00FCck zur Pilzbibliothek")} title={tx("Zur\u00FCck zur Pilzbibliothek")}>
+        <ArrowLeft size={16}  aria-hidden="true" />
         {tx("Zur\u00FCck zur Pilzbibliothek")}
       </Link>
       <div className="detail-layout">
@@ -81,7 +81,7 @@ export function MushroomDetailPage() {
           <h1>{tx(entry.name)}</h1>
           <p className="detail-latin">{tx(info.scientificName)}</p>
           <span className="difficulty">
-            <Leaf size={13} />
+            <Leaf size={13}  aria-hidden="true" />
             {tx(profile.difficulty)}
             {tx(" \u00B7 Demo-Einstufung")}
           </span>
@@ -89,17 +89,17 @@ export function MushroomDetailPage() {
           {tx(
             entry.speciesId === "nameko" && (
               <div className="related-note">
-                <BookOpen size={18} />
+                <BookOpen size={18}  aria-hidden="true" />
                 <p>
                   {tx("Goldk\u00E4ppchen ist ein Handelsname f\u00FCr Nameko.")}
                   {tx(" ")}
                   <Link
                     to={`/pilze/${entry.slug === "nameko" ? "goldkaeppchen" : "nameko"}`}
-                  >
+                   aria-label={tx("Zum Eintrag")} title={tx("Zum Eintrag")}>
                     {tx("Zum Eintrag")}
                     {tx(" ")}
                     {tx(entry.slug === "nameko" ? "Goldkäppchen" : "Nameko")}
-                    <ArrowRight size={13} />
+                    <ArrowRight size={13}  aria-hidden="true" />
                   </Link>
                 </p>
               </div>
@@ -111,13 +111,13 @@ export function MushroomDetailPage() {
               event.currentTarget.focus();
               setPreview(true);
             }}
-          >
-            <Sprout size={18} />
+           aria-label={tx("In meiner Growbox anbauen")} title={tx("In meiner Growbox anbauen")}>
+            <Sprout size={18}  aria-hidden="true" />
             {tx("In meiner Growbox anbauen")}
-            <ArrowRight size={17} />
+            <ArrowRight size={17}  aria-hidden="true" />
           </button>
           <p className="detail-suitability">
-            <Check size={14} />
+            <Check size={14}  aria-hidden="true" />
             {tx(SUITABILITY)}
           </p>
         </div>
@@ -153,7 +153,7 @@ export function MushroomDetailPage() {
         </div>
         <div className="profile-values">
           <div>
-            <Thermometer size={21} />
+            <Thermometer size={21}  aria-hidden="true" />
             <strong>
               {tx(profile.temperature)}
               <small>{tx("\u00B0C")}</small>
@@ -161,7 +161,7 @@ export function MushroomDetailPage() {
             <span>{tx("Demo-Solltemperatur")}</span>
           </div>
           <div>
-            <Droplets size={21} />
+            <Droplets size={21}  aria-hidden="true" />
             <strong>
               {tx(profile.humidity)}
               <small>{tx("%")}</small>
@@ -169,7 +169,7 @@ export function MushroomDetailPage() {
             <span>{tx("Demo-Sollluftfeuchtigkeit")}</span>
           </div>
           <div>
-            <Clock3 size={21} />
+            <Clock3 size={21}  aria-hidden="true" />
             <strong>
               {tx(profile.days)}
               <small>{tx("Tage")}</small>
@@ -184,7 +184,7 @@ export function MushroomDetailPage() {
           <dl className="care-list">
             <div>
               <span className="icon-tile">
-                <Leaf size={19} />
+                <Leaf size={19}  aria-hidden="true" />
               </span>
               <div>
                 <dt>{tx("Substrat \u2013 das N\u00E4hrmaterial")}</dt>
@@ -193,7 +193,7 @@ export function MushroomDetailPage() {
             </div>
             <div>
               <span className="icon-tile">
-                <Sun size={19} />
+                <Sun size={19}  aria-hidden="true" />
               </span>
               <div>
                 <dt>{tx("Licht")}</dt>
@@ -202,7 +202,7 @@ export function MushroomDetailPage() {
             </div>
             <div>
               <span className="icon-tile">
-                <Wind size={19} />
+                <Wind size={19}  aria-hidden="true" />
               </span>
               <div>
                 <dt>{tx("Frischluft")}</dt>
@@ -211,7 +211,7 @@ export function MushroomDetailPage() {
             </div>
             <div>
               <span className="icon-tile">
-                <Droplets size={19} />
+                <Droplets size={19}  aria-hidden="true" />
               </span>
               <div>
                 <dt>{tx("Pflege & Beobachtung")}</dt>
@@ -245,9 +245,9 @@ export function MushroomDetailPage() {
               )),
             )}
           </ol>
-          <Link to="/wachstum" className="text-link">
+          <Link to="/wachstum" className="text-link" aria-label={tx("Aktuellen Verlauf ansehen")} title={tx("Aktuellen Verlauf ansehen")}>
             {tx("Aktuellen Verlauf ansehen")}
-            <ArrowRight size={15} />
+            <ArrowRight size={15}  aria-hidden="true" />
           </Link>
         </section>
       </div>
@@ -285,7 +285,7 @@ export function MushroomDetailPage() {
                   rel="noreferrer"
                 >
                   {tx(source.name)}
-                  <ExternalLink size={13} />
+                  <ExternalLink size={13}  aria-hidden="true" />
                 </a>
               );
             }),
@@ -316,9 +316,9 @@ export function MushroomDetailPage() {
                 >
                   {tx("Abbrechen")}
                 </button>
-                <button className="button button-primary" onClick={prepare}>
+                <button className="button button-primary" onClick={prepare} aria-label={tx("Kultur vorbereiten")} title={tx("Kultur vorbereiten")}>
                   {tx("Kultur vorbereiten")}
-                  <ArrowRight size={16} />
+                  <ArrowRight size={16}  aria-hidden="true" />
                 </button>
               </>
             }

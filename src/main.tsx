@@ -15,6 +15,7 @@ import "@fontsource/manrope/latin-800.css";
 import "./styles/index.css";
 import "./styles/experience.css";
 import "./styles/refinements.css";
+import "./styles/icons.css";
 import "@fontsource/vazirmatn/arabic-400.css";
 import "@fontsource/vazirmatn/arabic-600.css";
 import { ExperienceProvider } from "./experience/ExperienceProvider";
@@ -28,6 +29,7 @@ import { MushroomLibraryPage } from "./pages/MushroomLibraryPage";
 import { MushroomDetailPage } from "./pages/MushroomDetailPage";
 import { GrowboxPage } from "./pages/GrowboxPage";
 import { ClimatePage, GrowthPage } from "./pages/GrowthPage";
+import { CommunityPage } from "./pages/CommunityPage";
 import { ProjectPage } from "./pages/ProjectPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 const createRouter = window.self !== window.top && window.name === displayFrameName
@@ -46,6 +48,7 @@ const router = createRouter([
       { path: "/wachstum", element: <GrowthPage /> },
       { path: "/wachstum/klima", element: <ClimatePage /> },
       { path: "/projekt", element: <ProjectPage /> },
+      { path: "/community", element: <CommunityPage /> },
       { path: "/einstellungen", element: <SettingsPage /> },
       { path: "/hilfe", element: <HelpPage /> },
       { path: "*", element: <NotFoundPage /> },

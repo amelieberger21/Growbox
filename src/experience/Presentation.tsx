@@ -22,7 +22,7 @@ export function PresentationTools() {
   return (
     <div className="presentation-tools">
       <div className="presentation-heading">
-        <FlaskConical size={18} />
+        <FlaskConical size={18}  aria-hidden="true" />
         <strong>{tx("Präsentationswerkzeuge")}</strong>
         <span>{tx("Alles simuliert")}</span>
       </div>
@@ -102,9 +102,9 @@ export function PresentationTools() {
             dispatch({ type: "DEMO_FRUITING" });
             notify("Fruchtungsphase im Demo-Modell erreicht.");
           }}
-        >
+         aria-label={tx("Fruchtungsphase demonstrieren")} title={tx("Fruchtungsphase demonstrieren")}>
           {tx("Fruchtungsphase demonstrieren")}
-          <ArrowRight size={15} />
+          <ArrowRight size={15}  aria-hidden="true" />
         </button>
         <button
           className="button button-outline warning-demo"
@@ -123,8 +123,8 @@ export function PresentationTools() {
               ),
             })
           }
-        >
-          <TriangleAlert size={15} />
+         aria-label={tx("Gelben Zustand zeigen")} title={tx("Gelben Zustand zeigen")}>
+          <TriangleAlert size={15}  aria-hidden="true" />
           {tx("Gelben Zustand zeigen")}
         </button>
         <button
@@ -142,8 +142,8 @@ export function PresentationTools() {
               ),
             })
           }
-        >
-          <TriangleAlert size={15} />
+         aria-label={tx("Roten Zustand zeigen")} title={tx("Roten Zustand zeigen")}>
+          <TriangleAlert size={15}  aria-hidden="true" />
           {tx("Roten Zustand zeigen")}
         </button>
         <button
@@ -185,8 +185,8 @@ export function PresentationTools() {
             event.currentTarget.focus();
             setReset(true);
           }}
-        >
-          <RotateCcw size={15} />
+         aria-label={tx("Betriebszustand zurücksetzen")} title={tx("Betriebszustand zurücksetzen")}>
+          <RotateCcw size={15}  aria-hidden="true" />
           {tx("Betriebszustand zurücksetzen")}
         </button>
       </div>

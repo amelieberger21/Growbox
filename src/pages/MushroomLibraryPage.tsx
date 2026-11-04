@@ -30,7 +30,7 @@ export function MushroomLibraryPage() {
         )}
         action={
           <span className="library-count">
-            <BookOpen size={17} />
+            <BookOpen size={17}  aria-hidden="true" />
             {tx("15 Bibliothekseintr\u00E4ge")}
           </span>
         }
@@ -46,7 +46,7 @@ export function MushroomLibraryPage() {
       </div>
       <div className="library-toolbar">
         <label className="search-field">
-          <Search size={20} />
+          <Search size={20}  aria-hidden="true" />
           <span className="sr-only">{tx("Pilze suchen")}</span>
           <input
             aria-label={tx("Pilze suchen")}
@@ -61,14 +61,14 @@ export function MushroomLibraryPage() {
                 className="icon-button"
                 aria-label={tx("Suche leeren")}
                 onClick={() => update("q", "")}
-              >
-                <X size={16} />
+               title={tx("Suche leeren")}>
+                <X size={16}  aria-hidden="true" />
               </button>
             ),
           )}
         </label>
         <label className="sort-select">
-          <ArrowUpDown size={16} />
+          <ArrowUpDown size={16}  aria-hidden="true" />
           <span className="sr-only">{tx("Pilze sortieren")}</span>
           <select
             value={sort}
@@ -122,7 +122,7 @@ export function MushroomLibraryPage() {
           </div>
         ) : (
           <div className="empty-state">
-            <Search size={34} />
+            <Search size={34}  aria-hidden="true" />
             <h2>{tx("Keine passenden Pilze gefunden.")}</h2>
             <p>
               {tx(

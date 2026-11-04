@@ -94,7 +94,7 @@ export function ProjectPage() {
           )}
         </p>
         <span>
-          <FlaskConical size={16} />
+          <FlaskConical size={16}  aria-hidden="true" />
           {tx("Klickbarer Hochschulprototyp · Version 2.1")}
         </span>
       </section>
@@ -192,7 +192,7 @@ export function ProjectPage() {
                 <div>
                   <strong>
                     {tx(source.name)}
-                    <ExternalLink size={14} />
+                    <ExternalLink size={14}  aria-hidden="true" />
                   </strong>
                   <p>{tx(source.topic)}</p>
                 </div>
@@ -213,7 +213,7 @@ export function ProjectPage() {
       </section>
       <PhotoCredits />
       <section className="panel assets-panel legacy-assets-note">
-        <Code2 size={25} />
+        <Code2 size={25}  aria-hidden="true" />
         <div>
           <h2>{tx("Eigene Formen. Lokale Assets.")}</h2>
           <p>
@@ -238,8 +238,8 @@ export function ProjectPage() {
             event.currentTarget.focus();
             setReset(true);
           }}
-        >
-          <RotateCcw size={16} />
+         aria-label={tx("Demo vollst\u00E4ndig zur\u00FCcksetzen")} title={tx("Demo vollst\u00E4ndig zur\u00FCcksetzen")}>
+          <RotateCcw size={16}  aria-hidden="true" />
           {tx("Demo vollst\u00E4ndig zur\u00FCcksetzen")}
         </button>
       </section>
@@ -264,9 +264,9 @@ export function ProjectPage() {
                     setReset(false);
                     notify("Die Ausgangsdemo wurde wiederhergestellt.");
                   }}
-                >
+                 aria-label={tx("Demo zur\u00FCcksetzen")} title={tx("Demo zur\u00FCcksetzen")}>
                   {tx("Demo zur\u00FCcksetzen")}
-                  <RotateCcw size={15} />
+                  <RotateCcw size={15}  aria-hidden="true" />
                 </button>
               </>
             }

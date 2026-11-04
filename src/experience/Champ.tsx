@@ -266,9 +266,9 @@ export function ChampGuide() {
                   setWantsTour(true);
                   setWelcomeStep("audio");
                 }}
-              >
+               aria-label={tx("Ja, zeig es mir!")} title={tx("Ja, zeig es mir!")}>
                 {tx("Ja, zeig es mir!")}
-                <ArrowRight size={17} />
+                <ArrowRight size={17}  aria-hidden="true" />
               </button>
             </>
           ) : (
@@ -282,8 +282,8 @@ export function ChampGuide() {
               <button
                 className="button button-primary"
                 onClick={() => answer(true)}
-              >
-                <Volume2 size={17} />
+               aria-label={tx("Ja, bitte vorlesen")} title={tx("Ja, bitte vorlesen")}>
+                <Volume2 size={17}  aria-hidden="true" />
                 {tx("Ja, bitte vorlesen")}
               </button>
             </>
@@ -329,8 +329,8 @@ export function ChampGuide() {
               className="icon-button"
               aria-label={tx("Tutorial überspringen")}
               onClick={() => setStep(null)}
-            >
-              <X size={17} />
+             title={tx("Tutorial überspringen")}>
+              <X size={17}  aria-hidden="true" />
             </button>
           </div>
           <p className="tour-step-label">{tx("Schritt")} {step+1} / {TOUR_STEPS.length}</p>
@@ -357,15 +357,15 @@ export function ChampGuide() {
               aria-label={tx("Zurück")}
               disabled={step === 0}
               onClick={() => setStep(step - 1)}
-            >
-              <ArrowLeft size={17} />
+             title={tx("Zurück")}>
+              <ArrowLeft size={17}  aria-hidden="true" />
             </button>
             <button
               className="button button-primary"
               onClick={() => (step === 8 ? finish() : setStep(step + 1))}
-            >
+             aria-label={tx(step === 8 ? "Fertig" : "Weiter")} title={tx(step === 8 ? "Fertig" : "Weiter")}>
               {tx(step === 8 ? "Fertig" : "Weiter")}
-              {step === 8 ? <Check size={16} /> : <ArrowRight size={16} />}
+              {step === 8 ? <Check size={16}  aria-hidden="true" /> : <ArrowRight size={16}  aria-hidden="true" />}
             </button>
           </div>
         </aside>
@@ -386,8 +386,8 @@ export function ChampGuide() {
               event.stopPropagation();
               setPreferences({ champReminder: false });
             }}
-          >
-            <X size={17} />
+           title={tx("Champ-Erinnerung schließen")}>
+            <X size={17}  aria-hidden="true" />
           </button>
         </div>
       )}

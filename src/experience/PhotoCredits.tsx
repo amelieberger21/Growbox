@@ -14,7 +14,7 @@ export function PhotoCredits() {
       </p>
       <p>
         {tx(
-          "Enoki zeigt ausdrücklich die natürliche braune Form von Flammulina filiformis. Nameko und Goldkäppchen teilen dasselbe korrekt zugeordnete Motiv über getrennte Dateipfade. Fotografien sind keine Bestimmungshilfe.",
+          "Enoki zeigt ausdrücklich die natürliche braune Form von Flammulina filiformis. Nameko und Goldkäppchen bezeichnen hier dieselbe Art, zeigen aber zwei unterschiedliche, in ihren Quellen als Nameko dokumentierte Kulturaufnahmen. Fotografien sind keine Bestimmungshilfe.",
         )}
       </p>
       <details>
@@ -28,11 +28,11 @@ export function PhotoCredits() {
                 <span>{photo.author}</span>
                 <a href={photo.sourceUrl} target="_blank" rel="noreferrer">
                   {tx("Originalquelle")}
-                  <ExternalLink size={12} />
+                  <ExternalLink size={12}  aria-hidden="true" />
                 </a>
                 <a href={photo.licenseUrl} target="_blank" rel="noreferrer">
                   {photo.license}
-                  <ExternalLink size={12} />
+                  <ExternalLink size={12}  aria-hidden="true" />
                 </a>
               </div>
             );

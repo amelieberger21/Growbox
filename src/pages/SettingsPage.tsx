@@ -29,7 +29,7 @@ export function LanguageSelect({ id = "header-language" }: { id?: string }) {
   return (
     <div className="language-picker">{searchable&&<label htmlFor={`${id}-search`}>{LANGUAGE_FILTER_LABEL[experience.preferences.language]}<input type="search" id={`${id}-search`} value={query} onChange={e=>setQuery(e.target.value)} /></label>}
     <label className="language-select" htmlFor={id}>
-      <Globe2 size={16} />
+      <Globe2 size={16}  aria-hidden="true" />
       <span className="sr-only">{tx("Sprache")}</span>
       <select
         id={id}
@@ -82,7 +82,7 @@ export function SettingsPage() {
         )}
         action={
           <span className="draft-badge">
-            <Check size={14} />
+            <Check size={14}  aria-hidden="true" />
             {tx("Auf diesem Gerät gespeichert")}
           </span>
         }
@@ -90,7 +90,7 @@ export function SettingsPage() {
       <section className="panel language-setting">
         <div className="settings-section-heading">
           <span className="icon-tile">
-            <Globe2 size={22} />
+            <Globe2 size={22}  aria-hidden="true" />
           </span>
           <div>
             <h2>{tx("Sprache & Leserichtung")}</h2>
@@ -107,7 +107,7 @@ export function SettingsPage() {
       <section className="panel">
         <div className="settings-section-heading">
           <span className="icon-tile">
-            <Accessibility size={22} />
+            <Accessibility size={22}  aria-hidden="true" />
           </span>
           <div>
             <h2>{tx("Gut lesbar. Leicht bedienbar.")}</h2>
@@ -121,7 +121,7 @@ export function SettingsPage() {
         <div className="preference-row">
           <div>
             <strong>
-              <Type size={17} />
+              <Type size={17}  aria-hidden="true" />
               {tx("Schriftgröße")}
             </strong>
             <p>{tx("Vergrößere Texte, ohne Inhalte auszublenden.")}</p>
@@ -147,7 +147,7 @@ export function SettingsPage() {
         <div className="preference-row">
           <div>
             <strong>
-              <Contrast size={17} />
+              <Contrast size={17}  aria-hidden="true" />
               {tx("Hoher Kontrast")}
             </strong>
             <p>
@@ -165,7 +165,7 @@ export function SettingsPage() {
         <div className="preference-row">
           <div>
             <strong>
-              <BookOpen size={17} />
+              <BookOpen size={17}  aria-hidden="true" />
               {tx("Einfache Sprache")}
             </strong>
             <p>
@@ -184,7 +184,7 @@ export function SettingsPage() {
       <section className="panel speech-setting">
         <div className="settings-section-heading">
           <span className="icon-tile">
-            <Volume2 size={22} />
+            <Volume2 size={22}  aria-hidden="true" />
           </span>
           <div>
             <h2>{tx("Vorlesefunktion")}</h2>
@@ -239,15 +239,15 @@ export function SettingsPage() {
           className="button button-outline"
           disabled={!p.readerEnabled || !speech.supported}
           onClick={speech.start}
-        >
-          <Volume2 size={16} />
+         aria-label={tx("Vorlesefunktion testen")} title={tx("Vorlesefunktion testen")}>
+          <Volume2 size={16}  aria-hidden="true" />
           {tx("Vorlesefunktion testen")}
         </button>
       </section>
       <section className="panel">
         <div className="settings-section-heading">
           <span className="icon-tile">
-            <Bell size={22} />
+            <Bell size={22}  aria-hidden="true" />
           </span>
           <div>
             <h2>{tx("Benachrichtigungen & Wasser")}</h2><HelpButton topic="notifications"/>

@@ -14,8 +14,10 @@ import {
   CircleHelp,
   Clock3,
   WifiOff,
-  Settings2,
+  Settings,
   Volume2,
+  MessageCircle,
+  ShoppingBag,
 } from "lucide-react";
 import { translationNotice } from "../i18n/coverage";
 import { BoxContext, GrowboxManager } from "./GrowboxManager";
@@ -36,7 +38,9 @@ const NAV = [
   { path: "/pilze", name: "Pilzbibliothek", icon: BookOpen },
   { path: "/growbox", name: "Meine Growbox", icon: SlidersHorizontal },
   { path: "/wachstum", name: "Wachstumsverlauf", icon: Sprout },
-  { path: "/einstellungen", name: "Einstellungen", icon: Settings2 },
+  { path: "/community", name: "Community", icon: MessageCircle },
+  { path: "https://www.pilzbrut.de/pilze-selber-zuechten", name: "Pilzsets kaufen", icon: ShoppingBag },
+  { path: "/einstellungen", name: "Einstellungen", icon: Settings },
   { path: "/hilfe", name: "Hilfe & Champ", icon: CircleHelp },
 ];
 function SystemClock() {
@@ -48,7 +52,7 @@ function SystemClock() {
   }, []);
   return (
     <time className="system-clock" dateTime={now.toISOString()} aria-live="off">
-      <Clock3 size={13} />
+      <Clock3 size={13}  aria-hidden="true" />
       <span>
         {new Intl.DateTimeFormat(currentLocale(), {
           weekday: "long",
@@ -136,8 +140,8 @@ export function Layout() {
         id="main-navigation" className={`sidebar ${open ? "open" : ""}`} inert={focusMode}
         aria-label={tx("Hauptnavigation")}
       >
-        <button type="button" className="sidebar-hide button button-outline" onClick={hideNavigation}><X aria-hidden="true"/>{tx("Navigation ausblenden")}</button>
-        <Link ref={navRef} to="/" aria-label={tx("MycoBox Dashboard")}>
+        <button type="button" className="sidebar-hide button button-outline" onClick={hideNavigation} aria-label={tx("Navigation ausblenden")} title={tx("Navigation ausblenden")}><X aria-hidden="true"/>{tx("Navigation ausblenden")}</button>
+        <Link ref={navRef} to="/" aria-label={tx("MycoBox Dashboard")} title={tx("MycoBox Dashboard")}>
           <Logo />
         </Link>
         <p className="brand-tagline">{tx("Natürlich wachsen.")}</p>
@@ -145,21 +149,26 @@ export function Layout() {
           className="mobile-close icon-button"
           onClick={() => setOpen(false)}
           aria-label={tx("Menü schließen")}
-        >
-          <X />
+         title={tx("Menü schließen")}>
+          <X  aria-hidden="true" />
         </button>
         <p className="nav-label">{tx("DEIN PILZLABOR")}</p>
         <nav>
-          {NAV.map(({ path, name, icon: Icon }) => (
+          {NAV.map(({ path, name, icon: Icon }) => path.startsWith("https://") ? (
+            <a key={path} href={path} target="_blank" rel="noopener noreferrer" className="nav-item" aria-label={`${tx(name)} · ${tx("Öffnet in neuem Tab")}`} title={`${tx(name)} · ${tx("Öffnet in neuem Tab")}`}>
+              <Icon size={24} aria-hidden="true"/><span>{tx(name)}</span><ArrowUpRight size={18} aria-hidden="true"/>
+            </a>
+          ) : (
             <NavLink
               key={path}
               to={path}
+              aria-label={tx(name)} title={tx(name)}
               end={path === "/"}
               className={({ isActive }) =>
                 `nav-item ${isActive ? "active" : ""}`
               }
             >
-              <Icon size={19} />
+              <Icon size={19} aria-hidden="true" />
               <span>{tx(name)}</span>
               {path === "/pilze" && <span className="nav-count">15</span>}
               {path === "/" && <span className="nav-active-dot" />}
@@ -169,7 +178,7 @@ export function Layout() {
         <div className="sidebar-bottom">
           <div className="sidebar-grow">
             <div className="sidebar-grow-icon">
-              <Leaf size={20} />
+              <Leaf size={20}  aria-hidden="true" />
               <span
                 className={`tiny-dot ${state.cycle?.status === "Läuft" ? "" : "quiet"}`}
               />
@@ -186,10 +195,10 @@ export function Layout() {
           <NavLink
             to="/projekt"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
-          >
-            <CircleHelp size={18} />
+           aria-label={tx("Über das Projekt")} title={tx("Über das Projekt")}>
+            <CircleHelp size={18}  aria-hidden="true" />
             {tx("Über das Projekt")}
-            <ArrowUpRight className="ml-auto" size={16} />
+            <ArrowUpRight className="ml-auto" size={16}  aria-hidden="true" />
           </NavLink>
           <div className="sidebar-footer">
             <span>MYCOBOX</span>
@@ -206,11 +215,11 @@ export function Layout() {
                 aria-label={tx("Menü öffnen")} aria-controls="main-navigation"
                 aria-expanded={open}
                 onClick={showNavigation}
-              >
+               title={tx("Menü öffnen")}>
                 <Menu size={22} aria-hidden="true"/><span className="menu-open-text">{tx("Menü öffnen")}</span>
               </button>
               <span className="breadcrumb-root">{tx("Mein Pilzlabor")}</span>
-              <ChevronRight size={14} />
+              <ChevronRight size={14}  aria-hidden="true" />
               <strong>{tx(page)}</strong>
             </div>
             <SystemClock />
@@ -230,16 +239,20 @@ export function Layout() {
                   readerEnabled: !experience.preferences.readerEnabled,
                 })
               }
-            >
-              <Volume2 size={19} />
+             title={tx(
+                experience.preferences.readerEnabled
+                  ? "Vorlesefunktion deaktivieren"
+                  : "Vorlesen aktivieren",
+              )}>
+              <Volume2 size={19}  aria-hidden="true" />
             </button>
             <NotificationCenter />
             <Link
               to="/einstellungen"
               className="icon-button"
               aria-label={tx("Einstellungen")}
-            >
-              <Settings2 size={19} />
+             title={tx("Einstellungen")}>
+              <Settings size={19}  aria-hidden="true" />
             </Link>
           </div>
         </header>
@@ -255,16 +268,16 @@ export function Layout() {
                 )}
               </span>
             </div>
-            <Link to="/projekt#demo-erklaerung">
+            <Link to="/projekt#demo-erklaerung" aria-label={tx("Mehr erfahren")} title={tx("Mehr erfahren")}>
               {tx("Mehr erfahren")}
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={14}  aria-hidden="true" />
             </Link>
           </div>
           {experience.preferences.language!=="de"&&<p className="translation-notice" role="status" lang={experience.preferences.language}>{translationNotice[experience.preferences.language]}</p>}
           <BoxContext />
-          <div className="main-tools"><div className="page-help"><HelpButton topic={location.pathname.startsWith("/pilze")?"library":location.pathname.startsWith("/einstellungen")?"accessibility":location.pathname.includes("klima")?"chart":location.pathname.startsWith("/wachstum")?"growth":"settings"}/></div>
+          <div className="main-tools"><div className="page-help"><HelpButton topic={location.pathname.startsWith("/community")?"community":location.pathname.startsWith("/pilze")?"library":location.pathname.startsWith("/einstellungen")?"accessibility":location.pathname.includes("klima")?"chart":location.pathname.startsWith("/wachstum")?"growth":"settings"}/></div>
           <div className="champ-entry" ref={setAssistantHost}/></div>
-          {!selectedBox.hasData && !["/einstellungen","/hilfe","/projekt"].includes(location.pathname) && !location.pathname.startsWith("/pilze") ? <div className="page"><GrowboxManager/><p role="status">{tx("Keine Messdaten vorhanden")}</p></div> : <Outlet key={selectedBox.id} />}
+          {!selectedBox.hasData && !["/einstellungen","/hilfe","/projekt","/community"].includes(location.pathname) && !location.pathname.startsWith("/pilze") ? <div className="page"><GrowboxManager/><p role="status">{tx("Keine Messdaten vorhanden")}</p></div> : <Outlet key={selectedBox.id} />}
         </main>
         <footer className="app-footer">
           <span>
@@ -275,7 +288,7 @@ export function Layout() {
             </span>
           </span>
           <span>
-            <WifiOff size={13} />
+            <WifiOff size={13}  aria-hidden="true" />
             {tx("Lokale Demo · Daten auf diesem Gerät")}
           </span>
         </footer>
@@ -284,7 +297,7 @@ export function Layout() {
         className="simulation-clock"
         title={tx("Die Simulationsuhr zeigt ausschließlich Demo-Zeit.")}
       >
-        <Clock3 size={14} />
+        <Clock3 size={14}  aria-hidden="true" />
         <span>{tx("Demo-Zeit")}</span>
         <strong>
           {tx("Tag")} {cultureDay(state)} · {formatTime(demoTime(state))}

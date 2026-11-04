@@ -105,7 +105,7 @@ export function DeviceSettings({
       <details className="device-settings-group" open id="light-settings">
         <summary>{tx("Beleuchtung – sichtbares Licht")}</summary>
         <div className="light-status">
-          <Lightbulb size={23} />
+          <Lightbulb size={23}  aria-hidden="true" />
           <div>
             <strong>
               {tx(canControl ? "Gerät · aktuell" : "Offline: zuletzt bekannter Gerätestatus")}: {tx(actual.lightOn ? "An" : "Aus")} ·{" "}

@@ -38,7 +38,7 @@ export function MushroomArt({
           role="img"
           aria-label={`${tx(entry.name)}: ${tx("Foto nicht verfügbar")}`}
         >
-          <CameraOff size={25} />
+          <CameraOff size={25}  aria-hidden="true" />
           <strong>{tx(entry.name)}</strong>
           <span>{tx("Foto nicht verfügbar")}</span>
         </div>

@@ -88,13 +88,13 @@ export function MushroomCard({
       className={`mushroom-card ${compact ? "compact" : ""}`}
       to={`/pilze/${entry.slug}`}
       state={{ librarySearch: backSearch }}
-    >
+     title={tx(entry.name)}>
       <div className="card-art" style={{ background: entry.background }}>
         <MushroomArt entry={entry} />
         <span
           className={`difficulty difficulty-${getProfile(entry).difficulty}`}
         >
-          <Leaf size={12} />
+          <Leaf size={12}  aria-hidden="true" />
           {tx(getProfile(entry).difficulty)}
         </span>
       </div>
@@ -106,7 +106,7 @@ export function MushroomCard({
         <p className="card-description">{tx(entry.short)}</p>
         <span className="card-link">
           {tx("Details ansehen ")}
-          <ArrowUpRight size={17} />
+          <ArrowUpRight size={17}  aria-hidden="true" />
         </span>
       </div>
     </Link>
@@ -151,14 +151,14 @@ export function Modal({
     >
       <div className="modal-head">
         <span className="icon-tile">
-          <Leaf size={22} />
+          <Leaf size={22}  aria-hidden="true" />
         </span>
         <button
           className="icon-button"
           onClick={onClose}
           aria-label={tx("Dialog schlie\u00DFen")}
-        >
-          <X size={20} />
+         title={tx("Dialog schlie\u00DFen")}>
+          <X size={20}  aria-hidden="true" />
         </button>
       </div>
       <h2 id={titleId}>{tx(title)}</h2>
@@ -177,7 +177,7 @@ export function InfoNote({
   const tx = useT();
   return (
     <div className={`info-note ${warning ? "warning" : ""}`}>
-      <CircleHelp size={17} />
+      <CircleHelp size={17}  aria-hidden="true" />
       <div>{tx(children)}</div>
     </div>
   );
@@ -218,8 +218,8 @@ export function Toggle({
       aria-label={tx(label)}
       disabled={disabled}
       onClick={onChange}
-    >
-      <span>{tx(checked && <Check size={11} />)}</span>
+     title={tx(label)}>
+      <span>{tx(checked && <Check size={11}  aria-hidden="true" />)}</span>
     </button>
   );
 }

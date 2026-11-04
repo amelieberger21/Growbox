@@ -73,11 +73,13 @@ export function TechnologySummary() {
             className="technology-card"
             key={name}
             to={`/growbox#${target}`}
+            aria-label={`${tx(name)}: ${value}`}
+            title={`${tx(name)}: ${value}`}
           >
-            <Icon size={20} />
+            <Icon size={20} aria-hidden="true" />
             <span>{tx(name)}</span>
             <strong>{value}</strong>
-            <ArrowRight size={14} />
+            <ArrowRight size={14}  aria-hidden="true" />
           </Link>
         ))}
       </div>
@@ -102,14 +104,14 @@ export function ClimateHints() {
     <section className="panel climate-hints" id="climate-hints">
       <div className="section-title">
         <h2>
-          <ShieldQuestion size={20} />
+          <ShieldQuestion size={20}  aria-hidden="true" />
           {tx("Schimmelvorsorge & Klimahinweise")}
         </h2>
         <span className="muted-tag">{tx("Demo-Regeln")}</span>
       </div>
       {["warning", "critical"].includes(temperature.level) && (
         <div className="technical-hint">
-          <TriangleAlert size={19} />
+          <TriangleAlert size={19}  aria-hidden="true" />
           <div>
             <strong>{tx("Temperatur außerhalb des Demo-Bereichs")}</strong>
             <p>
@@ -119,32 +121,32 @@ export function ClimateHints() {
                   : "Wert zu hoch",
               )}
             </p>
-            <Link to="/growbox#climate-settings" className="text-link">
+            <Link to="/growbox#climate-settings" className="text-link" aria-label={tx("Demo-Solltemperatur")} title={tx("Demo-Solltemperatur")}>
               {tx("Demo-Solltemperatur")}
-              <ArrowRight size={15} />
+              <ArrowRight size={15}  aria-hidden="true" />
             </Link>
           </div>
         </div>
       )}
       {(devices.water !== "sufficient" || waterDue) && (
         <div className="technical-hint">
-          <Droplets size={19} />
+          <Droplets size={19}  aria-hidden="true" />
           <div>
             <strong>{tx("Wasserwartung")}</strong>
             <p>
               {tx(TANK_LABELS[devices.water])}
               {waterDue && <> · {tx("Fällig")}</>}
             </p>
-            <Link className="text-link" to="/growbox#water-maintenance">
+            <Link className="text-link" to="/growbox#water-maintenance" aria-label={tx("Wasserwartung")} title={tx("Wasserwartung")}>
               {tx("Wasserwartung")}
-              <ArrowRight size={15} />
+              <ArrowRight size={15}  aria-hidden="true" />
             </Link>
           </div>
         </div>
       )}
       {humidityAlert && (
         <div className="technical-hint">
-          <TriangleAlert size={19} />
+          <TriangleAlert size={19}  aria-hidden="true" />
           <div>
             <strong>
               {tx("Luftfeuchtigkeit außerhalb des Demo-Bereichs")}
@@ -156,16 +158,16 @@ export function ClimateHints() {
                   : "Die simulierte Luftfeuchtigkeit ist zu hoch.",
               )}
             </p>
-            <Link to="/growbox#climate-settings" className="text-link">
+            <Link to="/growbox#climate-settings" className="text-link" aria-label={tx("Feuchtigkeit einstellen")} title={tx("Feuchtigkeit einstellen")}>
               {tx("Feuchtigkeit einstellen")}
-              <ArrowRight size={15} />
+              <ArrowRight size={15}  aria-hidden="true" />
             </Link>
           </div>
         </div>
       )}
       {airAlert && (
         <div className="technical-hint">
-          <TriangleAlert size={19} />
+          <TriangleAlert size={19}  aria-hidden="true" />
           <div>
             <strong>{tx("Luftaustausch prüfen")}</strong>
             <p>
@@ -173,16 +175,16 @@ export function ClimateHints() {
                 "CO₂ liegt außerhalb des eingestellten Demo-Bereichs. Prüfe die Frischluftzufuhr.",
               )}
             </p>
-            <Link to="/growbox#air-settings" className="text-link">
+            <Link to="/growbox#air-settings" className="text-link" aria-label={tx("Frischluft einstellen")} title={tx("Frischluft einstellen")}>
               {tx("Frischluft einstellen")}
-              <ArrowRight size={15} />
+              <ArrowRight size={15}  aria-hidden="true" />
             </Link>
           </div>
         </div>
       )}
       {!humidityAlert && !airAlert && (
         <p>
-          <Check size={16} />{" "}
+          <Check size={16}  aria-hidden="true" />{" "}
           {tx(
             "Aktuell keine Feuchtigkeits- oder CO₂-Abweichung nach den verfügbaren Demo-Regeln.",
           )}
@@ -217,7 +219,7 @@ export function ClimateHints() {
       </InfoNote>
       {state.observation && (
         <div className="technical-hint observation-warning">
-          <TriangleAlert size={19} />
+          <TriangleAlert size={19}  aria-hidden="true" />
           <div>
             <strong>{tx("Manuelle Beobachtung dokumentiert")}</strong>
             <p>
@@ -250,8 +252,8 @@ export function ClimateHints() {
           e.currentTarget.focus();
           setReport(true);
         }}
-      >
-        <TriangleAlert size={16} />
+       aria-label={tx("Verdächtige Veränderung melden")} title={tx("Verdächtige Veränderung melden")}>
+        <TriangleAlert size={16}  aria-hidden="true" />
         {tx("Verdächtige Veränderung melden")}
       </button>
       {report && (

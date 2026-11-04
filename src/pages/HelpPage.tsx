@@ -23,15 +23,15 @@ export function HelpPage() {
               "Ich zeige dir in neun Schritten, wie MycoBox funktioniert. Du kannst jederzeit zurückgehen oder aufhören. Deine Kultur wird dabei nicht verändert.",
             )}
           </p>
-          <button className="button button-primary" onClick={requestChampTour}>
+          <button className="button button-primary" onClick={requestChampTour} aria-label={tx("Tutorial mit Champ starten")} title={tx("Tutorial mit Champ starten")}>
             {tx("Tutorial mit Champ starten")}
-            <ArrowRight size={16} />
+            <ArrowRight size={16}  aria-hidden="true" />
           </button>
         </div>
       </section>
       <div className="project-grid">
         <section className="panel">
-          <LifeBuoy size={24} />
+          <LifeBuoy size={24}  aria-hidden="true" />
           <h2>{tx("Was bedeuten die Farben?")}</h2>
           <p>
             {tx(
@@ -40,16 +40,16 @@ export function HelpPage() {
           </p>
         </section>
         <section className="panel">
-          <Volume2 size={24} />
+          <Volume2 size={24}  aria-hidden="true" />
           <h2>{tx("In deinem Tempo lesen")}</h2>
           <p>
             {tx(
               "Aktiviere Vorlesen, einfache Sprache oder größere Texte in den Einstellungen. Stimmen und Wortmarkierungen hängen vom Browser ab.",
             )}
           </p>
-          <Link className="text-link" to="/einstellungen">
+          <Link className="text-link" to="/einstellungen" aria-label={tx("Zu den Einstellungen")} title={tx("Zu den Einstellungen")}>
             {tx("Zu den Einstellungen")}
-            <ArrowRight size={15} />
+            <ArrowRight size={15}  aria-hidden="true" />
           </Link>
         </section>
       </div>

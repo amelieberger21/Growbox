@@ -94,7 +94,7 @@ export function GrowboxPage() {
         )}
         action={
           <span className="library-count">
-            <SlidersHorizontal size={16} />
+            <SlidersHorizontal size={16}  aria-hidden="true" />
             {tx(state.settings.mode)}
           </span>
         }
@@ -120,8 +120,8 @@ export function GrowboxPage() {
                     <Link
                       to={`/pilze/${entry.slug}`}
                       aria-label={tx(`${entry.name}: Details`)}
-                    >
-                      <ArrowRight size={17} />
+                     title={tx(`${entry.name}: Details`)}>
+                      <ArrowRight size={17}  aria-hidden="true" />
                     </Link>
                   </h2>
                   <span className="culture-caption">
@@ -144,8 +144,8 @@ export function GrowboxPage() {
                           "Demo gestartet. Zeitraffer: 5 Sekunden = 1 Demo-Stunde.",
                         );
                       }}
-                    >
-                      <Play size={16} />
+                     aria-label={tx("Demo starten")} title={tx("Demo starten")}>
+                      <Play size={16}  aria-hidden="true" />
                       {tx("Demo starten")}
                     </button>
                   ),
@@ -158,8 +158,8 @@ export function GrowboxPage() {
                       onClick={() =>
                         dispatch({ type: "STATUS", status: "Pausiert" })
                       }
-                    >
-                      <Pause size={16} />
+                     aria-label={tx("Pausieren")} title={tx("Pausieren")}>
+                      <Pause size={16}  aria-hidden="true" />
                       {tx("Pausieren")}
                     </button>
                   ),
@@ -172,8 +172,8 @@ export function GrowboxPage() {
                       onClick={() =>
                         dispatch({ type: "STATUS", status: "Läuft" })
                       }
-                    >
-                      <Play size={16} />
+                     aria-label={tx("Fortsetzen")} title={tx("Fortsetzen")}>
+                      <Play size={16}  aria-hidden="true" />
                       {tx("Fortsetzen")}
                     </button>
                   ),
@@ -186,15 +186,15 @@ export function GrowboxPage() {
                         event.currentTarget.focus();
                         setEnding(true);
                       }}
-                    >
-                      <CircleStop size={16} />
+                     aria-label={tx("Kultur beenden")} title={tx("Kultur beenden")}>
+                      <CircleStop size={16}  aria-hidden="true" />
                       {tx("Kultur beenden")}
                     </button>
                   ),
                 )}
-                <Link className="text-link" to="/pilze">
+                <Link className="text-link" to="/pilze" aria-label={tx("Neue Kultur ausw\u00E4hlen")} title={tx("Neue Kultur ausw\u00E4hlen")}>
                   {tx("Neue Kultur ausw\u00E4hlen")}
-                  <ArrowRight size={15} />
+                  <ArrowRight size={15}  aria-hidden="true" />
                 </Link>
               </div>
             </section>
@@ -215,7 +215,7 @@ export function GrowboxPage() {
                       "Nicht übernommene Änderungen"
                     ) : (
                       <>
-                        <Check size={13} />
+                        <Check size={13}  aria-hidden="true" />
                         {tx("Alles \u00FCbernommen")}
                       </>
                     ),
@@ -228,7 +228,7 @@ export function GrowboxPage() {
                 <div className="mode-row">
                   <div>
                     <strong>
-                      <WandSparkles size={17} />
+                      <WandSparkles size={17}  aria-hidden="true" />
                       {tx("Dein Steuerungsmodus")}
                     </strong>
                     <p>
@@ -259,9 +259,9 @@ export function GrowboxPage() {
                         >
                           {tx(
                             mode === "Automatik" ? (
-                              <WandSparkles size={14} />
+                              <WandSparkles size={14}  aria-hidden="true" />
                             ) : (
-                              <SlidersHorizontal size={14} />
+                              <SlidersHorizontal size={14}  aria-hidden="true" />
                             ),
                           )}
                           {tx(" ")}
@@ -278,7 +278,7 @@ export function GrowboxPage() {
                   <div className="setting-control">
                     <label htmlFor="temperature-number">
                       <span className="sensor-icon peach">
-                        <Thermometer size={20} />
+                        <Thermometer size={20}  aria-hidden="true" />
                       </span>
                       <span>
                         <strong>{tx("Demo-Solltemperatur")}</strong>
@@ -341,7 +341,7 @@ export function GrowboxPage() {
                   <div className="setting-control">
                     <label htmlFor="humidity-number">
                       <span className="sensor-icon blue">
-                        <Droplets size={20} />
+                        <Droplets size={20}  aria-hidden="true" />
                       </span>
                       <span>
                         <strong>{tx("Demo-Sollluftfeuchtigkeit")}</strong>
@@ -421,8 +421,8 @@ export function GrowboxPage() {
                         "Pilzprofil in den Entwurf geladen. Zum Anwenden bitte übernehmen.",
                       );
                     }}
-                  >
-                    <RotateCcw size={15} />
+                   aria-label={tx("Pilzprofil laden")} title={tx("Pilzprofil laden")}>
+                    <RotateCcw size={15}  aria-hidden="true" />
                     {tx("Pilzprofil laden")}
                   </button>
                   <div>
@@ -439,8 +439,8 @@ export function GrowboxPage() {
                       className="button button-primary"
                       disabled={!dirty || errors.length > 0}
                       onClick={apply}
-                    >
-                      <Save size={16} />
+                     aria-label={tx("Einstellungen \u00FCbernehmen")} title={tx("Einstellungen \u00FCbernehmen")}>
+                      <Save size={16}  aria-hidden="true" />
                       {tx("Einstellungen \u00FCbernehmen")}
                     </button>
                   </div>
@@ -471,16 +471,16 @@ export function GrowboxPage() {
           </>
         ) : (
           <div className="empty-state">
-            <Leaf size={35} />
+            <Leaf size={35}  aria-hidden="true" />
             <h2>{tx("Deine Growbox wartet auf den ersten Pilz.")}</h2>
             <p>
               {tx(
                 "W\u00E4hle ein Beispielprofil und bereite deine virtuelle Kultur vor.",
               )}
             </p>
-            <Link to="/pilze" className="button button-primary">
+            <Link to="/pilze" className="button button-primary" aria-label={tx("Pilz ausw\u00E4hlen")} title={tx("Pilz ausw\u00E4hlen")}>
               {tx("Pilz ausw\u00E4hlen")}
-              <ArrowRight size={16} />
+              <ArrowRight size={16}  aria-hidden="true" />
             </Link>
           </div>
         ),
@@ -541,9 +541,9 @@ export function GrowboxPage() {
                     setDraft(asDraft(state.settings));
                     blocker.proceed();
                   }}
-                >
+                 aria-label={tx("\u00C4nderungen verwerfen")} title={tx("\u00C4nderungen verwerfen")}>
                   {tx("\u00C4nderungen verwerfen")}
-                  <ArrowRight size={16} />
+                  <ArrowRight size={16}  aria-hidden="true" />
                 </button>
               </>
             }
